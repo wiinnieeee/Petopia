@@ -9,23 +9,25 @@
 /* Begin PBXBuildFile section */
 		10AE025429EB8F4B00B82918 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10AE025329EB8F4B00B82918 /* AppDelegate.swift */; };
 		10AE025629EB8F4B00B82918 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10AE025529EB8F4B00B82918 /* SceneDelegate.swift */; };
-		10AE025829EB8F4B00B82918 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10AE025729EB8F4B00B82918 /* ViewController.swift */; };
 		10AE025B29EB8F4B00B82918 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 10AE025929EB8F4B00B82918 /* Main.storyboard */; };
 		10AE025E29EB8F4B00B82918 /* petopia.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 10AE025C29EB8F4B00B82918 /* petopia.xcdatamodeld */; };
 		10AE026029EB8F4C00B82918 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 10AE025F29EB8F4C00B82918 /* Assets.xcassets */; };
 		10AE026329EB8F4C00B82918 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 10AE026129EB8F4C00B82918 /* LaunchScreen.storyboard */; };
+		10AE026B29EB976300B82918 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10AE026A29EB976300B82918 /* LoginViewController.swift */; };
+		10AE026D29EB99E200B82918 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10AE026C29EB99E200B82918 /* RegisterViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		10AE025029EB8F4B00B82918 /* petopia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = petopia.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		10AE025329EB8F4B00B82918 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		10AE025529EB8F4B00B82918 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		10AE025729EB8F4B00B82918 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		10AE025A29EB8F4B00B82918 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		10AE025D29EB8F4B00B82918 /* petopia.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = petopia.xcdatamodel; sourceTree = "<group>"; };
 		10AE025F29EB8F4C00B82918 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		10AE026229EB8F4C00B82918 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		10AE026429EB8F4C00B82918 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		10AE026A29EB976300B82918 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		10AE026C29EB99E200B82918 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,8 +62,9 @@
 			children = (
 				10AE025329EB8F4B00B82918 /* AppDelegate.swift */,
 				10AE025529EB8F4B00B82918 /* SceneDelegate.swift */,
-				10AE025729EB8F4B00B82918 /* ViewController.swift */,
 				10AE025929EB8F4B00B82918 /* Main.storyboard */,
+				10AE026A29EB976300B82918 /* LoginViewController.swift */,
+				10AE026C29EB99E200B82918 /* RegisterViewController.swift */,
 				10AE025F29EB8F4C00B82918 /* Assets.xcassets */,
 				10AE026129EB8F4C00B82918 /* LaunchScreen.storyboard */,
 				10AE026429EB8F4C00B82918 /* Info.plist */,
@@ -141,7 +144,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				10AE025829EB8F4B00B82918 /* ViewController.swift in Sources */,
+				10AE026B29EB976300B82918 /* LoginViewController.swift in Sources */,
+				10AE026D29EB99E200B82918 /* RegisterViewController.swift in Sources */,
 				10AE025429EB8F4B00B82918 /* AppDelegate.swift in Sources */,
 				10AE025E29EB8F4B00B82918 /* petopia.xcdatamodeld in Sources */,
 				10AE025629EB8F4B00B82918 /* SceneDelegate.swift in Sources */,
