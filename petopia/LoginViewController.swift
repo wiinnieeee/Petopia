@@ -9,6 +9,15 @@ import UIKit
 
 class LoginViewController: UIViewController {
 
+    @IBOutlet weak var password: UITextField!
+    @IBOutlet weak var emailAdd: UITextField!
+    
+    @IBAction func loginAction(_ sender: Any) {
+    }
+    
+    @IBAction func registerAction(_ sender: Any) {
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

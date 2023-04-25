@@ -15,6 +15,11 @@
 		10AE026329EB8F4C00B82918 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 10AE026129EB8F4C00B82918 /* LaunchScreen.storyboard */; };
 		10AE026B29EB976300B82918 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10AE026A29EB976300B82918 /* LoginViewController.swift */; };
 		10AE026D29EB99E200B82918 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10AE026C29EB99E200B82918 /* RegisterViewController.swift */; };
+		10CBC3BD29F7A3AB00049813 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 10CBC3BC29F7A3AB00049813 /* FirebaseAuth */; };
+		10CBC3BF29F7A3AB00049813 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 10CBC3BE29F7A3AB00049813 /* FirebaseFirestore */; };
+		10CBC3C129F7A3AB00049813 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 10CBC3C029F7A3AB00049813 /* FirebaseFirestoreSwift */; };
+		10CBC3C329F7A3AB00049813 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 10CBC3C229F7A3AB00049813 /* FirebaseMessaging */; };
+		10CBC3C529F7A49600049813 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 10CBC3C429F7A49600049813 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +33,7 @@
 		10AE026429EB8F4C00B82918 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		10AE026A29EB976300B82918 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		10AE026C29EB99E200B82918 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		10CBC3C429F7A49600049813 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,6 +41,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				10CBC3C329F7A3AB00049813 /* FirebaseMessaging in Frameworks */,
+				10CBC3BD29F7A3AB00049813 /* FirebaseAuth in Frameworks */,
+				10CBC3BF29F7A3AB00049813 /* FirebaseFirestore in Frameworks */,
+				10CBC3C129F7A3AB00049813 /* FirebaseFirestoreSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -62,6 +72,7 @@
 			children = (
 				10AE025329EB8F4B00B82918 /* AppDelegate.swift */,
 				10AE025529EB8F4B00B82918 /* SceneDelegate.swift */,
+				10CBC3C429F7A49600049813 /* GoogleService-Info.plist */,
 				10AE025929EB8F4B00B82918 /* Main.storyboard */,
 				10AE026A29EB976300B82918 /* LoginViewController.swift */,
 				10AE026C29EB99E200B82918 /* RegisterViewController.swift */,
@@ -89,6 +100,12 @@
 			dependencies = (
 			);
 			name = petopia;
+			packageProductDependencies = (
+				10CBC3BC29F7A3AB00049813 /* FirebaseAuth */,
+				10CBC3BE29F7A3AB00049813 /* FirebaseFirestore */,
+				10CBC3C029F7A3AB00049813 /* FirebaseFirestoreSwift */,
+				10CBC3C229F7A3AB00049813 /* FirebaseMessaging */,
+			);
 			productName = petopia;
 			productReference = 10AE025029EB8F4B00B82918 /* petopia.app */;
 			productType = "com.apple.product-type.application";
@@ -117,6 +134,9 @@
 				Base,
 			);
 			mainGroup = 10AE024729EB8F4B00B82918;
+			packageReferences = (
+				10CBC3BB29F7A3AB00049813 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			productRefGroup = 10AE025129EB8F4B00B82918 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -132,6 +152,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				10AE026329EB8F4C00B82918 /* LaunchScreen.storyboard in Resources */,
+				10CBC3C529F7A49600049813 /* GoogleService-Info.plist in Resources */,
 				10AE026029EB8F4C00B82918 /* Assets.xcassets in Resources */,
 				10AE025B29EB8F4B00B82918 /* Main.storyboard in Resources */,
 			);
@@ -364,6 +385,40 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		10CBC3BB29F7A3AB00049813 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		10CBC3BC29F7A3AB00049813 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 10CBC3BB29F7A3AB00049813 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		10CBC3BE29F7A3AB00049813 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 10CBC3BB29F7A3AB00049813 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		10CBC3C029F7A3AB00049813 /* FirebaseFirestoreSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 10CBC3BB29F7A3AB00049813 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestoreSwift;
+		};
+		10CBC3C229F7A3AB00049813 /* FirebaseMessaging */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 10CBC3BB29F7A3AB00049813 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseMessaging;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		10AE025C29EB8F4B00B82918 /* petopia.xcdatamodeld */ = {

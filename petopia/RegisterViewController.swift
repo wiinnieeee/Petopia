@@ -9,6 +9,20 @@ import UIKit
 
 class RegisterViewController: UIViewController {
 
+    @IBOutlet weak var nameField: UITextField!
+    @IBOutlet weak var emailField: UITextField!
+    @IBOutlet weak var passwordField: UITextField!
+    @IBOutlet weak var phoneField: UITextField!
+    @IBOutlet weak var streetAddField: UITextField!
+    @IBOutlet weak var postcodeField: UITextField!
+    @IBOutlet weak var suburbField: UITextField!
+    @IBOutlet weak var stateField: UITextField!
+    @IBOutlet weak var countryField: UITextField!
+    
+    
+    @IBAction func createAccountButton(_ sender: Any) {
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
