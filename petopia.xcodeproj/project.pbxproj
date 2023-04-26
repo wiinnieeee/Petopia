@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1058CF9C29F8F25C0069B5FA /* MulticastDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1058CF9B29F8F25C0069B5FA /* MulticastDelegate.swift */; };
+		1058CF9E29F8F2700069B5FA /* DatabaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1058CF9D29F8F2700069B5FA /* DatabaseProtocol.swift */; };
+		1058CFA029F8F3E80069B5FA /* FirebaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1058CF9F29F8F3E80069B5FA /* FirebaseController.swift */; };
+		1058CFA229F8F6E50069B5FA /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1058CFA129F8F6E50069B5FA /* Profile.swift */; };
+		1058CFA429F90AAB0069B5FA /* MarketplaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1058CFA329F90AAB0069B5FA /* MarketplaceViewController.swift */; };
 		10AE025429EB8F4B00B82918 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10AE025329EB8F4B00B82918 /* AppDelegate.swift */; };
 		10AE025629EB8F4B00B82918 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10AE025529EB8F4B00B82918 /* SceneDelegate.swift */; };
 		10AE025B29EB8F4B00B82918 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 10AE025929EB8F4B00B82918 /* Main.storyboard */; };
@@ -23,6 +28,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1058CF9B29F8F25C0069B5FA /* MulticastDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MulticastDelegate.swift; sourceTree = "<group>"; };
+		1058CF9D29F8F2700069B5FA /* DatabaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseProtocol.swift; sourceTree = "<group>"; };
+		1058CF9F29F8F3E80069B5FA /* FirebaseController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseController.swift; sourceTree = "<group>"; };
+		1058CFA129F8F6E50069B5FA /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
+		1058CFA329F90AAB0069B5FA /* MarketplaceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketplaceViewController.swift; sourceTree = "<group>"; };
 		10AE025029EB8F4B00B82918 /* petopia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = petopia.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		10AE025329EB8F4B00B82918 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		10AE025529EB8F4B00B82918 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -51,6 +61,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1058CF9A29F8F2480069B5FA /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				1058CF9B29F8F25C0069B5FA /* MulticastDelegate.swift */,
+				1058CF9D29F8F2700069B5FA /* DatabaseProtocol.swift */,
+			);
+			path = Database;
+			sourceTree = "<group>";
+		};
 		10AE024729EB8F4B00B82918 = {
 			isa = PBXGroup;
 			children = (
@@ -70,16 +89,20 @@
 		10AE025229EB8F4B00B82918 /* petopia */ = {
 			isa = PBXGroup;
 			children = (
+				1058CF9A29F8F2480069B5FA /* Database */,
 				10AE025329EB8F4B00B82918 /* AppDelegate.swift */,
 				10AE025529EB8F4B00B82918 /* SceneDelegate.swift */,
 				10CBC3C429F7A49600049813 /* GoogleService-Info.plist */,
 				10AE025929EB8F4B00B82918 /* Main.storyboard */,
 				10AE026A29EB976300B82918 /* LoginViewController.swift */,
+				1058CF9F29F8F3E80069B5FA /* FirebaseController.swift */,
 				10AE026C29EB99E200B82918 /* RegisterViewController.swift */,
+				1058CFA129F8F6E50069B5FA /* Profile.swift */,
 				10AE025F29EB8F4C00B82918 /* Assets.xcassets */,
 				10AE026129EB8F4C00B82918 /* LaunchScreen.storyboard */,
 				10AE026429EB8F4C00B82918 /* Info.plist */,
 				10AE025C29EB8F4B00B82918 /* petopia.xcdatamodeld */,
+				1058CFA329F90AAB0069B5FA /* MarketplaceViewController.swift */,
 			);
 			path = petopia;
 			sourceTree = "<group>";
@@ -165,11 +188,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1058CFA429F90AAB0069B5FA /* MarketplaceViewController.swift in Sources */,
+				1058CFA029F8F3E80069B5FA /* FirebaseController.swift in Sources */,
 				10AE026B29EB976300B82918 /* LoginViewController.swift in Sources */,
 				10AE026D29EB99E200B82918 /* RegisterViewController.swift in Sources */,
 				10AE025429EB8F4B00B82918 /* AppDelegate.swift in Sources */,
 				10AE025E29EB8F4B00B82918 /* petopia.xcdatamodeld in Sources */,
 				10AE025629EB8F4B00B82918 /* SceneDelegate.swift in Sources */,
+				1058CF9C29F8F25C0069B5FA /* MulticastDelegate.swift in Sources */,
+				1058CFA229F8F6E50069B5FA /* Profile.swift in Sources */,
+				1058CF9E29F8F2700069B5FA /* DatabaseProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -27,10 +27,10 @@
             </objects>
             <point key="canvasLocation" x="130.53435114503816" y="-27.464788732394368"/>
         </scene>
-        <!--Login View Controller-->
+        <!--LoginViewController-->
         <scene sceneID="vdZ-Nt-Bln">
             <objects>
-                <viewController id="e0c-T5-pb1" customClass="LoginViewController" customModule="petopia" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Main" title="LoginViewController" id="e0c-T5-pb1" customClass="LoginViewController" customModule="petopia" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0Nc-ru-fdV">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -80,8 +80,7 @@
                                     <color key="baseBackgroundColor" systemColor="systemPinkColor"/>
                                 </buttonConfiguration>
                                 <connections>
-                                    <action selector="loginAction:" destination="e0c-T5-pb1" eventType="touchUpInside" id="kls-qj-Bh5"/>
-                                    <segue destination="AaS-ra-Y61" kind="show" id="syA-8w-vXK"/>
+                                    <action selector="loginAction:" destination="e0c-T5-pb1" eventType="touchUpInside" id="xmx-ob-pG7"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Don't have an account?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fuc-gq-Zbs">
@@ -135,8 +134,9 @@
                     </view>
                     <navigationItem key="navigationItem" id="5KF-hm-DCE"/>
                     <connections>
-                        <outlet property="emailAdd" destination="5GE-bS-CgC" id="ZI7-Fm-kUd"/>
+                        <outlet property="emailAdd" destination="Ag1-8L-4ZY" id="iER-d8-UNM"/>
                         <outlet property="password" destination="5GE-bS-CgC" id="rhk-gB-UK6"/>
+                        <segue destination="AaS-ra-Y61" kind="show" identifier="loginSegue" id="hIC-Xj-Kqs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wga-Yq-vyI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -221,8 +221,8 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vPb-rE-syh">
-                                <rect key="frame" x="221" y="577" width="140" height="34"/>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vPb-rE-syh">
+                                <rect key="frame" x="213" y="530" width="140" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="140" id="Whp-id-4Rg"/>
                                 </constraints>
@@ -241,8 +241,8 @@
                                     <color key="baseBackgroundColor" systemColor="systemPinkColor"/>
                                 </buttonConfiguration>
                                 <connections>
-                                    <action selector="createAccountButton:" destination="n4E-5x-vTT" eventType="touchUpInside" id="BD7-Iv-zqn"/>
-                                    <segue destination="AaS-ra-Y61" kind="show" id="Nvo-ek-gZX"/>
+                                    <action selector="createAccountButton:" destination="n4E-5x-vTT" eventType="touchUpInside" id="jBB-9N-frl"/>
+                                    <segue destination="AaS-ra-Y61" kind="show" id="BpY-Mp-sLu"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="State" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DIV-i9-oLh">
@@ -260,13 +260,13 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Country" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m41-e8-hHw">
-                                <rect key="frame" x="213" y="630" width="61" height="21"/>
+                                <rect key="frame" x="213" y="584" width="61" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gMh-pa-GlQ">
-                                <rect key="frame" x="213" y="659" width="140" height="34"/>
+                                <rect key="frame" x="213" y="613" width="140" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="140" id="ZpG-oa-tSH"/>
                                 </constraints>
@@ -349,10 +349,10 @@
             </objects>
             <point key="canvasLocation" x="1736.6412213740457" y="-1.4084507042253522"/>
         </scene>
-        <!--View Controller-->
+        <!--Marketplace-->
         <scene sceneID="tIT-0c-GMn">
             <objects>
-                <viewController id="i0l-eB-kMQ" sceneMemberID="viewController">
+                <viewController id="i0l-eB-kMQ" customClass="MarketplaceViewController" customModule="petopia" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="qeP-oi-EM6">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -360,25 +360,11 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bvJ-uI-zgl">
                                 <rect key="frame" x="0.0" y="0.0" width="393" height="231"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JK7-MT-5ZO">
-                                        <rect key="frame" x="316.66666666666669" y="101" width="50.666666666666686" height="35"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="35" id="CcN-Lg-DL1"/>
-                                        </constraints>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" image="heart.fill" catalog="system" title="">
-                                            <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </buttonConfiguration>
-                                        <connections>
-                                            <segue destination="tfV-Tt-8YK" kind="show" id="6oe-F7-u9Y"/>
-                                        </connections>
-                                    </button>
-                                    <searchBar contentMode="redraw" fixedFrame="YES" placeholder="Search for a pet" translatesAutoresizingMaskIntoConstraints="NO" id="eAR-TA-IXW">
+                                    <searchBar contentMode="redraw" fixedFrame="YES" searchBarStyle="minimal" placeholder="Search for a pet" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eAR-TA-IXW">
                                         <rect key="frame" x="23" y="159" width="269" height="44"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" systemColor="systemPinkColor"/>
-                                        <color key="tintColor" systemColor="systemPinkColor"/>
-                                        <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="barTintColor" systemColor="systemRedColor"/>
                                         <textInputTraits key="textInputTraits"/>
                                         <connections>
                                             <outlet property="delegate" destination="i0l-eB-kMQ" id="gH1-wt-W6T"/>
@@ -391,6 +377,19 @@
                                             <color key="baseForegroundColor" systemColor="systemBackgroundColor"/>
                                         </buttonConfiguration>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JK7-MT-5ZO">
+                                        <rect key="frame" x="317" y="111" width="50.666666666666686" height="35"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="35" id="CcN-Lg-DL1"/>
+                                        </constraints>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" image="heart.fill" catalog="system" title="">
+                                            <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <segue destination="tfV-Tt-8YK" kind="show" id="6oe-F7-u9Y"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemPinkColor"/>
                                 <color key="tintColor" systemColor="systemPinkColor"/>
@@ -401,8 +400,8 @@
                                     <constraint firstAttribute="trailing" secondItem="0gQ-5a-cAf" secondAttribute="trailing" constant="20" id="oVB-D6-0CO"/>
                                 </constraints>
                             </view>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="nzn-VS-D1L">
-                                <rect key="frame" x="0.0" y="233" width="393" height="418"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="nzn-VS-D1L">
+                                <rect key="frame" x="0.0" y="239" width="393" height="418"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ZT0-Wn-dgX">
                                     <size key="itemSize" width="128" height="128"/>
@@ -436,10 +435,22 @@
                         </constraints>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" id="FlY-YF-Yoy"/>
+                    <navigationItem key="navigationItem" title="Marketplace" id="FlY-YF-Yoy">
+                        <barButtonItem key="backBarButtonItem" title="Log Out" id="rZW-0k-tK8"/>
+                        <barButtonItem key="leftBarButtonItem" title="Log Out" id="oV2-cx-fHd">
+                            <color key="tintColor" systemColor="systemBackgroundColor"/>
+                            <connections>
+                                <action selector="logoutButton:" destination="i0l-eB-kMQ" id="4hL-un-eSt"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <segue destination="rAA-hs-RK5" kind="unwind" identifier="unwindToLogin" unwindAction="unwind:" id="rAT-w8-d9e"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BaO-4v-IXz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="rAA-hs-RK5" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="4388.5496183206105" y="13.380281690140846"/>
         </scene>
@@ -876,7 +887,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="syA-8w-vXK"/>
+        <segue reference="BpY-Mp-sLu"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Icon" width="1000" height="1000"/>
@@ -895,6 +906,9 @@
         </systemColor>
         <systemColor name="systemPinkColor">
             <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
