@@ -25,6 +25,14 @@
 		10CBC3C129F7A3AB00049813 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 10CBC3C029F7A3AB00049813 /* FirebaseFirestoreSwift */; };
 		10CBC3C329F7A3AB00049813 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 10CBC3C229F7A3AB00049813 /* FirebaseMessaging */; };
 		10CBC3C529F7A49600049813 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 10CBC3C429F7A49600049813 /* GoogleService-Info.plist */; };
+		10F43EE929FA1C820065E8DD /* TrackerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F43EE829FA1C820065E8DD /* TrackerTableViewController.swift */; };
+		10F43EEB29FA1C900065E8DD /* HelpTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F43EEA29FA1C900065E8DD /* HelpTableViewController.swift */; };
+		10F43EED29FA1CC40065E8DD /* ChatTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F43EEC29FA1CC40065E8DD /* ChatTableViewController.swift */; };
+		10F43EF129FA1D940065E8DD /* TabbarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F43EF029FA1D940065E8DD /* TabbarViewController.swift */; };
+		10F43EF329FA1F6C0065E8DD /* WishListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F43EF229FA1F6C0065E8DD /* WishListTableViewController.swift */; };
+		10F43EF729FA2C1C0065E8DD /* CommunityTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F43EF629FA2C1C0065E8DD /* CommunityTableViewController.swift */; };
+		10F43EFB29FA2F780065E8DD /* TrackerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F43EFA29FA2F780065E8DD /* TrackerViewController.swift */; };
+		10F43EFD29FA2FE90065E8DD /* TrackerTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F43EFC29FA2FE90065E8DD /* TrackerTableView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +52,14 @@
 		10AE026A29EB976300B82918 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		10AE026C29EB99E200B82918 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		10CBC3C429F7A49600049813 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		10F43EE829FA1C820065E8DD /* TrackerTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerTableViewController.swift; sourceTree = "<group>"; };
+		10F43EEA29FA1C900065E8DD /* HelpTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpTableViewController.swift; sourceTree = "<group>"; };
+		10F43EEC29FA1CC40065E8DD /* ChatTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTableViewController.swift; sourceTree = "<group>"; };
+		10F43EF029FA1D940065E8DD /* TabbarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarViewController.swift; sourceTree = "<group>"; };
+		10F43EF229FA1F6C0065E8DD /* WishListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishListTableViewController.swift; sourceTree = "<group>"; };
+		10F43EF629FA2C1C0065E8DD /* CommunityTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityTableViewController.swift; sourceTree = "<group>"; };
+		10F43EFA29FA2F780065E8DD /* TrackerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerViewController.swift; sourceTree = "<group>"; };
+		10F43EFC29FA2FE90065E8DD /* TrackerTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerTableView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,12 +107,20 @@
 			children = (
 				1058CF9A29F8F2480069B5FA /* Database */,
 				10AE025329EB8F4B00B82918 /* AppDelegate.swift */,
+				10F43EE829FA1C820065E8DD /* TrackerTableViewController.swift */,
+				10F43EEA29FA1C900065E8DD /* HelpTableViewController.swift */,
+				10F43EEC29FA1CC40065E8DD /* ChatTableViewController.swift */,
 				10AE025529EB8F4B00B82918 /* SceneDelegate.swift */,
 				10CBC3C429F7A49600049813 /* GoogleService-Info.plist */,
 				10AE025929EB8F4B00B82918 /* Main.storyboard */,
+				10F43EF629FA2C1C0065E8DD /* CommunityTableViewController.swift */,
+				10F43EF229FA1F6C0065E8DD /* WishListTableViewController.swift */,
+				10F43EF029FA1D940065E8DD /* TabbarViewController.swift */,
 				10AE026A29EB976300B82918 /* LoginViewController.swift */,
+				10F43EFC29FA2FE90065E8DD /* TrackerTableView.swift */,
 				1058CF9F29F8F3E80069B5FA /* FirebaseController.swift */,
 				10AE026C29EB99E200B82918 /* RegisterViewController.swift */,
+				10F43EFA29FA2F780065E8DD /* TrackerViewController.swift */,
 				1058CFA129F8F6E50069B5FA /* Profile.swift */,
 				10AE025F29EB8F4C00B82918 /* Assets.xcassets */,
 				10AE026129EB8F4C00B82918 /* LaunchScreen.storyboard */,
@@ -190,13 +214,21 @@
 			files = (
 				1058CFA429F90AAB0069B5FA /* MarketplaceViewController.swift in Sources */,
 				1058CFA029F8F3E80069B5FA /* FirebaseController.swift in Sources */,
+				10F43EF129FA1D940065E8DD /* TabbarViewController.swift in Sources */,
+				10F43EE929FA1C820065E8DD /* TrackerTableViewController.swift in Sources */,
 				10AE026B29EB976300B82918 /* LoginViewController.swift in Sources */,
 				10AE026D29EB99E200B82918 /* RegisterViewController.swift in Sources */,
 				10AE025429EB8F4B00B82918 /* AppDelegate.swift in Sources */,
 				10AE025E29EB8F4B00B82918 /* petopia.xcdatamodeld in Sources */,
 				10AE025629EB8F4B00B82918 /* SceneDelegate.swift in Sources */,
+				10F43EF329FA1F6C0065E8DD /* WishListTableViewController.swift in Sources */,
+				10F43EEB29FA1C900065E8DD /* HelpTableViewController.swift in Sources */,
 				1058CF9C29F8F25C0069B5FA /* MulticastDelegate.swift in Sources */,
+				10F43EFD29FA2FE90065E8DD /* TrackerTableView.swift in Sources */,
 				1058CFA229F8F6E50069B5FA /* Profile.swift in Sources */,
+				10F43EF729FA2C1C0065E8DD /* CommunityTableViewController.swift in Sources */,
+				10F43EFB29FA2F780065E8DD /* TrackerViewController.swift in Sources */,
+				10F43EED29FA1CC40065E8DD /* ChatTableViewController.swift in Sources */,
 				1058CF9E29F8F2700069B5FA /* DatabaseProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
