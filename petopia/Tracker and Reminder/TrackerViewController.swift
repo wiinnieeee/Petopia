@@ -11,6 +11,8 @@ class TrackerViewController: UIViewController, UITableViewDelegate, UITableViewD
 
     @IBOutlet weak var trackerTableView: UITableView!
     
+    @IBOutlet weak var datePicker: UIDatePicker!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.trackerTableView.delegate = self

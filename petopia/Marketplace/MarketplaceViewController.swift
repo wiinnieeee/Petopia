@@ -28,16 +28,24 @@ class MarketplaceViewController: UIViewController{
         
         //how to disable the back button owo
         navigationItem.hidesBackButton = true
-        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+        navigationController?.navigationBar.barTintColor = UIColor.white
+        navigationController?.navigationBar.tintColor = UIColor.white
+        navigationController?.navigationBar.backgroundColor = UIColor.systemPink
+        
+
+        
+        navigationItem.largeTitleDisplayMode = .never
+
+        //navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         authController = Auth.auth()
         searchBar.searchTextField.backgroundColor = .white
         
-        
-        
-        
     }
 
-    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.backgroundColor = UIColor.systemPink
+    }
 
     /*
     // MARK: - Navigation

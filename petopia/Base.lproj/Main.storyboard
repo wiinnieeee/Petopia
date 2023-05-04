@@ -3,6 +3,7 @@
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Map view configurations" minToolsVersion="14.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -352,40 +353,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bvJ-uI-zgl">
-                                <rect key="frame" x="0.0" y="0.0" width="393" height="201"/>
-                                <subviews>
-                                    <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="Search for a pet" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eAR-TA-IXW">
-                                        <rect key="frame" x="24" y="159" width="269" height="56"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="269" id="wAo-lD-bYB"/>
-                                        </constraints>
-                                        <color key="barTintColor" systemColor="systemRedColor"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                        <connections>
-                                            <outlet property="delegate" destination="i0l-eB-kMQ" id="gH1-wt-W6T"/>
-                                        </connections>
-                                    </searchBar>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0gQ-5a-cAf">
-                                        <rect key="frame" x="309" y="166" width="62" height="35"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Filter">
-                                            <color key="baseForegroundColor" systemColor="systemBackgroundColor"/>
-                                        </buttonConfiguration>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" systemColor="systemPinkColor"/>
-                                <color key="tintColor" systemColor="systemPinkColor"/>
-                                <constraints>
-                                    <constraint firstItem="0gQ-5a-cAf" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="eAR-TA-IXW" secondAttribute="trailing" symbolic="YES" id="82q-Jx-Lsp"/>
-                                    <constraint firstItem="0gQ-5a-cAf" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="eAR-TA-IXW" secondAttribute="trailing" symbolic="YES" id="Bnc-EU-MVY"/>
-                                    <constraint firstItem="eAR-TA-IXW" firstAttribute="top" secondItem="bvJ-uI-zgl" secondAttribute="topMargin" constant="48" id="CNP-1f-Zbd"/>
-                                    <constraint firstAttribute="trailing" secondItem="0gQ-5a-cAf" secondAttribute="trailing" constant="22" id="TBH-QX-YGI"/>
-                                    <constraint firstItem="eAR-TA-IXW" firstAttribute="leading" secondItem="bvJ-uI-zgl" secondAttribute="leadingMargin" constant="16" id="V1k-XV-fnL"/>
-                                    <constraint firstItem="0gQ-5a-cAf" firstAttribute="top" secondItem="bvJ-uI-zgl" secondAttribute="topMargin" constant="55" id="bkl-0T-FDT"/>
-                                </constraints>
-                            </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="nzn-VS-D1L">
                                 <rect key="frame" x="16" y="252" width="361" height="375"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -410,11 +377,55 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bvJ-uI-zgl">
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="225"/>
+                                <subviews>
+                                    <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="Search for a pet" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eAR-TA-IXW">
+                                        <rect key="frame" x="24" y="156" width="269" height="56"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="269" id="wAo-lD-bYB"/>
+                                        </constraints>
+                                        <color key="barTintColor" systemColor="systemRedColor"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="i0l-eB-kMQ" id="gH1-wt-W6T"/>
+                                        </connections>
+                                    </searchBar>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0gQ-5a-cAf">
+                                        <rect key="frame" x="309" y="166" width="62" height="35"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Filter">
+                                            <color key="baseForegroundColor" systemColor="systemBackgroundColor"/>
+                                        </buttonConfiguration>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wU0-Hg-CVb">
+                                        <rect key="frame" x="24" y="121" width="119" height="35"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" image="location.fill" catalog="system" title=" Location"/>
+                                        <connections>
+                                            <segue destination="K6g-CI-QdY" kind="show" id="fH5-s5-Hug"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemPinkColor"/>
+                                <color key="tintColor" systemColor="systemPinkColor"/>
+                                <constraints>
+                                    <constraint firstItem="0gQ-5a-cAf" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="eAR-TA-IXW" secondAttribute="trailing" symbolic="YES" id="82q-Jx-Lsp"/>
+                                    <constraint firstItem="0gQ-5a-cAf" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="eAR-TA-IXW" secondAttribute="trailing" symbolic="YES" id="Bnc-EU-MVY"/>
+                                    <constraint firstItem="eAR-TA-IXW" firstAttribute="top" secondItem="bvJ-uI-zgl" secondAttribute="topMargin" constant="45" id="CNP-1f-Zbd"/>
+                                    <constraint firstAttribute="height" constant="225" id="LVh-9M-VUt"/>
+                                    <constraint firstAttribute="trailing" secondItem="0gQ-5a-cAf" secondAttribute="trailing" constant="22" id="TBH-QX-YGI"/>
+                                    <constraint firstItem="eAR-TA-IXW" firstAttribute="leading" secondItem="bvJ-uI-zgl" secondAttribute="leadingMargin" constant="16" id="V1k-XV-fnL"/>
+                                    <constraint firstItem="0gQ-5a-cAf" firstAttribute="top" secondItem="bvJ-uI-zgl" secondAttribute="topMargin" constant="55" id="bkl-0T-FDT"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="uYL-Zt-7Tl"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="nzn-VS-D1L" firstAttribute="top" secondItem="bvJ-uI-zgl" secondAttribute="bottom" constant="22" id="5Nx-xQ-0BF"/>
                             <constraint firstItem="bvJ-uI-zgl" firstAttribute="leading" secondItem="uYL-Zt-7Tl" secondAttribute="leading" id="9MU-7K-N9c"/>
                             <constraint firstItem="bvJ-uI-zgl" firstAttribute="trailing" secondItem="uYL-Zt-7Tl" secondAttribute="trailing" id="GIM-Ru-CXX"/>
                             <constraint firstItem="bvJ-uI-zgl" firstAttribute="top" secondItem="qeP-oi-EM6" secondAttribute="top" id="Ggx-aE-Obc"/>
@@ -536,6 +547,9 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="Kwt-cH-QnH" kind="show" id="kLQ-XI-K8r"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="reportCell" textLabel="gg6-Et-jK2" style="IBUITableViewCellStyleDefault" id="yZE-jz-nQc">
                                         <rect key="frame" x="0.0" y="93.666667938232422" width="393" height="43.666667938232422"/>
@@ -568,6 +582,22 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BVm-6t-KV1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4412.9770992366412" y="2041.549295774648"/>
+        </scene>
+        <!--Create a Reminder-->
+        <scene sceneID="4Mv-9q-EgP">
+            <objects>
+                <viewController id="Kwt-cH-QnH" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="9bN-pB-OJ5">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="I87-0n-YfO"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Create a Reminder" id="UAa-MI-pYB"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="l1q-N4-iDs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5319" y="2053"/>
         </scene>
         <!--Help and Services-->
         <scene sceneID="zLr-E8-Yyc">
@@ -724,6 +754,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="wishlistCell" id="7cM-Wa-qkn">
                                 <rect key="frame" x="0.0" y="50" width="393" height="43.666667938232422"/>
@@ -739,11 +770,52 @@
                             <outlet property="delegate" destination="tfV-Tt-8YK" id="IU3-Kl-8Ot"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Wishlist" id="7Te-Zh-pGK"/>
+                    <navigationItem key="navigationItem" title="Wishlist" largeTitleDisplayMode="always" id="7Te-Zh-pGK"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NQB-UB-NEJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5272.5190839694651" y="24.647887323943664"/>
+        </scene>
+        <!--Location-->
+        <scene sceneID="j6S-gt-45q">
+            <objects>
+                <viewController id="K6g-CI-QdY" customClass="LocationViewController" customModule="petopia" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="O1Z-an-Huu">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" id="Keh-1S-EAJ">
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <subviews>
+                                    <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eNG-H8-XEZ">
+                                        <rect key="frame" x="0.0" y="111" width="393" height="764"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <standardMapConfiguration key="preferredConfiguration"/>
+                                    </mapView>
+                                </subviews>
+                                <viewLayoutGuide key="safeArea" id="5xY-51-8gr"/>
+                                <color key="backgroundColor" systemColor="systemPinkColor"/>
+                                <color key="tintColor" systemColor="systemPinkColor"/>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="h4N-sv-8LM"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Location" id="SGQ-0Q-uUU">
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="hU0-jg-OFo">
+                            <connections>
+                                <action selector="saveAction:" destination="K6g-CI-QdY" id="jt3-Yz-7ad"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="mapView" destination="eNG-H8-XEZ" id="IMf-Nu-Hg8"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XRW-84-xQR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6209.9236641221369" y="38.732394366197184"/>
         </scene>
         <!--Tabbar View Controller-->
         <scene sceneID="kb4-MX-hoP">
@@ -754,9 +826,10 @@
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="bgJ-om-EE9">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="tintColor" systemColor="systemPinkColor"/>
-                        <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="barTintColor" systemColor="systemPinkColor"/>
+                        <color key="selectedImageTintColor" systemColor="systemPinkColor"/>
                     </tabBar>
                     <connections>
                         <segue destination="MFv-Go-q71" kind="relationship" relationship="viewControllers" id="u1z-WK-1V9"/>
@@ -798,9 +871,24 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="JVd-8h-QPf">
                         <rect key="frame" x="0.0" y="59" width="393" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <textAttributes key="largeTitleTextAttributes">
-                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" systemColor="systemBackgroundColor"/>
+                        <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" systemColor="systemPinkColor"/>
                         </textAttributes>
+                        <textAttributes key="largeTitleTextAttributes">
+                            <color key="textColor" systemColor="systemPinkColor"/>
+                        </textAttributes>
+                        <navigationBarAppearance key="standardAppearance">
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <textAttributes key="titleTextAttributes">
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </textAttributes>
+                            <textAttributes key="largeTitleTextAttributes">
+                                <color key="textColor" systemColor="systemPinkColor"/>
+                            </textAttributes>
+                        </navigationBarAppearance>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -884,6 +972,7 @@
         <image name="calendar" catalog="system" width="128" height="107"/>
         <image name="figure.2.and.child.holdinghands" catalog="system" width="128" height="90"/>
         <image name="heart.fill" catalog="system" width="128" height="107"/>
+        <image name="location.fill" catalog="system" width="128" height="119"/>
         <image name="pawprint.fill" catalog="system" width="128" height="112"/>
         <image name="questionmark.circle.fill" catalog="system" width="128" height="123"/>
         <systemColor name="secondaryLabelColor">
