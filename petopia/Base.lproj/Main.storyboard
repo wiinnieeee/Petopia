@@ -477,7 +477,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="xZC-lE-dgw" kind="show" id="F0R-0c-u6i"/>
+                                    <segue destination="xZC-lE-dgw" kind="show" identifier="convoSegue" id="F0R-0c-u6i"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -489,7 +489,8 @@
                     <navigationItem key="navigationItem" title="Chats" id="TFa-i5-g8g">
                         <barButtonItem key="rightBarButtonItem" systemItem="compose" id="6QB-Kb-EPU">
                             <connections>
-                                <segue destination="yox-7z-72H" kind="show" id="qhd-ii-rY1"/>
+                                <action selector="tapComposeButton:" destination="Q70-ru-Foa" id="Sqf-A3-1Ha"/>
+                                <segue destination="yox-7z-72H" kind="show" id="GAm-4X-3mr"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -522,13 +523,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <label key="tableFooterView" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="8Wn-8k-KeK">
-                            <rect key="frame" x="0.0" y="121.66666793823242" width="393" height="21"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <nil key="textColor"/>
-                            <nil key="highlightedColor"/>
-                        </label>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="userCell" id="yJ7-r5-dTc">
                                 <rect key="frame" x="0.0" y="50" width="393" height="43.666667938232422"/>
@@ -551,9 +545,6 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <connections>
-                        <outlet property="noTextLabel" destination="8Wn-8k-KeK" id="c96-hj-YbA"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Gr-WJ-jeL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -640,6 +631,10 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" style="inline" translatesAutoresizingMaskIntoConstraints="NO" id="lyt-WV-2xw">
+                                <rect key="frame" x="-2" y="288" width="393" height="0.0"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            </datePicker>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="gHC-dk-BUP"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -855,7 +850,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" id="Keh-1S-EAJ">
-                                <rect key="frame" x="-2" y="-1" width="394" height="852"/>
+                                <rect key="frame" x="-2" y="-1" width="394" height="853"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eNG-H8-XEZ">

@@ -19,6 +19,7 @@ class FirebaseController: NSObject, DatabaseProtocol {
     
     var usersRef: CollectionReference?
     var profileRef: CollectionReference?
+    var profiles: [Profile] = [Profile]()
     
     var registerSuccessful: Bool = false
     
@@ -34,6 +35,7 @@ class FirebaseController: NSObject, DatabaseProtocol {
         usersRef = database.collection("users")
         profileRef = database.collection("profile")
         
+        
         super.init()
     }
     
@@ -42,7 +44,10 @@ class FirebaseController: NSObject, DatabaseProtocol {
     }
     
     func addListener(listener: DatabaseListener) {
-        // onPetsChange smtg
+        listeners.addDelegate(listener)
+        if listener.listenerType == .profile || listener.listenerType == .all {
+            listener.onAllProfileChange(change: .update, profile: profiles)
+        }
     }
     
     func removeListener(listener: DatabaseListener) {
@@ -90,6 +95,7 @@ class FirebaseController: NSObject, DatabaseProtocol {
             print(error)
         }
     }
+
     
     func addUser(emailAdd: String, name: String, phoneNumber: String, streetAdd: String, postCode: String, suburb: String, country: String) {
         let newProfile: Profile = self.addProfile(profileName: authController.currentUser!.email!)
@@ -112,6 +118,7 @@ class FirebaseController: NSObject, DatabaseProtocol {
         if let profileRef = profileRef?.addDocument(data: ["name": profileName]){
             profile.id = profileRef.documentID
         }
+        profiles.append(profile)
         return profile
     }
     
@@ -148,5 +155,8 @@ class FirebaseController: NSObject, DatabaseProtocol {
         defaultProfile = Profile()
         defaultProfile.name = snapshot.data()! ["name"] as? String
         defaultProfile.id = snapshot.documentID
+        
+        
     }
+    
 }

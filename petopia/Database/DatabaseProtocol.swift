@@ -17,10 +17,12 @@ enum DatabaseChange{
 enum ListenerType {
     case all
     case pets
+    case profile
 }
 
 protocol DatabaseListener: AnyObject {
     var listenerType: ListenerType {get set}
+    func onAllProfileChange (change: DatabaseChange, profile: [Profile])
 }
 
 protocol DatabaseProtocol: AnyObject {
@@ -38,4 +40,5 @@ protocol DatabaseProtocol: AnyObject {
     
     var registerSuccessful: Bool {get set}
     func setupProfileListener()
+
 }

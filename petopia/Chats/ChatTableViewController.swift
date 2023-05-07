@@ -8,7 +8,7 @@
 import UIKit
 
 class ChatTableViewController: UITableViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         //fetchConversations()
@@ -24,6 +24,20 @@ class ChatTableViewController: UITableViewController {
 //
 //    }
     
+    @IBAction func tapComposeButton(_ sender: Any) {
+        let vc = NewChatTableViewController()
+        vc.completion = { [weak self] result in
+            self?.createNewConversation(result: result)
+        }
+       
+    }
+
+    func createNewConversation (result: Profile){
+        let vc = ChatTableViewController()
+        vc.title = "Jenny Smith"
+        vc.navigationItem.largeTitleDisplayMode = .never
+        navigationController?.pushViewController(vc, animated: true)
+    }
     
     
     // MARK: - Table view data source
@@ -88,16 +102,6 @@ class ChatTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
         // Return false if you do not want the item to be re-orderable.
         return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
     }
     */
 

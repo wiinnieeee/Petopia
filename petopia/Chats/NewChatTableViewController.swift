@@ -6,15 +6,33 @@
 //
 
 import UIKit
+import FirebaseFirestore
 
-class NewChatTableViewController: UITableViewController, UISearchResultsUpdating {
+class NewChatTableViewController: UITableViewController, UISearchResultsUpdating, DatabaseListener {
+    
+    public var completion: ((Profile) -> (Void))?
+    
+    var allProfile: [Profile] = []
+    var filteredProfile: [Profile] = []
+    var prof : Profile = Profile()
+    var listenerType = ListenerType.profile
+    @IBOutlet weak var noTextLabel: UILabel!
+    weak var databaseController: DatabaseProtocol?
+
     
     func updateSearchResults(for searchController: UISearchController) {
-        // nothing
+        guard let searchText = searchController.searchBar.text?.lowercased() else {
+            return
+        }
+        
+        if searchText.count > 0 {
+            filteredProfile = allProfile.filter({(profile: Profile) -> Bool in return (profile.name?.lowercased().contains(searchText) ?? false)})
+        } else {
+            filteredProfile = allProfile
+        }
+        tableView.reloadData()
     }
     
-    
-    @IBOutlet weak var noTextLabel: UILabel!
     @IBAction func cancelAction(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
@@ -22,13 +40,12 @@ class NewChatTableViewController: UITableViewController, UISearchResultsUpdating
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
-        super.viewDidLoad()
+        
+        let appDelegate = UIApplication.shared.delegate as?AppDelegate
+        databaseController = appDelegate?.databaseController
+        
+        filteredProfile = allProfile
+        
         let searchController = UISearchController(searchResultsController: nil)
         searchController.searchResultsUpdater = self
         searchController.searchBar.placeholder = "Search for users"
@@ -38,29 +55,73 @@ class NewChatTableViewController: UITableViewController, UISearchResultsUpdating
         
         // Do any additional setup after loading the view.
         definesPresentationContext = true
+        
+        
+        let db = Firestore.firestore()
+        let collectionRef = db.collection("profile")
+        
+        collectionRef.getDocuments(){ (querySnapshot, error) in
+            if let error = error {
+                print("Error getting documents: \(error)")
+            } else {
+                for document in querySnapshot!.documents {
+                    self.prof = Profile()
+                    self.prof.name = document.data() ["name"] as? String
+                    self.prof.id = document.documentID
+                    
+                    self.allProfile.append(self.prof)
+                }
+            }
+        }
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        databaseController?.addListener(listener: self)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        databaseController?.removeListener(listener: self)
+    }
+
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return filteredProfile.count
     }
 
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        let nameCell = tableView.dequeueReusableCell(withIdentifier: "userCell", for: indexPath)
+                    
+        var content = nameCell.defaultContentConfiguration()
+        let profile = filteredProfile[indexPath.row]
+        content.text = profile.name
+        nameCell.contentConfiguration = content
+        return nameCell
 
-        // Configure the cell...
-
-        return cell
     }
-    */
+    
+    func onAllProfileChange(change: DatabaseChange, profile: [Profile]) {
+        allProfile = profile
+        updateSearchResults(for: navigationItem.searchController!)
+    }
+
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        let targetUserData = filteredProfile[indexPath.row]
+        
+        
+        
+    }
 
     /*
     // Override to support conditional editing of the table view.
