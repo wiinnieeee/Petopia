@@ -30,6 +30,11 @@
 		10CBC3C129F7A3AB00049813 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 10CBC3C029F7A3AB00049813 /* FirebaseFirestoreSwift */; };
 		10CBC3C329F7A3AB00049813 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 10CBC3C229F7A3AB00049813 /* FirebaseMessaging */; };
 		10CBC3C529F7A49600049813 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 10CBC3C429F7A49600049813 /* GoogleService-Info.plist */; };
+		10F01F2F2A07351000BE677F /* ConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F01F2E2A07351000BE677F /* ConversationViewController.swift */; };
+		10F01F322A073ADD00BE677F /* MessageKit in Frameworks */ = {isa = PBXBuildFile; productRef = 10F01F312A073ADD00BE677F /* MessageKit */; };
+		10F01F342A073B8500BE677F /* Sender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F01F332A073B8500BE677F /* Sender.swift */; };
+		10F01F362A073B9B00BE677F /* ChatMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F01F352A073B9B00BE677F /* ChatMessage.swift */; };
+		10F01F3A2A0757E900BE677F /* NewChatTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F01F392A0757E900BE677F /* NewChatTableViewController.swift */; };
 		10F43EE929FA1C820065E8DD /* TrackerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F43EE829FA1C820065E8DD /* TrackerTableViewController.swift */; };
 		10F43EEB29FA1C900065E8DD /* HelpTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F43EEA29FA1C900065E8DD /* HelpTableViewController.swift */; };
 		10F43EED29FA1CC40065E8DD /* ChatTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F43EEC29FA1CC40065E8DD /* ChatTableViewController.swift */; };
@@ -61,6 +66,10 @@
 		10AE026A29EB976300B82918 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		10AE026C29EB99E200B82918 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		10CBC3C429F7A49600049813 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		10F01F2E2A07351000BE677F /* ConversationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationViewController.swift; sourceTree = "<group>"; };
+		10F01F332A073B8500BE677F /* Sender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sender.swift; sourceTree = "<group>"; };
+		10F01F352A073B9B00BE677F /* ChatMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessage.swift; sourceTree = "<group>"; };
+		10F01F392A0757E900BE677F /* NewChatTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewChatTableViewController.swift; sourceTree = "<group>"; };
 		10F43EE829FA1C820065E8DD /* TrackerTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerTableViewController.swift; sourceTree = "<group>"; };
 		10F43EEA29FA1C900065E8DD /* HelpTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpTableViewController.swift; sourceTree = "<group>"; };
 		10F43EEC29FA1CC40065E8DD /* ChatTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTableViewController.swift; sourceTree = "<group>"; };
@@ -79,6 +88,7 @@
 				10CBC3C329F7A3AB00049813 /* FirebaseMessaging in Frameworks */,
 				10983A512A0335560067CFB1 /* FloatingPanel in Frameworks */,
 				10CBC3BD29F7A3AB00049813 /* FirebaseAuth in Frameworks */,
+				10F01F322A073ADD00BE677F /* MessageKit in Frameworks */,
 				10CBC3BF29F7A3AB00049813 /* FirebaseFirestore in Frameworks */,
 				10CBC3C129F7A3AB00049813 /* FirebaseFirestoreSwift in Frameworks */,
 			);
@@ -123,6 +133,10 @@
 			isa = PBXGroup;
 			children = (
 				10F43EEC29FA1CC40065E8DD /* ChatTableViewController.swift */,
+				10F01F332A073B8500BE677F /* Sender.swift */,
+				10F01F352A073B9B00BE677F /* ChatMessage.swift */,
+				10F01F2E2A07351000BE677F /* ConversationViewController.swift */,
+				10F01F392A0757E900BE677F /* NewChatTableViewController.swift */,
 			);
 			path = Chats;
 			sourceTree = "<group>";
@@ -215,6 +229,7 @@
 				10CBC3C029F7A3AB00049813 /* FirebaseFirestoreSwift */,
 				10CBC3C229F7A3AB00049813 /* FirebaseMessaging */,
 				10983A502A0335560067CFB1 /* FloatingPanel */,
+				10F01F312A073ADD00BE677F /* MessageKit */,
 			);
 			productName = petopia;
 			productReference = 10AE025029EB8F4B00B82918 /* petopia.app */;
@@ -247,6 +262,7 @@
 			packageReferences = (
 				10CBC3BB29F7A3AB00049813 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				10983A4F2A0335560067CFB1 /* XCRemoteSwiftPackageReference "FloatingPanel" */,
+				10F01F302A073ADD00BE677F /* XCRemoteSwiftPackageReference "MessageKit" */,
 			);
 			productRefGroup = 10AE025129EB8F4B00B82918 /* Products */;
 			projectDirPath = "";
@@ -279,6 +295,7 @@
 				1058CFA429F90AAB0069B5FA /* MarketplaceViewController.swift in Sources */,
 				1058CFA029F8F3E80069B5FA /* FirebaseController.swift in Sources */,
 				10F43EF129FA1D940065E8DD /* TabbarViewController.swift in Sources */,
+				10F01F362A073B9B00BE677F /* ChatMessage.swift in Sources */,
 				10F43EE929FA1C820065E8DD /* TrackerTableViewController.swift in Sources */,
 				10AE026B29EB976300B82918 /* LoginViewController.swift in Sources */,
 				10AE026D29EB99E200B82918 /* RegisterViewController.swift in Sources */,
@@ -289,15 +306,18 @@
 				10F43EF329FA1F6C0065E8DD /* WishListTableViewController.swift in Sources */,
 				10F43EEB29FA1C900065E8DD /* HelpTableViewController.swift in Sources */,
 				10983A4E2A03328A0067CFB1 /* SearchViewController.swift in Sources */,
+				10F01F3A2A0757E900BE677F /* NewChatTableViewController.swift in Sources */,
 				1058CF9C29F8F25C0069B5FA /* MulticastDelegate.swift in Sources */,
 				10F43EFD29FA2FE90065E8DD /* TrackerTableView.swift in Sources */,
 				1058CFA229F8F6E50069B5FA /* Profile.swift in Sources */,
+				10F01F342A073B8500BE677F /* Sender.swift in Sources */,
 				10F43EF729FA2C1C0065E8DD /* CommunityTableViewController.swift in Sources */,
 				10F43EFB29FA2F780065E8DD /* TrackerViewController.swift in Sources */,
 				10983A442A032FA00067CFB1 /* LocationManager.swift in Sources */,
 				10F43EED29FA1CC40065E8DD /* ChatTableViewController.swift in Sources */,
 				1058CF9E29F8F2700069B5FA /* DatabaseProtocol.swift in Sources */,
 				102844F12A0284670012AA69 /* LocationAnnotation.swift in Sources */,
+				10F01F2F2A07351000BE677F /* ConversationViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -531,6 +551,14 @@
 				minimumVersion = 9.0.0;
 			};
 		};
+		10F01F302A073ADD00BE677F /* XCRemoteSwiftPackageReference "MessageKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/MessageKit/MessageKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -558,6 +586,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 10CBC3BB29F7A3AB00049813 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseMessaging;
+		};
+		10F01F312A073ADD00BE677F /* MessageKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 10F01F302A073ADD00BE677F /* XCRemoteSwiftPackageReference "MessageKit" */;
+			productName = MessageKit;
 		};
 /* End XCSwiftPackageProductDependency section */
 

@@ -59,6 +59,7 @@ class FirebaseController: NSObject, DatabaseProtocol {
             self.addUser(emailAdd: email, name: name, phoneNumber: phoneNumber, streetAdd: streetAdd, postCode: postCode, suburb: suburb, country: country)
             
             isSuccessful = true
+            UserDefaults.standard.set(email, forKey: "email")
         } catch {
             print ("User creation failed with error: \(String(describing: error))")
             return false
@@ -72,6 +73,7 @@ class FirebaseController: NSObject, DatabaseProtocol {
         do
         {   let authResult = try await authController.signIn(withEmail: email, password: password)
             isSuccessful = true
+            UserDefaults.standard.set(email, forKey: "email")
         }
         catch {
             print ("Authenciation failed with error: \(String(describing: error))")

@@ -1,60 +1,66 @@
 //
-//  ChatTableViewController.swift
+//  NewChatTableViewController.swift
 //  petopia
 //
-//  Created by Winnie Ooi on 27/4/2023.
+//  Created by Winnie Ooi on 7/5/2023.
 //
 
 import UIKit
 
-class ChatTableViewController: UITableViewController {
-
+class NewChatTableViewController: UITableViewController, UISearchResultsUpdating {
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        // nothing
+    }
+    
+    
+    @IBOutlet weak var noTextLabel: UILabel!
+    @IBAction func cancelAction(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        //fetchConversations()
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        super.viewDidLoad()
+        let searchController = UISearchController(searchResultsController: nil)
+        searchController.searchResultsUpdater = self
+        searchController.searchBar.placeholder = "Search for users"
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.becomeFirstResponder()
+        navigationItem.searchController = searchController
+        
+        // Do any additional setup after loading the view.
+        definesPresentationContext = true
     }
-    
-//    private func fetchConversations(){
-//
-//    }
-    
-    
-    
+
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 1
+        return 0
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 1
+        return 0
     }
 
-    
+    /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "chatCells", for: indexPath)
-        cell.textLabel?.text = "Hello World"
-        cell.accessoryType = .disclosureIndicator
-        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+
+        // Configure the cell...
+
         return cell
     }
-    
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-        
-//        let vc = ConversationViewController()
-//        vc.title = "Jenny Smith"
-//        vc.navigationItem.largeTitleDisplayMode = .never
-//        navigationController?.pushViewController(vc, animated: true)
-    }
+    */
 
     /*
     // Override to support conditional editing of the table view.
