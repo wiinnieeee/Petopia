@@ -14,6 +14,11 @@
 		1058CFA029F8F3E80069B5FA /* FirebaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1058CF9F29F8F3E80069B5FA /* FirebaseController.swift */; };
 		1058CFA229F8F6E50069B5FA /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1058CFA129F8F6E50069B5FA /* Profile.swift */; };
 		1058CFA429F90AAB0069B5FA /* MarketplaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1058CFA329F90AAB0069B5FA /* MarketplaceViewController.swift */; };
+		106259482A0790E2002E8090 /* CalendarKit in Frameworks */ = {isa = PBXBuildFile; productRef = 106259472A0790E2002E8090 /* CalendarKit */; };
+		107426FD2A08D6BC0077A295 /* Reminder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107426FC2A08D6BC0077A295 /* Reminder.swift */; };
+		107427012A08DB540077A295 /* Date+Today.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107427002A08DB540077A295 /* Date+Today.swift */; };
+		107427052A08E0610077A295 /* TrackerReminderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107427042A08E0610077A295 /* TrackerReminderViewController.swift */; };
+		1074270B2A08EEE10077A295 /* DetailReminderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1074270A2A08EEE10077A295 /* DetailReminderViewController.swift */; };
 		10983A442A032FA00067CFB1 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10983A432A032FA00067CFB1 /* LocationManager.swift */; };
 		10983A4E2A03328A0067CFB1 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10983A4D2A03328A0067CFB1 /* SearchViewController.swift */; };
 		10983A512A0335560067CFB1 /* FloatingPanel in Frameworks */ = {isa = PBXBuildFile; productRef = 10983A502A0335560067CFB1 /* FloatingPanel */; };
@@ -35,14 +40,11 @@
 		10F01F342A073B8500BE677F /* Sender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F01F332A073B8500BE677F /* Sender.swift */; };
 		10F01F362A073B9B00BE677F /* ChatMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F01F352A073B9B00BE677F /* ChatMessage.swift */; };
 		10F01F3A2A0757E900BE677F /* NewChatTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F01F392A0757E900BE677F /* NewChatTableViewController.swift */; };
-		10F43EE929FA1C820065E8DD /* TrackerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F43EE829FA1C820065E8DD /* TrackerTableViewController.swift */; };
 		10F43EEB29FA1C900065E8DD /* HelpTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F43EEA29FA1C900065E8DD /* HelpTableViewController.swift */; };
 		10F43EED29FA1CC40065E8DD /* ChatTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F43EEC29FA1CC40065E8DD /* ChatTableViewController.swift */; };
 		10F43EF129FA1D940065E8DD /* TabbarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F43EF029FA1D940065E8DD /* TabbarViewController.swift */; };
 		10F43EF329FA1F6C0065E8DD /* WishListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F43EF229FA1F6C0065E8DD /* WishListTableViewController.swift */; };
 		10F43EF729FA2C1C0065E8DD /* CommunityTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F43EF629FA2C1C0065E8DD /* CommunityTableViewController.swift */; };
-		10F43EFB29FA2F780065E8DD /* TrackerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F43EFA29FA2F780065E8DD /* TrackerViewController.swift */; };
-		10F43EFD29FA2FE90065E8DD /* TrackerTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F43EFC29FA2FE90065E8DD /* TrackerTableView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,6 +55,10 @@
 		1058CF9F29F8F3E80069B5FA /* FirebaseController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseController.swift; sourceTree = "<group>"; };
 		1058CFA129F8F6E50069B5FA /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		1058CFA329F90AAB0069B5FA /* MarketplaceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketplaceViewController.swift; sourceTree = "<group>"; };
+		107426FC2A08D6BC0077A295 /* Reminder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reminder.swift; sourceTree = "<group>"; };
+		107427002A08DB540077A295 /* Date+Today.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Today.swift"; sourceTree = "<group>"; };
+		107427042A08E0610077A295 /* TrackerReminderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerReminderViewController.swift; sourceTree = "<group>"; };
+		1074270A2A08EEE10077A295 /* DetailReminderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailReminderViewController.swift; sourceTree = "<group>"; };
 		10983A432A032FA00067CFB1 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		10983A4D2A03328A0067CFB1 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		10AE025029EB8F4B00B82918 /* petopia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = petopia.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -70,14 +76,11 @@
 		10F01F332A073B8500BE677F /* Sender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sender.swift; sourceTree = "<group>"; };
 		10F01F352A073B9B00BE677F /* ChatMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessage.swift; sourceTree = "<group>"; };
 		10F01F392A0757E900BE677F /* NewChatTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewChatTableViewController.swift; sourceTree = "<group>"; };
-		10F43EE829FA1C820065E8DD /* TrackerTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerTableViewController.swift; sourceTree = "<group>"; };
 		10F43EEA29FA1C900065E8DD /* HelpTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpTableViewController.swift; sourceTree = "<group>"; };
 		10F43EEC29FA1CC40065E8DD /* ChatTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTableViewController.swift; sourceTree = "<group>"; };
 		10F43EF029FA1D940065E8DD /* TabbarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarViewController.swift; sourceTree = "<group>"; };
 		10F43EF229FA1F6C0065E8DD /* WishListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishListTableViewController.swift; sourceTree = "<group>"; };
 		10F43EF629FA2C1C0065E8DD /* CommunityTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityTableViewController.swift; sourceTree = "<group>"; };
-		10F43EFA29FA2F780065E8DD /* TrackerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerViewController.swift; sourceTree = "<group>"; };
-		10F43EFC29FA2FE90065E8DD /* TrackerTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerTableView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +88,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				106259482A0790E2002E8090 /* CalendarKit in Frameworks */,
 				10CBC3C329F7A3AB00049813 /* FirebaseMessaging in Frameworks */,
 				10983A512A0335560067CFB1 /* FloatingPanel in Frameworks */,
 				10CBC3BD29F7A3AB00049813 /* FirebaseAuth in Frameworks */,
@@ -109,9 +113,10 @@
 		10983A452A0331BE0067CFB1 /* Tracker and Reminder */ = {
 			isa = PBXGroup;
 			children = (
-				10F43EFC29FA2FE90065E8DD /* TrackerTableView.swift */,
-				10F43EFA29FA2F780065E8DD /* TrackerViewController.swift */,
-				10F43EE829FA1C820065E8DD /* TrackerTableViewController.swift */,
+				107426FC2A08D6BC0077A295 /* Reminder.swift */,
+				107427002A08DB540077A295 /* Date+Today.swift */,
+				107427042A08E0610077A295 /* TrackerReminderViewController.swift */,
+				1074270A2A08EEE10077A295 /* DetailReminderViewController.swift */,
 			);
 			path = "Tracker and Reminder";
 			sourceTree = "<group>";
@@ -230,6 +235,7 @@
 				10CBC3C229F7A3AB00049813 /* FirebaseMessaging */,
 				10983A502A0335560067CFB1 /* FloatingPanel */,
 				10F01F312A073ADD00BE677F /* MessageKit */,
+				106259472A0790E2002E8090 /* CalendarKit */,
 			);
 			productName = petopia;
 			productReference = 10AE025029EB8F4B00B82918 /* petopia.app */;
@@ -263,6 +269,7 @@
 				10CBC3BB29F7A3AB00049813 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				10983A4F2A0335560067CFB1 /* XCRemoteSwiftPackageReference "FloatingPanel" */,
 				10F01F302A073ADD00BE677F /* XCRemoteSwiftPackageReference "MessageKit" */,
+				106259462A0790E2002E8090 /* XCRemoteSwiftPackageReference "CalendarKit" */,
 			);
 			productRefGroup = 10AE025129EB8F4B00B82918 /* Products */;
 			projectDirPath = "";
@@ -296,26 +303,27 @@
 				1058CFA029F8F3E80069B5FA /* FirebaseController.swift in Sources */,
 				10F43EF129FA1D940065E8DD /* TabbarViewController.swift in Sources */,
 				10F01F362A073B9B00BE677F /* ChatMessage.swift in Sources */,
-				10F43EE929FA1C820065E8DD /* TrackerTableViewController.swift in Sources */,
 				10AE026B29EB976300B82918 /* LoginViewController.swift in Sources */,
 				10AE026D29EB99E200B82918 /* RegisterViewController.swift in Sources */,
 				10AE025429EB8F4B00B82918 /* AppDelegate.swift in Sources */,
 				102844EF2A02834B0012AA69 /* LocationViewController.swift in Sources */,
 				10AE025E29EB8F4B00B82918 /* petopia.xcdatamodeld in Sources */,
 				10AE025629EB8F4B00B82918 /* SceneDelegate.swift in Sources */,
+				1074270B2A08EEE10077A295 /* DetailReminderViewController.swift in Sources */,
 				10F43EF329FA1F6C0065E8DD /* WishListTableViewController.swift in Sources */,
 				10F43EEB29FA1C900065E8DD /* HelpTableViewController.swift in Sources */,
 				10983A4E2A03328A0067CFB1 /* SearchViewController.swift in Sources */,
 				10F01F3A2A0757E900BE677F /* NewChatTableViewController.swift in Sources */,
+				107426FD2A08D6BC0077A295 /* Reminder.swift in Sources */,
 				1058CF9C29F8F25C0069B5FA /* MulticastDelegate.swift in Sources */,
-				10F43EFD29FA2FE90065E8DD /* TrackerTableView.swift in Sources */,
 				1058CFA229F8F6E50069B5FA /* Profile.swift in Sources */,
 				10F01F342A073B8500BE677F /* Sender.swift in Sources */,
 				10F43EF729FA2C1C0065E8DD /* CommunityTableViewController.swift in Sources */,
-				10F43EFB29FA2F780065E8DD /* TrackerViewController.swift in Sources */,
+				107427052A08E0610077A295 /* TrackerReminderViewController.swift in Sources */,
 				10983A442A032FA00067CFB1 /* LocationManager.swift in Sources */,
 				10F43EED29FA1CC40065E8DD /* ChatTableViewController.swift in Sources */,
 				1058CF9E29F8F2700069B5FA /* DatabaseProtocol.swift in Sources */,
+				107427012A08DB540077A295 /* Date+Today.swift in Sources */,
 				102844F12A0284670012AA69 /* LocationAnnotation.swift in Sources */,
 				10F01F2F2A07351000BE677F /* ConversationViewController.swift in Sources */,
 			);
@@ -535,6 +543,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		106259462A0790E2002E8090 /* XCRemoteSwiftPackageReference "CalendarKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/richardtop/CalendarKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 		10983A4F2A0335560067CFB1 /* XCRemoteSwiftPackageReference "FloatingPanel" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/scenee/FloatingPanel";
@@ -562,6 +578,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		106259472A0790E2002E8090 /* CalendarKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 106259462A0790E2002E8090 /* XCRemoteSwiftPackageReference "CalendarKit" */;
+			productName = CalendarKit;
+		};
 		10983A502A0335560067CFB1 /* FloatingPanel */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 10983A4F2A0335560067CFB1 /* XCRemoteSwiftPackageReference "FloatingPanel" */;

@@ -119,8 +119,9 @@ class NewChatTableViewController: UITableViewController, UISearchResultsUpdating
         tableView.deselectRow(at: indexPath, animated: true)
         let targetUserData = filteredProfile[indexPath.row]
         
-        
-        
+        dismiss(animated: true, completion: { [weak self] in
+            self?.completion?(targetUserData)
+        })
     }
 
     /*

@@ -24,17 +24,17 @@ class ChatTableViewController: UITableViewController {
 //
 //    }
     
-    @IBAction func tapComposeButton(_ sender: Any) {
+
+    @IBAction func tapCompose(_ sender: Any) {
         let vc = NewChatTableViewController()
         vc.completion = { [weak self] result in
             self?.createNewConversation(result: result)
         }
-       
     }
-
+    
     func createNewConversation (result: Profile){
-        let vc = ChatTableViewController()
-        vc.title = "Jenny Smith"
+        let vc = ConversationViewController()
+        vc.title = "Joe Smith"
         vc.navigationItem.largeTitleDisplayMode = .never
         navigationController?.pushViewController(vc, animated: true)
     }
