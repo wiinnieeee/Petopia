@@ -14,6 +14,7 @@ class RegisterViewController: UIViewController {
     var authController: Auth?
     var authStateListener: AuthStateDidChangeListenerHandle?
 
+    
     @IBOutlet weak var nameField: UITextField!
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
@@ -24,8 +25,7 @@ class RegisterViewController: UIViewController {
     @IBOutlet weak var stateField: UITextField!
     @IBOutlet weak var countryField: UITextField!
     
-    
-   
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,17 +36,6 @@ class RegisterViewController: UIViewController {
         authController = Auth.auth()
     }
     
-    
-//    func isValidEmail(_ emailTextField: UITextField) -> Bool {
-//        if let email = emailTextField.text {
-//            // regular expression for email format
-//            let emailRegEx = "[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
-//
-//            let emailPredicate = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
-//            return emailPredicate.evaluate(with: email)
-//        }
-//        return false
-//    }
     
     @IBAction func createAccountButton(_ sender: Any) {
         if self.validAccount()
@@ -62,10 +51,6 @@ class RegisterViewController: UIViewController {
     
     func validAccount () -> Bool {
         var errorMessage: String = ""
-//        if !isValidEmail(emailField) {
-//            errorMessage += "\nInvalid email"
-//        }
-//
         if passwordField.text == "" || passwordField.text!.count<6 {
             errorMessage += "\nPassword must have at least 6 letters"
         }

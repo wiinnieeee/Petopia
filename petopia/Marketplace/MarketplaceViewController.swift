@@ -13,6 +13,7 @@ class MarketplaceViewController: UIViewController{
     weak var databaseController: DatabaseProtocol?
     var authController: Auth?
 
+    @IBOutlet weak var addListing: UIButton!
     @IBOutlet weak var searchBar: UISearchBar!
     
     @IBAction func logoutButton(_ sender: Any) {
@@ -31,7 +32,7 @@ class MarketplaceViewController: UIViewController{
         navigationController?.navigationBar.barTintColor = UIColor.white
         navigationController?.navigationBar.tintColor = UIColor.white
         navigationController?.navigationBar.backgroundColor = UIColor.systemPink
-        
+        addListing.contentMode = .scaleAspectFit
 
         
         navigationItem.largeTitleDisplayMode = .never

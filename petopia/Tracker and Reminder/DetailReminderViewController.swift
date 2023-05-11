@@ -7,20 +7,14 @@
 
 import UIKit
 
-protocol didChangeStatusDelegate: AnyObject {
-    func changeStatus (chosenReminder: Reminder?)
-    
-}
 class DetailReminderViewController: UIViewController {
-
 
     @IBOutlet weak var doneButton: UIButton!
     var selectedReminder: Reminder?
-    weak var delegate: didChangeStatusDelegate?
+    weak var databaseController: DatabaseProtocol?
 
     @IBAction func doneButton(_ sender: Any) {
-        selectedReminder?.isComplete = true
-        delegate?.changeStatus(chosenReminder: selectedReminder)
+        databaseController?.doneReminder(reminder: selectedReminder)
         navigationController?.popViewController(animated: true)
     }
     
@@ -30,6 +24,9 @@ class DetailReminderViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.largeTitleDisplayMode = .always
+        let appDelegate = UIApplication.shared.delegate as?AppDelegate
+        databaseController = appDelegate?.databaseController
+        
         // Do any additional setup after loading the view.
         dateAndTime.text = selectedReminder?.dueDate.dayAndTimeText
         notes.text = selectedReminder?.notes
@@ -39,7 +36,7 @@ class DetailReminderViewController: UIViewController {
             doneButton.isHidden = true
         }
     }
-    
+ 
 
     /*
     // MARK: - Navigation

@@ -56,7 +56,6 @@ class LoginViewController: UIViewController {
             if user != nil {
                 // User logged in, navigate to main page
                 self.performSegue(withIdentifier: "loginSegue", sender: self)
-                self.databaseController?.setupProfileListener()
             }
         }
     }
@@ -67,24 +66,10 @@ class LoginViewController: UIViewController {
             Auth.auth().removeStateDidChangeListener(listener)
         }
     }
-//
-//    func isValidEmail(_ emailTextField: UITextField) -> Bool {
-//        if let email = emailTextField.text {
-//            // regular expression for email format
-//            let emailRegEx = "[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
-//
-//            let emailPredicate = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
-//            return emailPredicate.evaluate(with: email)
-//        }
-//        return false
-//    }
     
     func validAccount () -> Bool {
         var errorMessage: String = ""
-//        if !isValidEmail(emailAdd) {
-//            errorMessage += "\nInvalid email"
-//        }
-//
+
         if password.text == "" || password.text!.count<6 {
             errorMessage += "\nPassword must have at least 6 letters"
         }

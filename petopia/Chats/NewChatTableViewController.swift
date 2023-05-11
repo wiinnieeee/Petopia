@@ -7,18 +7,19 @@
 
 import UIKit
 import FirebaseFirestore
+import FirebaseAuth
 
-class NewChatTableViewController: UITableViewController, UISearchResultsUpdating, DatabaseListener {
+class NewChatTableViewController: UITableViewController, UISearchResultsUpdating{
     
-    public var completion: ((Profile) -> (Void))?
-    
-    var allProfile: [Profile] = []
-    var filteredProfile: [Profile] = []
-    var prof : Profile = Profile()
-    var listenerType = ListenerType.profile
+    var currentUser = Auth.auth().currentUser
+    var channels = [Channel]()
+    var users: [User] = []
+    var filteredUsers: [User] = []
+    var user : User = User()
     @IBOutlet weak var noTextLabel: UILabel!
     weak var databaseController: DatabaseProtocol?
-
+    
+    var channelsRef: CollectionReference?
     
     func updateSearchResults(for searchController: UISearchController) {
         guard let searchText = searchController.searchBar.text?.lowercased() else {
@@ -26,9 +27,9 @@ class NewChatTableViewController: UITableViewController, UISearchResultsUpdating
         }
         
         if searchText.count > 0 {
-            filteredProfile = allProfile.filter({(profile: Profile) -> Bool in return (profile.name?.lowercased().contains(searchText) ?? false)})
+            filteredUsers = users.filter({(user: User) -> Bool in return (user.name?.lowercased().contains(searchText) ?? false)})
         } else {
-            filteredProfile = allProfile
+            filteredUsers = users
         }
         tableView.reloadData()
     }
@@ -44,7 +45,7 @@ class NewChatTableViewController: UITableViewController, UISearchResultsUpdating
         let appDelegate = UIApplication.shared.delegate as?AppDelegate
         databaseController = appDelegate?.databaseController
         
-        filteredProfile = allProfile
+        filteredUsers = users
         
         let searchController = UISearchController(searchResultsController: nil)
         searchController.searchResultsUpdater = self
@@ -58,31 +59,34 @@ class NewChatTableViewController: UITableViewController, UISearchResultsUpdating
         
         
         let db = Firestore.firestore()
-        let collectionRef = db.collection("profile")
+        let collectionRef = db.collection("users")
         
         collectionRef.getDocuments(){ (querySnapshot, error) in
             if let error = error {
                 print("Error getting documents: \(error)")
             } else {
                 for document in querySnapshot!.documents {
-                    self.prof = Profile()
-                    self.prof.name = document.data() ["name"] as? String
-                    self.prof.id = document.documentID
-                    
-                    self.allProfile.append(self.prof)
+                    if document.documentID != self.currentUser?.uid{
+                        self.user = User()
+                        self.user.name = document.data() ["name"] as? String
+                        self.user.email = document.data() ["emailAdd"] as? String
+                        self.user.id = document.documentID
+                        
+                        self.users.append(self.user)
+                    }
                 }
             }
         }
+        
+        channelsRef = db.collection("users").document("\(String(describing: currentUser?.uid))").collection("channels")
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        databaseController?.addListener(listener: self)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        databaseController?.removeListener(listener: self)
     }
 
 
@@ -95,7 +99,7 @@ class NewChatTableViewController: UITableViewController, UISearchResultsUpdating
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return filteredProfile.count
+        return filteredUsers.count
     }
 
     
@@ -103,25 +107,31 @@ class NewChatTableViewController: UITableViewController, UISearchResultsUpdating
         let nameCell = tableView.dequeueReusableCell(withIdentifier: "userCell", for: indexPath)
                     
         var content = nameCell.defaultContentConfiguration()
-        let profile = filteredProfile[indexPath.row]
-        content.text = profile.name
+        let user = filteredUsers[indexPath.row]
+        content.text = user.name
         nameCell.contentConfiguration = content
         return nameCell
 
     }
-    
-    func onAllProfileChange(change: DatabaseChange, profile: [Profile]) {
-        allProfile = profile
-        updateSearchResults(for: navigationItem.searchController!)
-    }
+
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-        let targetUserData = filteredProfile[indexPath.row]
+        let targetUserData = filteredUsers[indexPath.row]
+        createNewConversation(result: targetUserData)
+    }
+    
+    func createNewConversation (result: User){
+        guard let email = result.email, let name = result.name else {
+            return
+        }
         
-        dismiss(animated: true, completion: { [weak self] in
-            self?.completion?(targetUserData)
-        })
+        self.navigationController?.popViewController(animated: true)
+        
+        let vc = ConversationViewController(with: email)
+        vc.isNewConversation = true
+        vc.title = name
+        vc.navigationItem.largeTitleDisplayMode = .never
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 
     /*

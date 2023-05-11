@@ -6,38 +6,39 @@
 //
 
 import UIKit
+import FirebaseFirestore
+import FirebaseAuth
 
 class ChatTableViewController: UITableViewController {
     
+    let CELL_CHANNEL = "channelCell"
+    // think how to do the firebase for this
+    
+    var channels = [Channel]()
+    var channelsRef: CollectionReference?
+    var databaseListener: ListenerRegistration?
+    var currentUser = Auth.auth().currentUser
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        //fetchConversations()
+        let database = Firestore.firestore()
+        channelsRef = database.collection("users").document("\(String(describing: currentUser?.uid))").collection("channels")
+        
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        
     }
     
 //    private func fetchConversations(){
 //
 //    }
     
-
-    @IBAction func tapCompose(_ sender: Any) {
-        let vc = NewChatTableViewController()
-        vc.completion = { [weak self] result in
-            self?.createNewConversation(result: result)
-        }
-    }
-    
-    func createNewConversation (result: Profile){
-        let vc = ConversationViewController()
-        vc.title = "Joe Smith"
-        vc.navigationItem.largeTitleDisplayMode = .never
-        navigationController?.pushViewController(vc, animated: true)
-    }
     
     
     // MARK: - Table view data source
@@ -49,25 +50,27 @@ class ChatTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 1
+        return channels.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "chatCells", for: indexPath)
-        cell.textLabel?.text = "Hello World"
-        cell.accessoryType = .disclosureIndicator
+        let channelCell = tableView.dequeueReusableCell(withIdentifier: CELL_CHANNEL, for: indexPath)
         
-        return cell
+        let channel = channels[indexPath.row]
+        var contentConfiguration = channelCell.defaultContentConfiguration()
+        
+        contentConfiguration.text = channel.name
+        channelCell.contentConfiguration = contentConfiguration
+        return channelCell
+        
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
+        let channel = channels[indexPath.row]
         
-//        let vc = ConversationViewController()
-//        vc.title = "Jenny Smith"
-//        vc.navigationItem.largeTitleDisplayMode = .never
-//        navigationController?.pushViewController(vc, animated: true)
+        tableView.deselectRow(at: indexPath, animated: true)
+        performSegue(withIdentifier: "convoSegue", sender: channel)
     }
 
     /*

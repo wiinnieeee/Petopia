@@ -7,25 +7,28 @@
 
 import Foundation
 
-struct Reminder{
+struct Reminder: Codable{
+    
     var title: String
     var dueDate: Date
-    var notes: String? = nil
-    var isComplete: Bool = false
+    var notes: String?
+    var isComplete: Bool
+//    var notes: String? = nil
+//    var isComplete: Bool = false
 }
 
-#if DEBUG
-extension Reminder {
-    static var sampleData = [
-    Reminder(
-    title: "Feed Amy", dueDate: Date().addingTimeInterval(800.0),
-            notes: "Don't forget to feed Amy"),
-    Reminder(
-            title: "Bring Poppy to the vet", dueDate: Date().addingTimeInterval(14000.0),
-            notes: "Poppy needs to see the vet today", isComplete: true),
-    Reminder(
-            title: "Pickup Poppy from vet", dueDate: Date().addingTimeInterval(24000.0),
-            notes: "Poppy has finished her checkup")]
-}
-
-#endif
+//#if DEBUG
+//extension Reminder {
+//    static var sampleData = [
+//    Reminder(
+//    title: "Feed Amy", dueDate: Date().addingTimeInterval(800.0),
+//            notes: "Don't forget to feed Amy"),
+//    Reminder(
+//            title: "Bring Poppy to the vet", dueDate: Date().addingTimeInterval(14000.0),
+//            notes: "Poppy needs to see the vet today", isComplete: true),
+//    Reminder(
+//            title: "Pickup Poppy from vet", dueDate: Date().addingTimeInterval(24000.0),
+//            notes: "Poppy has finished her checkup")]
+//}
+//
+//#endif

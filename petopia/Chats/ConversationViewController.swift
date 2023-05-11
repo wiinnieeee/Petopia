@@ -7,18 +7,80 @@
 
 import UIKit
 import MessageKit
+import InputBarAccessoryView
 
-class ConversationViewController: MessagesViewController, MessagesDisplayDelegate, MessagesDataSource, MessagesLayoutDelegate {
+class ConversationViewController: MessagesViewController, MessagesDisplayDelegate, MessagesDataSource, MessagesLayoutDelegate, InputBarAccessoryViewDelegate {
     
+    var isNewConversation = false
+    let otherUserEmail: String
     
+    public static var dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .medium
+        formatter.timeStyle = .long
+        formatter.locale = .current
+        return formatter
+    }()
+    
+  
     
     var messages = [ChatMessage]()
     
     var currentSender: SenderType {
-        return selfSender
+        if let sender = selfSender{
+            return sender
+        }
+        fatalError("Self sender is nil. Email should be cached.")
+        return Sender(senderId: "12", photoURL: "", displayName: "")
     }
     
-    let selfSender = Sender(senderId: "1", photoURL: "", displayName: "Joe Smith")
+    var selfSender : Sender? {
+        guard let email = UserDefaults.standard.value(forKey: "email") as? String else {
+            return nil
+        }
+        return Sender(senderId: email, photoURL: "", displayName: "Julie")}
+    
+    
+    init(with email: String){
+        self.otherUserEmail = email
+        super.init(nibName: nil, bundle: nil)
+        
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    func inputBar(_ inputBar: InputBarAccessoryView, didPressSendButtonWith text: String) {
+        guard !text.replacingOccurrences(of: " ", with: "").isEmpty,
+        let selfSender = selfSender, let messageID = createMessageID() else {
+            return
+        }
+        
+        // Send Message
+        if isNewConversation {
+            // create convo in database
+            _ = ChatMessage(sender: selfSender, messageId: messageID, sentDate: Date(), kind: .text(text))
+            
+        }
+        else {
+            // append to existing data
+            
+        }
+    }
+    
+    func createMessageID() -> String? {
+        // date, otherUserEmail, senderEmail
+        
+        guard let currentUserEmail = UserDefaults.standard.value(forKey: "email") else {
+            return nil
+        }
+        let dateString  = Self.dateFormatter.string(from: Date())
+        let newIdentifier = "\(otherUserEmail) \(currentUserEmail) \(dateString)"
+        
+        return newIdentifier
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,6 +95,8 @@ class ConversationViewController: MessagesViewController, MessagesDisplayDelegat
         messagesCollectionView.messagesDataSource = self
         messagesCollectionView.messagesLayoutDelegate = self
         messagesCollectionView.messagesDisplayDelegate = self
+        messageInputBar.delegate = self
+        
         loadFirstMessages()
     }
     
@@ -43,7 +107,10 @@ class ConversationViewController: MessagesViewController, MessagesDisplayDelegat
         }
     }
     
-  
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        messageInputBar.inputTextView.becomeFirstResponder()
+    }
     
     func messageForItem(at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> MessageType {
         return messages[indexPath.section]
