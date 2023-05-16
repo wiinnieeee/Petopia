@@ -20,6 +20,17 @@
 		1058CF9E29F8F2700069B5FA /* DatabaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1058CF9D29F8F2700069B5FA /* DatabaseProtocol.swift */; };
 		1058CFA029F8F3E80069B5FA /* FirebaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1058CF9F29F8F3E80069B5FA /* FirebaseController.swift */; };
 		1058CFA429F90AAB0069B5FA /* MarketplaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1058CFA329F90AAB0069B5FA /* MarketplaceViewController.swift */; };
+		105C300F2A121AA8004FD54A /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105C300E2A121AA8004FD54A /* Response.swift */; };
+		105C30112A121AD0004FD54A /* Animal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105C30102A121AD0004FD54A /* Animal.swift */; };
+		105C30132A121AF3004FD54A /* Breeds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105C30122A121AF3004FD54A /* Breeds.swift */; };
+		105C30152A121B46004FD54A /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105C30142A121B46004FD54A /* Colors.swift */; };
+		105C30172A121B71004FD54A /* Attributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105C30162A121B71004FD54A /* Attributes.swift */; };
+		105C301B2A121BD4004FD54A /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105C301A2A121BD4004FD54A /* Environment.swift */; };
+		105C301D2A121C47004FD54A /* Photos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105C301C2A121C47004FD54A /* Photos.swift */; };
+		105C301F2A121C6D004FD54A /* Videos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105C301E2A121C6D004FD54A /* Videos.swift */; };
+		105C30212A121CAA004FD54A /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105C30202A121CAA004FD54A /* Address.swift */; };
+		105C30232A121CC0004FD54A /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105C30222A121CC0004FD54A /* Contact.swift */; };
+		105C30252A1240B6004FD54A /* PetsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105C30242A1240B6004FD54A /* PetsCollectionViewCell.swift */; };
 		106259482A0790E2002E8090 /* CalendarKit in Frameworks */ = {isa = PBXBuildFile; productRef = 106259472A0790E2002E8090 /* CalendarKit */; };
 		106B75E22A0A589F00C6B704 /* Channel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106B75E12A0A589F00C6B704 /* Channel.swift */; };
 		106B75E42A0A6EC400C6B704 /* setReminderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106B75E32A0A6EC400C6B704 /* setReminderViewController.swift */; };
@@ -27,6 +38,9 @@
 		107427012A08DB540077A295 /* Date+Today.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107427002A08DB540077A295 /* Date+Today.swift */; };
 		107427052A08E0610077A295 /* TrackerReminderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107427042A08E0610077A295 /* TrackerReminderViewController.swift */; };
 		1074270B2A08EEE10077A295 /* DetailReminderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1074270A2A08EEE10077A295 /* DetailReminderViewController.swift */; };
+		1097B5A92A10C93400E56B03 /* APIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1097B5A82A10C93400E56B03 /* APIConstants.swift */; };
+		1097B5AB2A10CA4A00E56B03 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1097B5AA2A10CA4A00E56B03 /* NetworkError.swift */; };
+		1097B5AD2A10CA8E00E56B03 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1097B5AC2A10CA8E00E56B03 /* APIService.swift */; };
 		10983A442A032FA00067CFB1 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10983A432A032FA00067CFB1 /* LocationManager.swift */; };
 		10983A4E2A03328A0067CFB1 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10983A4D2A03328A0067CFB1 /* SearchViewController.swift */; };
 		10983A512A0335560067CFB1 /* FloatingPanel in Frameworks */ = {isa = PBXBuildFile; productRef = 10983A502A0335560067CFB1 /* FloatingPanel */; };
@@ -70,12 +84,26 @@
 		1058CF9D29F8F2700069B5FA /* DatabaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseProtocol.swift; sourceTree = "<group>"; };
 		1058CF9F29F8F3E80069B5FA /* FirebaseController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseController.swift; sourceTree = "<group>"; };
 		1058CFA329F90AAB0069B5FA /* MarketplaceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketplaceViewController.swift; sourceTree = "<group>"; };
+		105C300E2A121AA8004FD54A /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
+		105C30102A121AD0004FD54A /* Animal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animal.swift; sourceTree = "<group>"; };
+		105C30122A121AF3004FD54A /* Breeds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Breeds.swift; sourceTree = "<group>"; };
+		105C30142A121B46004FD54A /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		105C30162A121B71004FD54A /* Attributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Attributes.swift; sourceTree = "<group>"; };
+		105C301A2A121BD4004FD54A /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
+		105C301C2A121C47004FD54A /* Photos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photos.swift; sourceTree = "<group>"; };
+		105C301E2A121C6D004FD54A /* Videos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Videos.swift; sourceTree = "<group>"; };
+		105C30202A121CAA004FD54A /* Address.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
+		105C30222A121CC0004FD54A /* Contact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
+		105C30242A1240B6004FD54A /* PetsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetsCollectionViewCell.swift; sourceTree = "<group>"; };
 		106B75E12A0A589F00C6B704 /* Channel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Channel.swift; sourceTree = "<group>"; };
 		106B75E32A0A6EC400C6B704 /* setReminderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = setReminderViewController.swift; sourceTree = "<group>"; };
 		107426FC2A08D6BC0077A295 /* Reminder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reminder.swift; sourceTree = "<group>"; };
 		107427002A08DB540077A295 /* Date+Today.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Today.swift"; sourceTree = "<group>"; };
 		107427042A08E0610077A295 /* TrackerReminderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerReminderViewController.swift; sourceTree = "<group>"; };
 		1074270A2A08EEE10077A295 /* DetailReminderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailReminderViewController.swift; sourceTree = "<group>"; };
+		1097B5A82A10C93400E56B03 /* APIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConstants.swift; sourceTree = "<group>"; };
+		1097B5AA2A10CA4A00E56B03 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		1097B5AC2A10CA8E00E56B03 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		10983A432A032FA00067CFB1 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		10983A4D2A03328A0067CFB1 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		109D46862A0C99E000E5BD27 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -131,6 +159,26 @@
 			path = Database;
 			sourceTree = "<group>";
 		};
+		1097B5A72A10C91A00E56B03 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				1097B5A82A10C93400E56B03 /* APIConstants.swift */,
+				1097B5AA2A10CA4A00E56B03 /* NetworkError.swift */,
+				1097B5AC2A10CA8E00E56B03 /* APIService.swift */,
+				105C300E2A121AA8004FD54A /* Response.swift */,
+				105C30102A121AD0004FD54A /* Animal.swift */,
+				105C30122A121AF3004FD54A /* Breeds.swift */,
+				105C30142A121B46004FD54A /* Colors.swift */,
+				105C30162A121B71004FD54A /* Attributes.swift */,
+				105C301A2A121BD4004FD54A /* Environment.swift */,
+				105C301C2A121C47004FD54A /* Photos.swift */,
+				105C301E2A121C6D004FD54A /* Videos.swift */,
+				105C30202A121CAA004FD54A /* Address.swift */,
+				105C30222A121CC0004FD54A /* Contact.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
 		10983A452A0331BE0067CFB1 /* Tracker and Reminder */ = {
 			isa = PBXGroup;
 			children = (
@@ -146,6 +194,7 @@
 		10983A462A0331D90067CFB1 /* Marketplace */ = {
 			isa = PBXGroup;
 			children = (
+				1097B5A72A10C91A00E56B03 /* API */,
 				102844EE2A02834B0012AA69 /* LocationViewController.swift */,
 				10983A4D2A03328A0067CFB1 /* SearchViewController.swift */,
 				102844F02A0284670012AA69 /* LocationAnnotation.swift */,
@@ -156,6 +205,7 @@
 				10441FAC2A0B360E00FE269E /* CameraViewController.swift */,
 				10441FAE2A0B3C7D00FE269E /* ImageCollectionViewCell.swift */,
 				10441FB02A0B3EE200FE269E /* CollectionViewController.swift */,
+				105C30242A1240B6004FD54A /* PetsCollectionViewCell.swift */,
 			);
 			path = Marketplace;
 			sourceTree = "<group>";
@@ -327,8 +377,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				10441FB12A0B3EE200FE269E /* CollectionViewController.swift in Sources */,
+				105C30112A121AD0004FD54A /* Animal.swift in Sources */,
 				1058CFA429F90AAB0069B5FA /* MarketplaceViewController.swift in Sources */,
 				1058CFA029F8F3E80069B5FA /* FirebaseController.swift in Sources */,
+				105C301D2A121C47004FD54A /* Photos.swift in Sources */,
+				105C301B2A121BD4004FD54A /* Environment.swift in Sources */,
 				10F43EF129FA1D940065E8DD /* TabbarViewController.swift in Sources */,
 				10441FAD2A0B360E00FE269E /* CameraViewController.swift in Sources */,
 				10F01F362A073B9B00BE677F /* ChatMessage.swift in Sources */,
@@ -343,18 +396,27 @@
 				10AE025629EB8F4B00B82918 /* SceneDelegate.swift in Sources */,
 				10441FAA2A0B31B000FE269E /* ImageMetaData+CoreDataClass.swift in Sources */,
 				1074270B2A08EEE10077A295 /* DetailReminderViewController.swift in Sources */,
+				105C30172A121B71004FD54A /* Attributes.swift in Sources */,
 				10F43EF329FA1F6C0065E8DD /* WishListTableViewController.swift in Sources */,
+				105C30252A1240B6004FD54A /* PetsCollectionViewCell.swift in Sources */,
+				105C301F2A121C6D004FD54A /* Videos.swift in Sources */,
+				1097B5A92A10C93400E56B03 /* APIConstants.swift in Sources */,
 				10F43EEB29FA1C900065E8DD /* HelpTableViewController.swift in Sources */,
 				10983A4E2A03328A0067CFB1 /* SearchViewController.swift in Sources */,
 				106B75E42A0A6EC400C6B704 /* setReminderViewController.swift in Sources */,
+				1097B5AD2A10CA8E00E56B03 /* APIService.swift in Sources */,
 				10F01F3A2A0757E900BE677F /* NewChatTableViewController.swift in Sources */,
 				107426FD2A08D6BC0077A295 /* Reminder.swift in Sources */,
+				105C30212A121CAA004FD54A /* Address.swift in Sources */,
 				1058CF9C29F8F25C0069B5FA /* MulticastDelegate.swift in Sources */,
 				10F01F342A073B8500BE677F /* Sender.swift in Sources */,
+				105C30132A121AF3004FD54A /* Breeds.swift in Sources */,
 				10F43EF729FA2C1C0065E8DD /* CommunityTableViewController.swift in Sources */,
 				107427052A08E0610077A295 /* TrackerReminderViewController.swift in Sources */,
+				105C30152A121B46004FD54A /* Colors.swift in Sources */,
 				106B75E22A0A589F00C6B704 /* Channel.swift in Sources */,
 				10983A442A032FA00067CFB1 /* LocationManager.swift in Sources */,
+				105C300F2A121AA8004FD54A /* Response.swift in Sources */,
 				10F43EED29FA1CC40065E8DD /* ChatTableViewController.swift in Sources */,
 				1058CF9E29F8F2700069B5FA /* DatabaseProtocol.swift in Sources */,
 				10441FAF2A0B3C7D00FE269E /* ImageCollectionViewCell.swift in Sources */,
@@ -362,6 +424,8 @@
 				107427012A08DB540077A295 /* Date+Today.swift in Sources */,
 				102844F12A0284670012AA69 /* LocationAnnotation.swift in Sources */,
 				10F01F2F2A07351000BE677F /* ConversationViewController.swift in Sources */,
+				1097B5AB2A10CA4A00E56B03 /* NetworkError.swift in Sources */,
+				105C30232A121CC0004FD54A /* Contact.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

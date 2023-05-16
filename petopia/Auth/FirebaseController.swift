@@ -34,7 +34,9 @@ class FirebaseController: NSObject, DatabaseProtocol {
 
         super.init()
 
-        self.setupRemindersListener()
+        if authController.currentUser != nil{
+            self.setupRemindersListener()
+        }
     }
     
     func cleanup() {
@@ -64,6 +66,7 @@ class FirebaseController: NSObject, DatabaseProtocol {
             
             isSuccessful = true
             UserDefaults.standard.set(email, forKey: "email")
+            self.setupRemindersListener()
         } catch {
             print ("User creation failed with error: \(String(describing: error))")
             return false
@@ -78,6 +81,7 @@ class FirebaseController: NSObject, DatabaseProtocol {
         {   _ = try await authController.signIn(withEmail: email, password: password)
             isSuccessful = true
             UserDefaults.standard.set(email, forKey: "email")
+            self.setupRemindersListener()
         }
         catch {
             print ("Authenciation failed with error: \(String(describing: error))")

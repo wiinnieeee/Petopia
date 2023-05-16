@@ -24,7 +24,7 @@ class NewListingViewController: UIViewController, UICollectionViewDelegate, UICo
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        self.imageCollectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        self.imageCollectionView!.register(ImageCollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
         
         self.imageCollectionView.delegate = self
         self.imageCollectionView.dataSource = self
