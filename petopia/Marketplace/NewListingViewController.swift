@@ -24,15 +24,14 @@ class NewListingViewController: UIViewController, UICollectionViewDelegate, UICo
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        self.imageCollectionView!.register(ImageCollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
-        
-        self.imageCollectionView.delegate = self
-        self.imageCollectionView.dataSource = self
         
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         managedObjectContext = appDelegate.persistentContainer?.viewContext
+
+        imageCollectionView.collectionViewLayout = LeftAlignedCollectionViewFlowLayout()
     
     }
+    
     
     override func viewWillAppear(_ animated: Bool) {
         do {

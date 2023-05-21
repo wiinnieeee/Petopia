@@ -45,6 +45,7 @@
 		10983A4E2A03328A0067CFB1 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10983A4D2A03328A0067CFB1 /* SearchViewController.swift */; };
 		10983A512A0335560067CFB1 /* FloatingPanel in Frameworks */ = {isa = PBXBuildFile; productRef = 10983A502A0335560067CFB1 /* FloatingPanel */; };
 		109D46872A0C99E000E5BD27 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109D46862A0C99E000E5BD27 /* User.swift */; };
+		10ADA1992A19E86B0003A8CC /* ViewPetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10ADA1982A19E86B0003A8CC /* ViewPetViewController.swift */; };
 		10AE025429EB8F4B00B82918 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10AE025329EB8F4B00B82918 /* AppDelegate.swift */; };
 		10AE025629EB8F4B00B82918 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10AE025529EB8F4B00B82918 /* SceneDelegate.swift */; };
 		10AE025B29EB8F4B00B82918 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 10AE025929EB8F4B00B82918 /* Main.storyboard */; };
@@ -53,6 +54,7 @@
 		10AE026329EB8F4C00B82918 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 10AE026129EB8F4C00B82918 /* LaunchScreen.storyboard */; };
 		10AE026B29EB976300B82918 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10AE026A29EB976300B82918 /* LoginViewController.swift */; };
 		10AE026D29EB99E200B82918 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10AE026C29EB99E200B82918 /* RegisterViewController.swift */; };
+		10BBE2B62A133E8700AB62CA /* LeftAlignedCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BBE2B52A133E8700AB62CA /* LeftAlignedCollectionViewFlowLayout.swift */; };
 		10CBC3BD29F7A3AB00049813 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 10CBC3BC29F7A3AB00049813 /* FirebaseAuth */; };
 		10CBC3BF29F7A3AB00049813 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 10CBC3BE29F7A3AB00049813 /* FirebaseFirestore */; };
 		10CBC3C129F7A3AB00049813 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 10CBC3C029F7A3AB00049813 /* FirebaseFirestoreSwift */; };
@@ -107,6 +109,7 @@
 		10983A432A032FA00067CFB1 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		10983A4D2A03328A0067CFB1 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		109D46862A0C99E000E5BD27 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		10ADA1982A19E86B0003A8CC /* ViewPetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewPetViewController.swift; sourceTree = "<group>"; };
 		10AE025029EB8F4B00B82918 /* petopia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = petopia.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		10AE025329EB8F4B00B82918 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		10AE025529EB8F4B00B82918 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -117,6 +120,7 @@
 		10AE026429EB8F4C00B82918 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		10AE026A29EB976300B82918 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		10AE026C29EB99E200B82918 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		10BBE2B52A133E8700AB62CA /* LeftAlignedCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftAlignedCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
 		10CBC3C429F7A49600049813 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		10F01F2E2A07351000BE677F /* ConversationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationViewController.swift; sourceTree = "<group>"; };
 		10F01F332A073B8500BE677F /* Sender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sender.swift; sourceTree = "<group>"; };
@@ -200,12 +204,14 @@
 				102844F02A0284670012AA69 /* LocationAnnotation.swift */,
 				10983A432A032FA00067CFB1 /* LocationManager.swift */,
 				1058CFA329F90AAB0069B5FA /* MarketplaceViewController.swift */,
+				10ADA1982A19E86B0003A8CC /* ViewPetViewController.swift */,
 				10F43EF229FA1F6C0065E8DD /* WishListTableViewController.swift */,
 				10441FA32A0B2DD400FE269E /* NewListingViewController.swift */,
 				10441FAC2A0B360E00FE269E /* CameraViewController.swift */,
 				10441FAE2A0B3C7D00FE269E /* ImageCollectionViewCell.swift */,
 				10441FB02A0B3EE200FE269E /* CollectionViewController.swift */,
 				105C30242A1240B6004FD54A /* PetsCollectionViewCell.swift */,
+				10BBE2B52A133E8700AB62CA /* LeftAlignedCollectionViewFlowLayout.swift */,
 			);
 			path = Marketplace;
 			sourceTree = "<group>";
@@ -396,6 +402,7 @@
 				10AE025629EB8F4B00B82918 /* SceneDelegate.swift in Sources */,
 				10441FAA2A0B31B000FE269E /* ImageMetaData+CoreDataClass.swift in Sources */,
 				1074270B2A08EEE10077A295 /* DetailReminderViewController.swift in Sources */,
+				10BBE2B62A133E8700AB62CA /* LeftAlignedCollectionViewFlowLayout.swift in Sources */,
 				105C30172A121B71004FD54A /* Attributes.swift in Sources */,
 				10F43EF329FA1F6C0065E8DD /* WishListTableViewController.swift in Sources */,
 				105C30252A1240B6004FD54A /* PetsCollectionViewCell.swift in Sources */,
@@ -420,6 +427,7 @@
 				10F43EED29FA1CC40065E8DD /* ChatTableViewController.swift in Sources */,
 				1058CF9E29F8F2700069B5FA /* DatabaseProtocol.swift in Sources */,
 				10441FAF2A0B3C7D00FE269E /* ImageCollectionViewCell.swift in Sources */,
+				10ADA1992A19E86B0003A8CC /* ViewPetViewController.swift in Sources */,
 				109D46872A0C99E000E5BD27 /* User.swift in Sources */,
 				107427012A08DB540077A295 /* Date+Today.swift in Sources */,
 				102844F12A0284670012AA69 /* LocationAnnotation.swift in Sources */,

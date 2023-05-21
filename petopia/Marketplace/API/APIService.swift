@@ -48,8 +48,11 @@ class APIService {
         return results
     }
     
-    func search(token: String) async throws -> [Animal] {
-        guard let url = URL(string: "https://api.petfinder.com/v2/animals?type=dog&page=2") else {
+    func search(token: String, query: String) async throws -> [Animal] {
+        print("https://api.petfinder.com/v2/animals?type=\(query)")
+        
+        
+        guard let url = URL(string: "https://api.petfinder.com/v2/animals?type=\(query)") else {
             throw NetworkError.invalidURL
         }
         
@@ -57,6 +60,8 @@ class APIService {
         urlRequest.httpMethod = "GET"
         urlRequest.addValue("Bearer " + token, forHTTPHeaderField: "Authorization")
         urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        print(urlRequest)
         
         let (data, httpResponse) = try await URLSession.shared.data(for: urlRequest)
         
@@ -66,6 +71,7 @@ class APIService {
         
         let decoder = JSONDecoder()
         let results = try decoder.decode(Response.self, from: data)
+        print(results.animals.count)
         
         return results.animals
     }

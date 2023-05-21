@@ -12,6 +12,7 @@ import FirebaseFirestoreSwift
 class FirebaseController: NSObject, DatabaseProtocol {
     
     var listeners = MulticastDelegate<DatabaseListener>()
+
     
     var authController: Auth
     var database: Firestore
@@ -63,9 +64,9 @@ class FirebaseController: NSObject, DatabaseProtocol {
         { _ = try await authController.createUser(withEmail: email, password: password)
             
             self.addUser(emailAdd: email, name: name, phoneNumber: phoneNumber, streetAdd: streetAdd, postCode: postCode, suburb: suburb, country: country)
-            
             isSuccessful = true
             UserDefaults.standard.set(email, forKey: "email")
+                
             self.setupRemindersListener()
         } catch {
             print ("User creation failed with error: \(String(describing: error))")
@@ -82,6 +83,7 @@ class FirebaseController: NSObject, DatabaseProtocol {
             isSuccessful = true
             UserDefaults.standard.set(email, forKey: "email")
             self.setupRemindersListener()
+            
         }
         catch {
             print ("Authenciation failed with error: \(String(describing: error))")

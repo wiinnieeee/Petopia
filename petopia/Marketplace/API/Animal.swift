@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 struct Animal: Codable {
 
@@ -20,8 +21,6 @@ struct Animal: Codable {
   var gender         : String?      = nil
   var size           : String?      = nil
   var coat           : String?      = nil
-  var attributes     : Attributes?  = Attributes()
-  var environment    : Environment? = Environment()
   var tags           : [String]?    = []
   var name           : String?      = nil
   var description    : String?      = nil
@@ -30,6 +29,11 @@ struct Animal: Codable {
   var status         : String?      = nil
   var publishedAt    : String?      = nil
   var contact        : Contact?     = Contact()
+    
+    // Used to track image downloads:
+    var image: UIImage?
+    var imageIsDownloading: Bool = false
+    var imageShown = true
 
   enum CodingKeys: String, CodingKey {
 
@@ -44,8 +48,6 @@ struct Animal: Codable {
     case gender         = "gender"
     case size           = "size"
     case coat           = "coat"
-    case attributes     = "attributes"
-    case environment    = "environment"
     case tags           = "tags"
     case name           = "name"
     case description    = "description"
@@ -70,8 +72,6 @@ struct Animal: Codable {
     gender         = try values.decodeIfPresent(String.self      , forKey: .gender         )
     size           = try values.decodeIfPresent(String.self      , forKey: .size           )
     coat           = try values.decodeIfPresent(String.self      , forKey: .coat           )
-    attributes     = try values.decodeIfPresent(Attributes.self  , forKey: .attributes     )
-    environment    = try values.decodeIfPresent(Environment.self , forKey: .environment    )
     tags           = try values.decodeIfPresent([String].self    , forKey: .tags           )
     name           = try values.decodeIfPresent(String.self      , forKey: .name           )
     description    = try values.decodeIfPresent(String.self      , forKey: .description    )

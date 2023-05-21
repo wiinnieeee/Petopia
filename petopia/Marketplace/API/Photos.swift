@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 struct Photos: Codable {
 
@@ -13,6 +14,7 @@ struct Photos: Codable {
   var medium : String? = nil
   var large  : String? = nil
   var full   : String? = nil
+
 
   enum CodingKeys: String, CodingKey {
 
