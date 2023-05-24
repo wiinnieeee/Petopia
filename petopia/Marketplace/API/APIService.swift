@@ -61,8 +61,6 @@ class APIService {
         urlRequest.addValue("Bearer " + token, forHTTPHeaderField: "Authorization")
         urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
         
-        print(urlRequest)
-        
         let (data, httpResponse) = try await URLSession.shared.data(for: urlRequest)
         
         guard let httpResponse = httpResponse as? HTTPURLResponse, httpResponse.statusCode == 200 else {

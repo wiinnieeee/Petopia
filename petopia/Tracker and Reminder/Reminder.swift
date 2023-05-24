@@ -6,15 +6,13 @@
 //
 
 import Foundation
+import FirebaseFirestoreSwift
 
-struct Reminder: Codable{
-    
+struct Reminder: Codable {
     var title: String
     var dueDate: Date
     var notes: String?
     var isComplete: Bool
-//    var notes: String? = nil
-//    var isComplete: Bool = false
 }
 
 //#if DEBUG

@@ -12,7 +12,7 @@ import FirebaseFirestoreSwift
 class FirebaseController: NSObject, DatabaseProtocol {
     
     var listeners = MulticastDelegate<DatabaseListener>()
-
+    
     
     var authController: Auth
     var database: Firestore
@@ -32,9 +32,9 @@ class FirebaseController: NSObject, DatabaseProtocol {
         database = Firestore.firestore()
         reminderList = [Reminder]()
         remindersRef = database.collection("users").document("\(String(describing: authController.currentUser?.uid))").collection("reminders")
-
+        
         super.init()
-
+        
         if authController.currentUser != nil{
             self.setupRemindersListener()
         }
@@ -50,7 +50,7 @@ class FirebaseController: NSObject, DatabaseProtocol {
             listener.onAllRemindersChange(change: .update, reminders: reminderList)
         }
     }
-
+    
     
     func removeListener(listener: DatabaseListener) {
         listeners.removeDelegate(listener)
@@ -66,8 +66,8 @@ class FirebaseController: NSObject, DatabaseProtocol {
             self.addUser(emailAdd: email, name: name, phoneNumber: phoneNumber, streetAdd: streetAdd, postCode: postCode, suburb: suburb, country: country)
             isSuccessful = true
             UserDefaults.standard.set(email, forKey: "email")
-                
             self.setupRemindersListener()
+            
         } catch {
             print ("User creation failed with error: \(String(describing: error))")
             return false
@@ -106,25 +106,31 @@ class FirebaseController: NSObject, DatabaseProtocol {
         let documentID = authController.currentUser!.uid
         let data = ["emailAdd": emailAdd, "name": name, "phoneNumber": phoneNumber, "streetAdd": streetAdd, "postcode": postCode, "suburb": suburb, "country": country] as [String : Any]
         database.collection("users").document(documentID).setData(data as [String: Any])
-        
     }
     
-    
-    func addReminder(newReminder: Reminder?) {
-        let documentID = authController.currentUser!.uid
+    func addReminder(newReminder: Reminder? ) {
         let title = newReminder?.title
         let notes = newReminder?.notes
         let dueDate = newReminder?.dueDate
         let isComplete = newReminder?.isComplete
         
         let data = ["title": title!, "notes" : notes!, "dueDate": dueDate!, "isComplete": isComplete!] as [String : Any]
-        database.collection("users").document("\(documentID)").collection("reminders").addDocument(data: data)
+        remindersRef!.addDocument(data: data)
+    }
+    
+    func addAnimaltoWishlist(newAnimal: Animal?) {
+        let documentID = authController.currentUser!.uid
+        database.collection("users").document("\(documentID)").updateData(["wishlist": FieldValue.arrayUnion([newAnimal?.id as Any])])
+    }
+    
+    func removeAnimalfromWishlist (animal: Animal?) {
+        let documentID = authController.currentUser!.uid
+        database.collection("users").document("\(documentID)").updateData(["wishlist": FieldValue.arrayRemove([animal?.id as Any])])
     }
     
     func doneReminder(reminder: Reminder?) {
         let documentID = authController.currentUser!.uid
         let remindersRef = database.collection("users").document("\(documentID)").collection("reminders")
-        print((reminder?.title)!)
         remindersRef.whereField("title", isEqualTo: (reminder?.title)!).getDocuments() { (querySnapshot, err) in
             if let err = err {
                 print("Error getting documents: \(err)")
@@ -135,11 +141,21 @@ class FirebaseController: NSObject, DatabaseProtocol {
             }
         }
     }
-
+    
+    func deleteReminder(reminder: Reminder?) {
+        remindersRef!.whereField("title", isEqualTo: (reminder?.title)!).getDocuments() { (querySnapshot, err) in
+            if let err = err {
+                print("Error getting documents: \(err)")
+            } else {
+                for document in querySnapshot!.documents {
+                    document.reference.delete()
+                }
+            }
+        }
+    }
+    
     func setupRemindersListener() {
-        let remindersRef = database.collection("users").document("\(authController.currentUser!.uid)").collection("reminders")
-        
-        remindersRef.addSnapshotListener() {
+        remindersRef!.addSnapshotListener() {
             (querySnapshot, error) in
             
             // closure executed asynchroously at some later point, continue to execute every single time a change detected on Superheroes collection
@@ -153,10 +169,8 @@ class FirebaseController: NSObject, DatabaseProtocol {
             
             // if valid, we call the parseHeroesSnapshot to handle parsing changes made on Firestore
             self.parseRemindersSnapshot(snapshot: querySnapshot)
-            
         }
     }
-    
     
     
     func parseRemindersSnapshot (snapshot: QuerySnapshot){
@@ -175,7 +189,7 @@ class FirebaseController: NSObject, DatabaseProtocol {
                 // done using Codable - do catch statement
                 parsedReminder = try change.document.data(as: Reminder.self)
             } catch {
-                print ("Unable to decode hero. Is the hero malformed?")
+                print ("Unable to decode reminder.")
                 return
             }
             
@@ -187,24 +201,18 @@ class FirebaseController: NSObject, DatabaseProtocol {
             
             // if change type is added, insert array at appropiate place
             if change.type == .added {
-                // insert into array at appropiate place
-//                reminderList.insert(reminder, at: Int(change.newIndex))
-//                print(reminderList.count)
-//                if change.newIndex >= reminderList.count {
-//                    print(change.newIndex)
-//                    print(parsedReminder)
-//                } else {
-                    reminderList.insert(reminder, at: Int(change.newIndex))
-//                }
-//                reminderList.append(reminder)
+                reminderList.insert(reminder, at: Int(change.newIndex))
             } else if change.type == .modified {
                 reminderList [Int (change.oldIndex)] = reminder
             } else if change.type == .removed {
                 reminderList.remove(at: Int(change.oldIndex))
             }
             
-            //    }
-            
+            listeners.invoke { (listener) in
+                if listener.listenerType == ListenerType.reminders || listener.listenerType == ListenerType.all {
+                    listener.onAllRemindersChange(change: .update, reminders: reminderList)
+                }
+            }
         }
     }
 }

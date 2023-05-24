@@ -13,11 +13,61 @@ class ViewPetViewController: UIViewController {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var petImageView: UIImageView!
     
+    @IBOutlet weak var ageLabel: UILabel!
+    @IBOutlet weak var genderLabel: UILabel!
+    @IBOutlet weak var vaccLabel: UILabel!
+    @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var emailLabel: UILabel!
+    
+    var imageURL: String = ""
+    var nameText: String = ""
+    var breedText: String = ""
+    var ageText: String = ""
+    var genderText: String = ""
+    var vaccText: String = ""
+    var descText: String = ""
+    var emailText: String = ""
+    var phoneText: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let requestURL = URL(string: imageURL)
+            if let requestURL {
+                Task {
+                    print("Downloading image: " + imageURL)
+                    do {
+                        let (data, response) = try await URLSession.shared.data(from: requestURL)
+                        guard let httpResponse = response as? HTTPURLResponse,
+                              httpResponse.statusCode == 200 else {
+                            throw NetworkError.invalidResponse
+                        }
+                        if let image = UIImage(data: data) {
+                            petImageView.image = image
+                        }
+                        else {
+                            print("Image invalid: " + imageURL)
+                        }
+                    }
+                    catch {
+                        print(error.localizedDescription)
+                    }
+                    
+                }
+            }
+            else {
+                print("Error: URL not valid: " + imageURL)
+            }
 
         // Do any additional setup after loading the view.
+        nameLabel.text = nameText
+        typeBreedLabel.text = breedText
+        ageLabel.text = ageText
+        genderLabel.text = genderText
+        vaccLabel.text = vaccText
+        descriptionLabel.text = descText
+        emailLabel.text = emailText
+        
     }
     
 

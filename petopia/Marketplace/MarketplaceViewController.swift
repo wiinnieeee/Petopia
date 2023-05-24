@@ -15,7 +15,7 @@ let RABBIT_SELECTION = 3
 let BIRD_SELECTION = 4
 
 class MarketplaceViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UISearchBarDelegate {
-
+    
     // dog, cat, small-furry, rabbit, bird
     
     weak var databaseController: DatabaseProtocol?
@@ -37,7 +37,7 @@ class MarketplaceViewController: UIViewController, UICollectionViewDelegate, UIC
         self.performSegue(withIdentifier: "unwindToLogin", sender: self)
         
     }
-  
+    
     @IBAction func chooseType(_ segmentedControl: UISegmentedControl ) {
         if segmentedControl.selectedSegmentIndex == DOG_SELECTION {
             typeQuery = "dog"
@@ -76,7 +76,7 @@ class MarketplaceViewController: UIViewController, UICollectionViewDelegate, UIC
         super.viewDidLoad()
         let appDelegate = UIApplication.shared.delegate as? AppDelegate
         databaseController = appDelegate?.databaseController
-
+        
         //self.petsCollection.dataSource = self
         //self.petsCollection.delegate = self
         
@@ -92,7 +92,7 @@ class MarketplaceViewController: UIViewController, UICollectionViewDelegate, UIC
         //navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         authController = Auth.auth()
         
-       searchBar.searchTextField.backgroundColor = .white
+        searchBar.searchTextField.backgroundColor = .white
         
         Task {
             do {
@@ -118,13 +118,13 @@ class MarketplaceViewController: UIViewController, UICollectionViewDelegate, UIC
         }
         
         
-            
+        
         let layout = UICollectionViewCompositionalLayout(section: createTiledLayoutSection())
         petsCollection.setCollectionViewLayout(layout, animated: false)
         petsCollection.reloadData()
-
+        
     }
-//
+    //
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         filteredPets = []
         if searchText == "" {
@@ -161,7 +161,7 @@ class MarketplaceViewController: UIViewController, UICollectionViewDelegate, UIC
         let posterSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1/2), heightDimension: .fractionalHeight(1))
         let posterLayout = NSCollectionLayoutItem(layoutSize: posterSize)
         posterLayout.contentInsets = NSDirectionalEdgeInsets(top: 1, leading: 1, bottom: 1, trailing: 1)
-
+        
         let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalWidth(0.55))
         let layoutGroup = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [posterLayout])
         
@@ -169,7 +169,7 @@ class MarketplaceViewController: UIViewController, UICollectionViewDelegate, UIC
         //layoutSection.orthogonalScrollingBehavior = .continuous
         return layoutSection
     }
-
+    
     
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         return 1
@@ -189,7 +189,7 @@ class MarketplaceViewController: UIViewController, UICollectionViewDelegate, UIC
         
         // Make sure the image is blank after cell reuse.
         cell.imageView?.image = nil
-
+        
         
         if let image = pet.image {
             cell.imageView.image = image
@@ -207,7 +207,7 @@ class MarketplaceViewController: UIViewController, UICollectionViewDelegate, UIC
                             pet.imageIsDownloading = false
                             throw NetworkError.invalidResponse
                         }
-
+                        
                         if let image = UIImage(data: data) {
                             print("Image downloaded: " + imageURL)
                             pet.image = image
@@ -221,7 +221,7 @@ class MarketplaceViewController: UIViewController, UICollectionViewDelegate, UIC
                     catch {
                         print(error.localizedDescription)
                     }
-
+                    
                 }
             }
             else {
@@ -232,17 +232,31 @@ class MarketplaceViewController: UIViewController, UICollectionViewDelegate, UIC
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        <#code#>
+        performSegue(withIdentifier: "viewSegue", sender: self)
     }
-
-    /*
+    
+    
     // MARK: - Navigation
-
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "viewSegue" {
+            if let indexPath = petsCollection.indexPathsForSelectedItems?.first {
+                let destination = segue.destination as? ViewPetViewController
+                let petSelected = filteredPets[indexPath.row]
+                destination?.imageURL = petSelected.photos![0].full!
+                destination?.nameText = petSelected.name!
+                destination?.breedText = (petSelected.breeds?.primary)!
+                destination?.ageText = petSelected.age!
+                destination?.genderText = petSelected.gender!
+                destination?.vaccText = petSelected.status!
+                destination?.descText = petSelected.description!
+                destination?.emailText = (petSelected.contact?.email!)!
+                print(petSelected.description!)
+                
+            }
+        }
+        
+        
     }
-    */
-
 }

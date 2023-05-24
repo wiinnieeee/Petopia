@@ -39,6 +39,7 @@ protocol DatabaseProtocol: AnyObject {
     
     func addReminder(newReminder: Reminder?)
     func doneReminder(reminder: Reminder?)
+    func deleteReminder (reminder: Reminder?)
     
     var registerSuccessful: Bool {get set}
 

@@ -15,6 +15,12 @@ class NewListingViewController: UIViewController, UICollectionViewDelegate, UICo
     @IBOutlet weak var imageView: UIImageView!
     private let reuseIdentifier = "Cell"
     
+    @IBOutlet weak var petNameField: UITextField!
+    @IBOutlet weak var ageField: UITextField!
+    @IBOutlet weak var breedField: UITextField!
+    @IBOutlet weak var descriptionField: UITextField!
+    @IBOutlet weak var meetupLocField: UITextField!
+    
     let CELL_IMAGE = "imageCell"
     var imageList = [UIImage]()
     var imagePathList = [String]()
@@ -30,6 +36,15 @@ class NewListingViewController: UIViewController, UICollectionViewDelegate, UICo
 
         imageCollectionView.collectionViewLayout = LeftAlignedCollectionViewFlowLayout()
     
+    }
+    
+    
+    @IBAction func createListingAction(_ sender: Any) {
+        
+        
+        
+        
+        
     }
     
     

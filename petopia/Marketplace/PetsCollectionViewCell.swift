@@ -11,14 +11,24 @@ import FirebaseAuth
 
 class PetsCollectionViewCell: UICollectionViewCell {
     
+    @IBOutlet weak var heartOutlet: UIButton!
     @IBOutlet weak var breedLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var imageView: UIImageView!
     
-    @IBOutlet weak var heartOutlet: UIButton!
+    weak var databaseController: (DatabaseProtocol)?
     
     var isInWishList: Bool = false
     
-    weak var databaseController: (DatabaseProtocol)?
-
+    //ask
+    @IBAction func buttonPress(_ sender: UIButton) {
+        // "Use this method to toggle a Boolean value from true to false or from false to true." [ Apple Doc ]
+        isInWishList = !isInWishList
+        
+        if isInWishList {
+            heartOutlet.setImage(UIImage(named: "heart.fill"), for: .normal)
+        } else {
+            heartOutlet.setImage(UIImage(named: "heart"), for: .normal)
+        }
+    }
 }

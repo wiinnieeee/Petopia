@@ -43,17 +43,20 @@ class TrackerReminderViewController: UIViewController, UITableViewDelegate, UITa
         
         let appDelegate = UIApplication.shared.delegate as?AppDelegate
         databaseController = appDelegate?.databaseController
-        
+
+
     }
     
         override func viewWillAppear(_ animated: Bool) {
             super.viewWillAppear(animated)
             databaseController?.addListener(listener: self)
+            reminderView.reloadData()
         }
         
         override func viewWillDisappear(_ animated: Bool) {
             super.viewWillDisappear(animated)
             databaseController?.removeListener(listener: self)
+            reminderView.reloadData()
         }
 
                 
@@ -92,18 +95,18 @@ class TrackerReminderViewController: UIViewController, UITableViewDelegate, UITa
             return reminderCell
         }
         
-        func tableView(_ tableView: UITableView, titleForHeaderInSection
+    func tableView(_ tableView: UITableView, titleForHeaderInSection
                         section: Int) -> String? {
             return "Reminders"
         }
+
+
         
-        func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-            if editingStyle == .delete {
-                tableView.performBatchUpdates({
-                    self.reminder.remove(at: indexPath.row)
-                    self.reminderView.deleteRows(at: [indexPath], with: .fade)
-                }, completion: nil) }
-                }
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            databaseController?.deleteReminder(reminder: reminder[indexPath.row])
+        }
+    }
                 
                 // MARK: - Navigation
                 

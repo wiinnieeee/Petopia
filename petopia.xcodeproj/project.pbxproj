@@ -38,6 +38,7 @@
 		107427012A08DB540077A295 /* Date+Today.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107427002A08DB540077A295 /* Date+Today.swift */; };
 		107427052A08E0610077A295 /* TrackerReminderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107427042A08E0610077A295 /* TrackerReminderViewController.swift */; };
 		1074270B2A08EEE10077A295 /* DetailReminderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1074270A2A08EEE10077A295 /* DetailReminderViewController.swift */; };
+		1090732D2A1DB5C700930C3A /* Wishlist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1090732C2A1DB5C700930C3A /* Wishlist.swift */; };
 		1097B5A92A10C93400E56B03 /* APIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1097B5A82A10C93400E56B03 /* APIConstants.swift */; };
 		1097B5AB2A10CA4A00E56B03 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1097B5AA2A10CA4A00E56B03 /* NetworkError.swift */; };
 		1097B5AD2A10CA8E00E56B03 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1097B5AC2A10CA8E00E56B03 /* APIService.swift */; };
@@ -103,6 +104,7 @@
 		107427002A08DB540077A295 /* Date+Today.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Today.swift"; sourceTree = "<group>"; };
 		107427042A08E0610077A295 /* TrackerReminderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerReminderViewController.swift; sourceTree = "<group>"; };
 		1074270A2A08EEE10077A295 /* DetailReminderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailReminderViewController.swift; sourceTree = "<group>"; };
+		1090732C2A1DB5C700930C3A /* Wishlist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wishlist.swift; sourceTree = "<group>"; };
 		1097B5A82A10C93400E56B03 /* APIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConstants.swift; sourceTree = "<group>"; };
 		1097B5AA2A10CA4A00E56B03 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		1097B5AC2A10CA8E00E56B03 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
@@ -212,6 +214,7 @@
 				10441FB02A0B3EE200FE269E /* CollectionViewController.swift */,
 				105C30242A1240B6004FD54A /* PetsCollectionViewCell.swift */,
 				10BBE2B52A133E8700AB62CA /* LeftAlignedCollectionViewFlowLayout.swift */,
+				1090732C2A1DB5C700930C3A /* Wishlist.swift */,
 			);
 			path = Marketplace;
 			sourceTree = "<group>";
@@ -418,6 +421,7 @@
 				1058CF9C29F8F25C0069B5FA /* MulticastDelegate.swift in Sources */,
 				10F01F342A073B8500BE677F /* Sender.swift in Sources */,
 				105C30132A121AF3004FD54A /* Breeds.swift in Sources */,
+				1090732D2A1DB5C700930C3A /* Wishlist.swift in Sources */,
 				10F43EF729FA2C1C0065E8DD /* CommunityTableViewController.swift in Sources */,
 				107427052A08E0610077A295 /* TrackerReminderViewController.swift in Sources */,
 				105C30152A121B46004FD54A /* Colors.swift in Sources */,
