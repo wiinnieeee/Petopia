@@ -408,18 +408,6 @@
                                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="wU0-Hg-CVb" secondAttribute="trailing" constant="20" symbolic="YES" id="zoW-aM-KRZ"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0fF-gF-fHT">
-                                <rect key="frame" x="304" y="622" width="69" height="210"/>
-                                <color key="tintColor" systemColor="systemPinkColor"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="" imagePadding="1">
-                                    <imageReference key="image" image="plus.circle.fill" catalog="system" symbolScale="large" variableValue="1"/>
-                                    <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="30" scale="large"/>
-                                </buttonConfiguration>
-                                <connections>
-                                    <segue destination="mEt-3L-08R" kind="show" id="NKv-ep-rjL"/>
-                                </connections>
-                            </button>
                             <collectionView autoresizesSubviews="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="nzn-VS-D1L">
                                 <rect key="frame" x="16" y="290" width="361" height="469"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -455,36 +443,23 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="40S-as-Uwx">
-                                                    <rect key="frame" x="128" y="144.66666666666666" width="28" height="34.333333333333343"/>
-                                                    <color key="tintColor" systemColor="systemPinkColor"/>
-                                                    <state key="normal" title="Button"/>
-                                                    <buttonConfiguration key="configuration" style="plain" image="heart" catalog="system"/>
-                                                    <connections>
-                                                        <action selector="buttonPress:" destination="sUO-Cq-jdT" eventType="touchUpInside" id="uiL-Qb-YSy"/>
-                                                    </connections>
-                                                </button>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="Ny3-M5-jLL" firstAttribute="leading" secondItem="dTi-dH-kgv" secondAttribute="leading" constant="8" id="17d-Az-3z8"/>
                                                 <constraint firstItem="8g2-iw-aXT" firstAttribute="leading" secondItem="dTi-dH-kgv" secondAttribute="leading" id="1FN-yk-Cpk"/>
                                                 <constraint firstAttribute="bottom" secondItem="Ny3-M5-jLL" secondAttribute="bottom" constant="31" id="88N-yI-BoM"/>
                                                 <constraint firstItem="sec-8Z-Cxh" firstAttribute="leading" secondItem="Ny3-M5-jLL" secondAttribute="leading" id="D4V-vq-aRS"/>
+                                                <constraint firstItem="Ny3-M5-jLL" firstAttribute="top" secondItem="8g2-iw-aXT" secondAttribute="bottom" constant="2.666666666666714" id="Eg7-MA-FWR"/>
                                                 <constraint firstAttribute="trailing" secondItem="8g2-iw-aXT" secondAttribute="trailing" id="GCc-B0-7e5"/>
-                                                <constraint firstItem="40S-as-Uwx" firstAttribute="top" secondItem="8g2-iw-aXT" secondAttribute="bottom" constant="8" id="HGT-7X-lQ7"/>
-                                                <constraint firstItem="40S-as-Uwx" firstAttribute="leading" secondItem="Ny3-M5-jLL" secondAttribute="trailing" constant="73" id="NaU-tf-Bbr"/>
-                                                <constraint firstAttribute="trailing" secondItem="40S-as-Uwx" secondAttribute="trailing" constant="8" id="h23-d8-oYq"/>
                                                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="sec-8Z-Cxh" secondAttribute="trailing" constant="20" symbolic="YES" id="kab-vU-PUy"/>
                                                 <constraint firstItem="8g2-iw-aXT" firstAttribute="top" secondItem="dTi-dH-kgv" secondAttribute="top" id="mcg-hQ-ffT"/>
                                                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Ny3-M5-jLL" secondAttribute="trailing" constant="20" symbolic="YES" id="u8N-KI-sBn"/>
                                                 <constraint firstItem="sec-8Z-Cxh" firstAttribute="top" secondItem="Ny3-M5-jLL" secondAttribute="bottom" id="y8w-s8-PMs"/>
-                                                <constraint firstAttribute="bottom" secondItem="40S-as-Uwx" secondAttribute="bottom" constant="13" id="zxX-PY-1TY"/>
                                             </constraints>
                                         </collectionViewCellContentView>
                                         <size key="customSize" width="164" height="192"/>
                                         <connections>
                                             <outlet property="breedLabel" destination="sec-8Z-Cxh" id="UWt-87-kUt"/>
-                                            <outlet property="heartOutlet" destination="40S-as-Uwx" id="OiR-HI-NCw"/>
                                             <outlet property="imageView" destination="8g2-iw-aXT" id="R9T-mB-AS7"/>
                                             <outlet property="nameLabel" destination="Ny3-M5-jLL" id="Biq-K9-TVu"/>
                                         </connections>
@@ -495,6 +470,18 @@
                                     <outlet property="delegate" destination="i0l-eB-kMQ" id="Xt3-DF-WvG"/>
                                 </connections>
                             </collectionView>
+                            <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0fF-gF-fHT">
+                                <rect key="frame" x="304" y="697" width="69" height="62"/>
+                                <color key="tintColor" systemColor="systemPinkColor"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="" imagePadding="1">
+                                    <imageReference key="image" image="plus.circle.fill" catalog="system" symbolScale="large" variableValue="1"/>
+                                    <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="30" scale="large"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <segue destination="mEt-3L-08R" kind="show" id="NKv-ep-rjL"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="uYL-Zt-7Tl"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -505,9 +492,9 @@
                             <constraint firstItem="nzn-VS-D1L" firstAttribute="centerY" secondItem="qeP-oi-EM6" secondAttribute="centerY" constant="98.5" id="Gsa-AC-lHj"/>
                             <constraint firstItem="nzn-VS-D1L" firstAttribute="leading" secondItem="uYL-Zt-7Tl" secondAttribute="leading" constant="16" id="Jkw-ct-dZE"/>
                             <constraint firstAttribute="trailing" secondItem="0fF-gF-fHT" secondAttribute="trailing" constant="20" id="NSH-nM-1MB"/>
-                            <constraint firstItem="0fF-gF-fHT" firstAttribute="top" secondItem="nzn-VS-D1L" secondAttribute="bottom" constant="-137" id="OBg-15-lsA"/>
+                            <constraint firstItem="0fF-gF-fHT" firstAttribute="top" secondItem="nzn-VS-D1L" secondAttribute="bottom" constant="-62" id="OBg-15-lsA"/>
                             <constraint firstItem="uYL-Zt-7Tl" firstAttribute="trailing" secondItem="nzn-VS-D1L" secondAttribute="trailing" constant="16" id="ULa-IG-0JG"/>
-                            <constraint firstAttribute="bottom" secondItem="0fF-gF-fHT" secondAttribute="bottom" constant="20" id="e3y-Bx-008"/>
+                            <constraint firstAttribute="bottom" secondItem="0fF-gF-fHT" secondAttribute="bottom" constant="93" id="e3y-Bx-008"/>
                             <constraint firstItem="0fF-gF-fHT" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="uYL-Zt-7Tl" secondAttribute="leading" symbolic="YES" id="g73-Po-Kdf"/>
                         </constraints>
                     </view>
@@ -921,6 +908,9 @@
                                 <buttonConfiguration key="configuration" style="filled" title="Add to Wishlist">
                                     <color key="baseBackgroundColor" systemColor="systemPinkColor"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="addWishlist:" destination="iji-9o-vPx" eventType="touchUpInside" id="vik-Xb-14B"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="P7U-3R-3FG"/>
@@ -1290,11 +1280,11 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="wishlistCell" id="7cM-Wa-qkn">
-                                <rect key="frame" x="0.0" y="50" width="393" height="43.666667938232422"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="wishlistCell" rowHeight="48" id="7cM-Wa-qkn">
+                                <rect key="frame" x="0.0" y="50" width="393" height="48"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="7cM-Wa-qkn" id="iYE-JZ-Iad">
-                                    <rect key="frame" x="0.0" y="0.0" width="393" height="43.666667938232422"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="393" height="48"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -1319,7 +1309,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" id="Keh-1S-EAJ">
-                                <rect key="frame" x="-3" y="-1" width="396" height="851"/>
+                                <rect key="frame" x="-5" y="-2" width="396" height="851"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eNG-H8-XEZ">
@@ -1504,7 +1494,7 @@
                                 </prototypes>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vgM-RW-Sc3">
-                                <rect key="frame" x="103" y="530" width="187" height="35"/>
+                                <rect key="frame" x="103" y="478" width="187" height="35"/>
                                 <color key="tintColor" systemColor="systemPinkColor"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Select Date and Time">
@@ -1711,7 +1701,6 @@
         <image name="bubble.left.fill" catalog="system" width="128" height="110"/>
         <image name="calendar" catalog="system" width="128" height="107"/>
         <image name="figure.2.and.child.holdinghands" catalog="system" width="128" height="90"/>
-        <image name="heart" catalog="system" width="128" height="107"/>
         <image name="heart.fill" catalog="system" width="128" height="107"/>
         <image name="location.fill" catalog="system" width="128" height="119"/>
         <image name="pawprint.fill" catalog="system" width="128" height="112"/>

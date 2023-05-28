@@ -6,15 +6,39 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseFirestore
 
-class WishListTableViewController: UITableViewController {
+class WishListTableViewController: UITableViewController, DatabaseListener {
     
+    func onAllRemindersChange(change: DatabaseChange, reminders: [Reminder]) {
+        // do nothing
+    }
+    
+    func onAllWishlistChange(change: DatabaseChange, wishlist: [Int]) {
+        savedID = wishlist
+        tableView.reloadData()
+    }
+    
+    //@IBOutlet weak var petImage: UIImageView!
+    
+    var listenerType = ListenerType.wishlist
+    var imageCircle = UIImageView(frame: CGRectMake(0, 0, 100, 100))
+    
+    var savedID: [Int] = []
+    var savedList: [Animal] = []
+    var database: Firestore?
+    var authController: Auth?
+    var usersRef: DocumentReference?
+    weak var databaseController: DatabaseProtocol?
+    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
-
+        
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
         self.navigationController?.navigationBar.largeTitleTextAttributes = [.foregroundColor: UIColor.systemPink]
@@ -22,10 +46,43 @@ class WishListTableViewController: UITableViewController {
         self.navigationController?.navigationBar.backgroundColor = .white
         navigationController?.navigationBar.prefersLargeTitles = true
         
+        let appDelegate = UIApplication.shared.delegate as? AppDelegate
+        databaseController = appDelegate?.databaseController
+        
+        database = Firestore.firestore()
+        authController = Auth.auth()
+        
+        Task {
+            do {
+                let token = try await APIService.shared.getAccessToken()
+                let accToken = token.accessToken
+                
+                for intID in savedID {
+                    let savedPet = try await APIService.shared.searchbyID(token: accToken, animalID: intID)
+                    self.savedList.append(savedPet)
+                }
+            }
+        }
+//
+//        petImage.contentMode = UIView.ContentMode.scaleAspectFill
+//        petImage.layer.cornerRadius = imageCircle.frame.size.height / 2
+//        petImage.layer.masksToBounds = false
+//        petImage.clipsToBounds = true
+        
+  
     }
     
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        databaseController?.addListener(listener: self)
+        tableView.reloadData()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        databaseController?.removeListener(listener: self)
+        tableView.reloadData()
         navigationController?.navigationBar.backgroundColor = .systemPink
     }
     
@@ -33,23 +90,25 @@ class WishListTableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return savedList.count
     }
 
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
+        let cell = tableView.dequeueReusableCell(withIdentifier: "wishlistCell", for: indexPath)
+        let pet = savedList[indexPath.row]
+        var content = cell.defaultContentConfiguration()
+        content.text = pet.name
+        content.secondaryText = "\(String(describing: pet.type!)) - \(String(describing: (pet.breeds?.primary)!))"
+        cell.contentConfiguration = content
         return cell
     }
-    */
+    
 
     /*
     // Override to support conditional editing of the table view.

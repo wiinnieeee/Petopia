@@ -88,8 +88,7 @@ class MarketplaceViewController: UIViewController, UICollectionViewDelegate, UIC
         
         
         navigationItem.largeTitleDisplayMode = .never
-        
-        //navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+    
         authController = Auth.auth()
         
         searchBar.searchTextField.backgroundColor = .white
@@ -244,15 +243,15 @@ class MarketplaceViewController: UIViewController, UICollectionViewDelegate, UIC
             if let indexPath = petsCollection.indexPathsForSelectedItems?.first {
                 let destination = segue.destination as? ViewPetViewController
                 let petSelected = filteredPets[indexPath.row]
+                destination?.animal = petSelected
                 destination?.imageURL = petSelected.photos![0].full!
                 destination?.nameText = petSelected.name!
                 destination?.breedText = (petSelected.breeds?.primary)!
                 destination?.ageText = petSelected.age!
                 destination?.genderText = petSelected.gender!
                 destination?.vaccText = petSelected.status!
-                destination?.descText = petSelected.description!
+                destination?.descText = petSelected.description ?? ""
                 destination?.emailText = (petSelected.contact?.email!)!
-                print(petSelected.description!)
                 
             }
         }

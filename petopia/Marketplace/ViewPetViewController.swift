@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseFirestore
 
 class ViewPetViewController: UIViewController {
 
@@ -19,6 +21,11 @@ class ViewPetViewController: UIViewController {
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
     
+    @IBAction func addWishlist(_ sender: Any) {
+        databaseController?.addAnimaltoWishlist(newAnimal: animal)
+    }
+     
+    var animal: Animal?
     var imageURL: String = ""
     var nameText: String = ""
     var breedText: String = ""
@@ -28,6 +35,8 @@ class ViewPetViewController: UIViewController {
     var descText: String = ""
     var emailText: String = ""
     var phoneText: String = ""
+    
+    weak var databaseController: DatabaseProtocol?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -68,6 +77,8 @@ class ViewPetViewController: UIViewController {
         descriptionLabel.text = descText
         emailLabel.text = emailText
         
+        let appDelegate = UIApplication.shared.delegate as? AppDelegate
+        databaseController = appDelegate?.databaseController
     }
     
 

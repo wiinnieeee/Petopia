@@ -20,7 +20,10 @@ class FirebaseController: NSObject, DatabaseProtocol {
     var remindersRef: CollectionReference?
     var reminderList : [Reminder]
     
-    // usersRef.document(userID).collections
+    var usersRef: CollectionReference?
+    var wishlistList: [Int]
+    
+    var currentUser: User?
     
     var registerSuccessful: Bool = false
     
@@ -31,12 +34,15 @@ class FirebaseController: NSObject, DatabaseProtocol {
         authController = Auth.auth()
         database = Firestore.firestore()
         reminderList = [Reminder]()
+        wishlistList = [Int]()
         remindersRef = database.collection("users").document("\(String(describing: authController.currentUser?.uid))").collection("reminders")
+        usersRef = database.collection("users")
         
         super.init()
         
         if authController.currentUser != nil{
             self.setupRemindersListener()
+            self.setupWishlistListener()
         }
     }
     
@@ -48,6 +54,9 @@ class FirebaseController: NSObject, DatabaseProtocol {
         listeners.addDelegate(listener)
         if listener.listenerType == .reminders || listener.listenerType == .all {
             listener.onAllRemindersChange(change: .update, reminders: reminderList)
+        }
+        if listener.listenerType == .wishlist || listener.listenerType == .all {
+            listener.onAllWishlistChange (change: .update, wishlist: wishlistList)
         }
     }
     
@@ -67,6 +76,7 @@ class FirebaseController: NSObject, DatabaseProtocol {
             isSuccessful = true
             UserDefaults.standard.set(email, forKey: "email")
             self.setupRemindersListener()
+            self.setupWishlistListener()
             
         } catch {
             print ("User creation failed with error: \(String(describing: error))")
@@ -83,6 +93,7 @@ class FirebaseController: NSObject, DatabaseProtocol {
             isSuccessful = true
             UserDefaults.standard.set(email, forKey: "email")
             self.setupRemindersListener()
+            self.setupWishlistListener()
             
         }
         catch {
@@ -153,12 +164,13 @@ class FirebaseController: NSObject, DatabaseProtocol {
             }
         }
     }
+
+    
     
     func setupRemindersListener() {
         remindersRef!.addSnapshotListener() {
             (querySnapshot, error) in
             
-            // closure executed asynchroously at some later point, continue to execute every single time a change detected on Superheroes collection
             // inside closure, ensure snapshot valid but not just a nil value
             // if nil, need to return immediately
             
@@ -167,11 +179,30 @@ class FirebaseController: NSObject, DatabaseProtocol {
                 return
             }
             
-            // if valid, we call the parseHeroesSnapshot to handle parsing changes made on Firestore
+            // if valid, we call the parseRemindersSnapshot to handle parsing changes made on Firestore
             self.parseRemindersSnapshot(snapshot: querySnapshot)
         }
     }
     
+    func setupWishlistListener() {
+        if let userEmail = Auth.auth().currentUser?.email {
+            self.usersRef!.whereField("emailAdd", isEqualTo: userEmail).addSnapshotListener(){
+                (querySnapshot, error) in
+                
+                // closure executed asynchroously at some later point, continue to execute every single time a change detected on Superheroes collection
+                // inside closure, ensure snapshot valid but not just a nil value
+                // if nil, need to return immediately
+                
+                guard let querySnapshot = querySnapshot, let wishlistSnapshot = querySnapshot.documents.first else {
+                    print ("Failed to fetch users with error: \(String(describing: error))")
+                    return
+                }
+                
+                // if valid, we call the parseHeroesSnapshot to handle parsing changes made on Firestore
+                self.parseWishlistSnapshot(snapshot: wishlistSnapshot)
+            }
+        }
+    }
     
     func parseRemindersSnapshot (snapshot: QuerySnapshot){
         // create for-each loop togo through each document change in snapshot
@@ -212,6 +243,21 @@ class FirebaseController: NSObject, DatabaseProtocol {
                 if listener.listenerType == ListenerType.reminders || listener.listenerType == ListenerType.all {
                     listener.onAllRemindersChange(change: .update, reminders: reminderList)
                 }
+            }
+        }
+    }
+    
+    func parseWishlistSnapshot (snapshot: QueryDocumentSnapshot){
+        if let intArr = snapshot.data()["wishlist"] as? [Int] {
+            for intID in intArr {
+                wishlistList.append(intID)
+            }
+        }
+        
+
+        listeners.invoke { (listener) in
+            if listener.listenerType == ListenerType.wishlist || listener.listenerType == ListenerType.all {
+                listener.onAllWishlistChange (change: .update, wishlist: wishlistList)
             }
         }
     }

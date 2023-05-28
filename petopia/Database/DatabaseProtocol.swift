@@ -16,14 +16,14 @@ enum DatabaseChange{
 
 enum ListenerType {
     case all
-    case pets
-    case profile
     case reminders
+    case wishlist
 }
 
 protocol DatabaseListener: AnyObject {
     var listenerType: ListenerType {get set}   
     func onAllRemindersChange (change: DatabaseChange, reminders: [Reminder])
+    func onAllWishlistChange (change: DatabaseChange, wishlist: [Int])
 
 }
 
@@ -42,5 +42,9 @@ protocol DatabaseProtocol: AnyObject {
     func deleteReminder (reminder: Reminder?)
     
     var registerSuccessful: Bool {get set}
+    
+    func addAnimaltoWishlist(newAnimal: Animal?)
+    func removeAnimalfromWishlist (animal: Animal?)
+    
 
 }
