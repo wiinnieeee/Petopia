@@ -35,7 +35,7 @@ class FirebaseController: NSObject, DatabaseProtocol {
         database = Firestore.firestore()
         reminderList = [Reminder]()
         wishlistList = [Int]()
-        remindersRef = database.collection("users").document("\(String(describing: authController.currentUser?.uid))").collection("reminders")
+        remindersRef = database.collection("users").document("\((authController.currentUser?.uid)!)").collection("reminders")
         usersRef = database.collection("users")
         
         super.init()

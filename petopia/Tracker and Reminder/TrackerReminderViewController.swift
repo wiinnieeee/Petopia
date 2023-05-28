@@ -54,13 +54,11 @@ class TrackerReminderViewController: UIViewController, UITableViewDelegate, UITa
         override func viewWillAppear(_ animated: Bool) {
             super.viewWillAppear(animated)
             databaseController?.addListener(listener: self)
-            reminderView.reloadData()
         }
         
         override func viewWillDisappear(_ animated: Bool) {
             super.viewWillDisappear(animated)
             databaseController?.removeListener(listener: self)
-            reminderView.reloadData()
         }
 
                 
