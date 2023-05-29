@@ -13,10 +13,6 @@ class TabbarViewController: UITabBarController {
         super.viewDidLoad()
         navigationItem.hidesBackButton = true
         navigationController?.setNavigationBarHidden(true, animated: true)
-        // navigationController?.navigationBar.tintColor = .systemPink
-
-
-        // Do any additional setup after loading the view.
     }
     
 

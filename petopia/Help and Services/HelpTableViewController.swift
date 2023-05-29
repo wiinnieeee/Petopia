@@ -11,22 +11,27 @@ import FirebaseAuth
 
 let SECTION_NAME = 0
 let SECTION_LISTINGS = 1
-let SECTION_LANGUAGE = 2
-let SECTION_PETSHOPS = 3
-let SECTION_VETS = 4
-let SECTION_ABOUT = 5
-let SECTION_TNC = 6
+let SECTION_PETSHOPS = 2
+let SECTION_VETS = 3
+let SECTION_ABOUT = 4
+let SECTION_TNC = 5
 
 
 class HelpTableViewController: UITableViewController {
     
+    var users : [User] = []
     var user: User = User()
     var currentUser = Auth.auth().currentUser
-    var collectionRef: CollectionReference?
+    var usersRef: CollectionReference?
+    
+    weak var databaseController: DatabaseProtocol?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.reloadData()
+        let appDelegate = UIApplication.shared.delegate as?AppDelegate
+        databaseController = appDelegate?.databaseController
+        usersRef = Firestore.firestore().collection("users")
     }
     
 
@@ -47,8 +52,8 @@ class HelpTableViewController: UITableViewController {
         if indexPath.section == SECTION_NAME {
             let cell = tableView.dequeueReusableCell(withIdentifier: "profileCell", for: indexPath)
             var content = cell.defaultContentConfiguration()
-            
-            content.text = currentUser?.email
+            content.text = "My Profile"
+            content.secondaryText = currentUser?.email
             cell.contentConfiguration = content
             return cell
         }
@@ -62,12 +67,6 @@ class HelpTableViewController: UITableViewController {
             let cell = tableView.dequeueReusableCell(withIdentifier: "petShopCell", for: indexPath)
             var content = cell.defaultContentConfiguration()
             content.text = "Nearby Pet Shops"
-            cell.contentConfiguration = content
-            return cell
-        } else if indexPath.section == SECTION_LANGUAGE {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "petShopCell", for: indexPath)
-            var content = cell.defaultContentConfiguration()
-            content.text = "Languages"
             cell.contentConfiguration = content
             return cell
         } else if indexPath.section == SECTION_VETS {

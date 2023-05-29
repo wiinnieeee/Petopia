@@ -35,12 +35,13 @@ class FirebaseController: NSObject, DatabaseProtocol {
         database = Firestore.firestore()
         reminderList = [Reminder]()
         wishlistList = [Int]()
-        remindersRef = database.collection("users").document("\((authController.currentUser?.uid)!)").collection("reminders")
+        
         usersRef = database.collection("users")
         
         super.init()
         
         if authController.currentUser != nil{
+            remindersRef = database.collection("users").document("\((authController.currentUser?.uid)!)").collection("reminders")
             self.setupRemindersListener()
             self.setupWishlistListener()
         }
@@ -92,6 +93,7 @@ class FirebaseController: NSObject, DatabaseProtocol {
         {   _ = try await authController.signIn(withEmail: email, password: password)
             isSuccessful = true
             UserDefaults.standard.set(email, forKey: "email")
+            remindersRef = database.collection("users").document("\((authController.currentUser?.uid)!)").collection("reminders")
             self.setupRemindersListener()
             self.setupWishlistListener()
             
