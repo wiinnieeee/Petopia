@@ -16,6 +16,7 @@ let BIRD_SELECTION = 4
 
 class MarketplaceViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UISearchBarDelegate {
     
+    
     // dog, cat, small-furry, rabbit, bird
     
     weak var databaseController: DatabaseProtocol?
@@ -28,29 +29,21 @@ class MarketplaceViewController: UIViewController, UICollectionViewDelegate, UIC
     var imageURL: String = ""
     
     let PET_CELL = "petsCell"
-    
+
     @IBOutlet weak var petsCollection: UICollectionView!
-    @IBOutlet weak var addListing: UIButton!
     
-    @IBAction func logoutButton(_ sender: Any) {
-        databaseController?.signOutAccount()
-        self.performSegue(withIdentifier: "unwindToLogin", sender: self)
-        
-    }
-    
-    @IBAction func chooseType(_ segmentedControl: UISegmentedControl ) {
-        if segmentedControl.selectedSegmentIndex == DOG_SELECTION {
+    func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
+        if selectedScope == DOG_SELECTION {
             typeQuery = "dog"
-        } else if segmentedControl.selectedSegmentIndex == CAT_SELECTION {
+        } else if selectedScope == CAT_SELECTION {
             typeQuery = "cat"
-        } else if segmentedControl.selectedSegmentIndex == SMALL_FURY_SELECTION {
+        } else if selectedScope == SMALL_FURY_SELECTION {
             typeQuery = "small-furry"
-        } else if segmentedControl.selectedSegmentIndex == RABBIT_SELECTION {
+        } else if selectedScope == RABBIT_SELECTION {
             typeQuery = "rabbit"
-        } else if segmentedControl.selectedSegmentIndex == BIRD_SELECTION {
+        } else if selectedScope == BIRD_SELECTION {
             typeQuery = "bird"
         }
-        
         Task {
             do {
                 let token = try await APIService.shared.getAccessToken()
@@ -77,21 +70,22 @@ class MarketplaceViewController: UIViewController, UICollectionViewDelegate, UIC
         let appDelegate = UIApplication.shared.delegate as? AppDelegate
         databaseController = appDelegate?.databaseController
         
-        //self.petsCollection.dataSource = self
-        //self.petsCollection.delegate = self
-        
         navigationItem.hidesBackButton = true
-        navigationController?.navigationBar.barTintColor = UIColor.white
-        navigationController?.navigationBar.tintColor = UIColor.white
-        navigationController?.navigationBar.backgroundColor = UIColor.systemPink
-        addListing.contentMode = .scaleAspectFit
-        
-        
-        navigationItem.largeTitleDisplayMode = .never
     
         authController = Auth.auth()
         
-        searchBar.searchTextField.backgroundColor = .white
+        let searchController = UISearchController(searchResultsController: nil)
+        searchController.searchBar.delegate = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "Search for pets"
+        searchController.searchBar.showsCancelButton = true
+        searchController.searchBar.tintColor = .systemPink
+        searchController.searchBar.showsScopeBar = true
+        searchController.searchBar.scopeButtonTitles = ["Dogs", "Cats", "Hamsters", "Rabbits", "Birds"]
+        
+        navigationItem.searchController = searchController
+        navigationItem.hidesSearchBarWhenScrolling = false
+        
         
         Task {
             do {
@@ -138,6 +132,8 @@ class MarketplaceViewController: UIViewController, UICollectionViewDelegate, UIC
         self.petsCollection.reloadData()
     }
     
+
+    
     lazy var cacheDirectoryPath: URL = {
         let cacheDirectoryPaths = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask)
         return cacheDirectoryPaths[0]
@@ -145,7 +141,6 @@ class MarketplaceViewController: UIViewController, UICollectionViewDelegate, UIC
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationController?.navigationBar.backgroundColor = UIColor.systemPink
         typeQuery = "dog"
     }
     
@@ -251,7 +246,7 @@ class MarketplaceViewController: UIViewController, UICollectionViewDelegate, UIC
                 destination?.genderText = petSelected.gender!
                 destination?.vaccText = petSelected.status!
                 destination?.descText = petSelected.description ?? ""
-                destination?.emailText = (petSelected.contact?.email!)!
+                destination?.emailText = (petSelected.contact?.email ?? "")!
                 
             }
         }

@@ -76,6 +76,7 @@ class FirebaseController: NSObject, DatabaseProtocol {
             self.addUser(emailAdd: email, name: name, phoneNumber: phoneNumber, streetAdd: streetAdd, postCode: postCode, suburb: suburb, country: country)
             isSuccessful = true
             UserDefaults.standard.set(email, forKey: "email")
+            remindersRef = database.collection("users").document("\((authController.currentUser?.uid)!)").collection("reminders")
             self.setupRemindersListener()
             self.setupWishlistListener()
             

@@ -16,14 +16,13 @@ class ViewPetShopViewController: UIViewController{
     
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var hpLabel: UILabel!
-    @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var distanceLabel: UILabel!
     @IBOutlet weak var websiteLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        nameLabel.text = selectedPlace?.name!
+        navigationItem.title = selectedPlace?.name!
         hpLabel.text = selectedPlace?.phoneNumber!
         distanceLabel.text = selectedPlace?.distanceFromUser
         websiteLabel.text = selectedPlace?.url?.absoluteString

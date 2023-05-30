@@ -41,6 +41,9 @@ class ViewPetViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        petImageView.layer.cornerRadius = 1
+        petImageView.clipsToBounds = true
+        
         let requestURL = URL(string: imageURL)
             if let requestURL {
                 Task {
@@ -69,13 +72,12 @@ class ViewPetViewController: UIViewController {
             }
 
         // Do any additional setup after loading the view.
-        nameLabel.text = nameText
-        typeBreedLabel.text = breedText
-        ageLabel.text = ageText
+        ageLabel.text =  ageText
         genderLabel.text = genderText
         vaccLabel.text = vaccText
         descriptionLabel.text = descText
-        emailLabel.text = emailText
+        
+        navigationItem.title = nameText
         
         let appDelegate = UIApplication.shared.delegate as? AppDelegate
         databaseController = appDelegate?.databaseController

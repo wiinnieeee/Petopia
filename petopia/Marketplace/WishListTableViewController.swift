@@ -36,16 +36,6 @@ class WishListTableViewController: UITableViewController, DatabaseListener {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-        
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
-        self.navigationController?.navigationBar.largeTitleTextAttributes = [.foregroundColor: UIColor.systemPink]
-        self.navigationController?.navigationBar.tintColor = .systemPink
-        self.navigationController?.navigationBar.backgroundColor = .white
-        navigationController?.navigationBar.prefersLargeTitles = true
-        
         let appDelegate = UIApplication.shared.delegate as? AppDelegate
         databaseController = appDelegate?.databaseController
         
@@ -83,7 +73,6 @@ class WishListTableViewController: UITableViewController, DatabaseListener {
         super.viewWillDisappear(animated)
         databaseController?.removeListener(listener: self)
         tableView.reloadData()
-        navigationController?.navigationBar.backgroundColor = .systemPink
     }
     
     // MARK: - Table view data source
@@ -104,7 +93,7 @@ class WishListTableViewController: UITableViewController, DatabaseListener {
         let pet = savedList[indexPath.row]
         var content = cell.defaultContentConfiguration()
         content.text = pet.name
-        content.secondaryText = "\(String(describing: pet.type!)) - \(String(describing: (pet.breeds?.primary)!))"
+        //content.secondaryText = "\(String(describing: (pet.type)!)) - \(String(describing: (pet.breeds?.primary)!))"
         cell.contentConfiguration = content
         return cell
     }

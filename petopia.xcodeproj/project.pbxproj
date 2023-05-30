@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		101B73AC2A26167100D3B609 /* PetopiaUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101B73AB2A26167100D3B609 /* PetopiaUserDefaults.swift */; };
+		101B73B12A261F2700D3B609 /* ViewModeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101B73AF2A261F2700D3B609 /* ViewModeTableViewCell.swift */; };
+		101B73B22A261F2700D3B609 /* ViewModeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 101B73B02A261F2700D3B609 /* ViewModeTableViewCell.xib */; };
 		102844EF2A02834B0012AA69 /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 102844EE2A02834B0012AA69 /* LocationViewController.swift */; };
 		102844F12A0284670012AA69 /* LocationAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 102844F02A0284670012AA69 /* LocationAnnotation.swift */; };
 		10441FA42A0B2DD400FE269E /* NewListingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10441FA32A0B2DD400FE269E /* NewListingViewController.swift */; };
@@ -81,6 +84,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		101B73AB2A26167100D3B609 /* PetopiaUserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetopiaUserDefaults.swift; sourceTree = "<group>"; };
+		101B73AF2A261F2700D3B609 /* ViewModeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModeTableViewCell.swift; sourceTree = "<group>"; };
+		101B73B02A261F2700D3B609 /* ViewModeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ViewModeTableViewCell.xib; sourceTree = "<group>"; };
 		102844EE2A02834B0012AA69 /* LocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
 		102844F02A0284670012AA69 /* LocationAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationAnnotation.swift; sourceTree = "<group>"; };
 		10441FA32A0B2DD400FE269E /* NewListingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewListingViewController.swift; sourceTree = "<group>"; };
@@ -277,6 +283,8 @@
 				107329332A24993C00D4BD14 /* ViewPetShopViewController.swift */,
 				107329372A24A67000D4BD14 /* NearbyVetsTableViewController.swift */,
 				107329392A24A6C400D4BD14 /* ViewVetsViewController.swift */,
+				101B73AF2A261F2700D3B609 /* ViewModeTableViewCell.swift */,
+				101B73B02A261F2700D3B609 /* ViewModeTableViewCell.xib */,
 			);
 			path = "Help and Services";
 			sourceTree = "<group>";
@@ -315,6 +323,7 @@
 				10AE026129EB8F4C00B82918 /* LaunchScreen.storyboard */,
 				10AE026429EB8F4C00B82918 /* Info.plist */,
 				10AE025C29EB8F4B00B82918 /* petopia.xcdatamodeld */,
+				101B73AB2A26167100D3B609 /* PetopiaUserDefaults.swift */,
 			);
 			path = petopia;
 			sourceTree = "<group>";
@@ -393,6 +402,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				10AE026329EB8F4C00B82918 /* LaunchScreen.storyboard in Resources */,
+				101B73B22A261F2700D3B609 /* ViewModeTableViewCell.xib in Resources */,
 				10CBC3C529F7A49600049813 /* GoogleService-Info.plist in Resources */,
 				10AE026029EB8F4C00B82918 /* Assets.xcassets in Resources */,
 				10AE025B29EB8F4B00B82918 /* Main.storyboard in Resources */,
@@ -413,6 +423,7 @@
 				1058CFA029F8F3E80069B5FA /* FirebaseController.swift in Sources */,
 				105C301D2A121C47004FD54A /* Photos.swift in Sources */,
 				105C301B2A121BD4004FD54A /* Environment.swift in Sources */,
+				101B73AC2A26167100D3B609 /* PetopiaUserDefaults.swift in Sources */,
 				10F43EF129FA1D940065E8DD /* TabbarViewController.swift in Sources */,
 				10441FAD2A0B360E00FE269E /* CameraViewController.swift in Sources */,
 				10F01F362A073B9B00BE677F /* ChatMessage.swift in Sources */,
@@ -460,6 +471,7 @@
 				1058CF9E29F8F2700069B5FA /* DatabaseProtocol.swift in Sources */,
 				10441FAF2A0B3C7D00FE269E /* ImageCollectionViewCell.swift in Sources */,
 				10ADA1992A19E86B0003A8CC /* ViewPetViewController.swift in Sources */,
+				101B73B12A261F2700D3B609 /* ViewModeTableViewCell.swift in Sources */,
 				109D46872A0C99E000E5BD27 /* User.swift in Sources */,
 				107427012A08DB540077A295 /* Date+Today.swift in Sources */,
 				102844F12A0284670012AA69 /* LocationAnnotation.swift in Sources */,

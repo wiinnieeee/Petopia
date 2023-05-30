@@ -32,7 +32,6 @@ class LocationViewController: UIViewController, SearchViewControllerDelegate {
         panel.set(contentViewController: searchVC)
         panel.addPanel(toParent: self)
         
-        navigationController?.navigationBar.backgroundColor = .systemPink
         navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
         navigationItem.largeTitleDisplayMode = .never
         
