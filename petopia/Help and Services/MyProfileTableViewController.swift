@@ -1,107 +1,119 @@
 //
-//  WishListTableViewController.swift
+//  MyProfileTableViewController.swift
 //  petopia
 //
-//  Created by Winnie Ooi on 27/4/2023.
+//  Created by Winnie Ooi on 31/5/2023.
 //
 
 import UIKit
-import Firebase
+import FirebaseAuth
 import FirebaseFirestore
 
-class WishListTableViewController: UITableViewController, DatabaseListener {
-    func onUserChange(change: DatabaseChange, user: User) {
-        // do nothing
-    }
+
+class MyProfileTableViewController: UITableViewController, DatabaseListener {
     
+    let SECTION_USERNAME = 0
+    let SECTION_EMAIL = 1
+    let SECTION_PHONENUMBER = 2
+    let SECTION_ADDRESS = 3
+    let SECTION_LOGOUT = 4
+
+    var listenerType: ListenerType = ListenerType.users
     
     func onAllRemindersChange(change: DatabaseChange, reminders: [Reminder]) {
         // do nothing
     }
     
     func onAllWishlistChange(change: DatabaseChange, wishlist: [Int]) {
-        savedID = wishlist
+        // do nothing
+    }
+    
+    func onUserChange(change: DatabaseChange, user: User) {
+        currentUser = user
         tableView.reloadData()
     }
     
-    //@IBOutlet weak var petImage: UIImageView!
     
-    var listenerType = ListenerType.wishlist
-    var imageCircle = UIImageView(frame: CGRectMake(0, 0, 100, 100))
-    
-    var savedID: [Int] = []
-    var savedList: [Animal] = []
-    var database: Firestore?
-    var authController: Auth?
-    var usersRef: DocumentReference?
     weak var databaseController: DatabaseProtocol?
+    var db = Firestore.firestore()
+    var currentUser: User = User()
     
-
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let appDelegate = UIApplication.shared.delegate as? AppDelegate
+        
+        // Uncomment the following line to preserve selection between presentations
+        // self.clearsSelectionOnViewWillAppear = false
+        
+        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        
+        let appDelegate = UIApplication.shared.delegate as?AppDelegate
         databaseController = appDelegate?.databaseController
+
         
-        database = Firestore.firestore()
-        authController = Auth.auth()
-        
-        Task {
-            do {
-                let token = try await APIService.shared.getAccessToken()
-                let accToken = token.accessToken
-                
-                for intID in savedID {
-                    let savedPet = try await APIService.shared.searchbyID(token: accToken, animalID: intID)
-                    self.savedList.append(savedPet)
-                }
-            }
-        }
-//
-//        petImage.contentMode = UIView.ContentMode.scaleAspectFill
-//        petImage.layer.cornerRadius = imageCircle.frame.size.height / 2
-//        petImage.layer.masksToBounds = false
-//        petImage.clipsToBounds = true
-        
-  
+        tableView.reloadData()
     }
-    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         databaseController?.addListener(listener: self)
-        tableView.reloadData()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         databaseController?.removeListener(listener: self)
-        tableView.reloadData()
     }
-    
+
+
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 1
+        return 5
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return savedList.count
+        return 1
     }
 
-    
+  
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "wishlistCell", for: indexPath)
-        let pet = savedList[indexPath.row]
-        var content = cell.defaultContentConfiguration()
-        content.text = pet.name
-        //content.secondaryText = "\(String(describing: (pet.type)!)) - \(String(describing: (pet.breeds?.primary)!))"
-        cell.contentConfiguration = content
-        return cell
+        if indexPath.section == SECTION_USERNAME {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "userNameCell", for: indexPath)
+            cell.textLabel?.text = "Username"
+            cell.detailTextLabel?.text = currentUser.name
+            return cell
+        } else if indexPath.section == SECTION_EMAIL {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "emailCell", for: indexPath)
+            cell.textLabel?.text = "Email Address"
+            cell.detailTextLabel?.text = currentUser.email
+            return cell
+        } else if indexPath.section == SECTION_PHONENUMBER {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "phoneCell", for: indexPath)
+            cell.textLabel?.text = "Phone Number"
+            cell.detailTextLabel?.text = currentUser.phoneNumber
+            return cell
+        } else if indexPath.section == SECTION_ADDRESS {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "addressCell", for: indexPath)
+            cell.textLabel?.text = "Address"
+            cell.detailTextLabel?.text = currentUser.address
+            return cell
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "logOutCell", for: indexPath)
+            cell.textLabel?.text = "Log Out"
+            return cell
+        }
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.section ==  SECTION_LOGOUT {
+            databaseController?.signOutAccount()
+            self.performSegue(withIdentifier: "unwindToLogin", sender: self)
+        }
+    }
+   
 
     /*
     // Override to support conditional editing of the table view.

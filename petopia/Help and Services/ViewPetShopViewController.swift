@@ -9,7 +9,7 @@ import UIKit
 import CoreLocation
 import MapKit
 
-class ViewPetShopViewController: UIViewController{
+class ViewPetShopViewController: UIViewController, MKMapViewDelegate{
     
     var selectedPlace: Place?
     var userLoc: CLLocation?
@@ -30,6 +30,9 @@ class ViewPetShopViewController: UIViewController{
         focusOn(annotation: (selectedPlace?.annotation)!)
         
         mapView.isZoomEnabled = true
+        mapView.delegate = self
+        
+        mapRoute(origin: userLoc!.coordinate, destination: (selectedPlace?.coordinates!.coordinate)!)
     }
 
     
@@ -43,6 +46,32 @@ class ViewPetShopViewController: UIViewController{
         let userAnnotation = LocationAnnotation(title: "You are here", lat: (userLoc?.coordinate.latitude)!, long: (userLoc?.coordinate.longitude)!)
         mapView.addAnnotation(userAnnotation)
         
+    }
+    
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+         let renderer = MKPolylineRenderer(overlay: overlay)
+         renderer.strokeColor = UIColor.systemPink
+         renderer.lineWidth = 5.0
+         return renderer
+    }
+    
+    func mapRoute (origin: CLLocationCoordinate2D, destination: CLLocationCoordinate2D) {
+        let request = MKDirections.Request()
+        request.source = MKMapItem(placemark: MKPlacemark(coordinate: origin))
+        request.destination = MKMapItem(placemark: MKPlacemark(coordinate: destination))
+        request.requestsAlternateRoutes = true
+        request.transportType = .automobile
+        
+        let directions = MKDirections(request: request)
+        directions.calculate { [unowned self] response, error in
+            guard let unwrappedResponse = response else {
+                return
+            }
+            if let route = unwrappedResponse.routes.first {
+                self.mapView.addOverlay(route.polyline)
+                self.mapView.setVisibleMapRect(route.polyline.boundingMapRect, edgePadding: UIEdgeInsets.init(top: 80.0, left: 20.0, bottom: 100.0, right: 20.0), animated: true)
+            }
+        }
     }
     
 

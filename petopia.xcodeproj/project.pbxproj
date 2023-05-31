@@ -10,6 +10,7 @@
 		101B73AC2A26167100D3B609 /* PetopiaUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101B73AB2A26167100D3B609 /* PetopiaUserDefaults.swift */; };
 		101B73B12A261F2700D3B609 /* ViewModeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101B73AF2A261F2700D3B609 /* ViewModeTableViewCell.swift */; };
 		101B73B22A261F2700D3B609 /* ViewModeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 101B73B02A261F2700D3B609 /* ViewModeTableViewCell.xib */; };
+		102346DC2A275A6700844090 /* AboutAppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 102346DB2A275A6700844090 /* AboutAppViewController.swift */; };
 		102844EF2A02834B0012AA69 /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 102844EE2A02834B0012AA69 /* LocationViewController.swift */; };
 		102844F12A0284670012AA69 /* LocationAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 102844F02A0284670012AA69 /* LocationAnnotation.swift */; };
 		10441FA42A0B2DD400FE269E /* NewListingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10441FA32A0B2DD400FE269E /* NewListingViewController.swift */; };
@@ -48,6 +49,7 @@
 		107427012A08DB540077A295 /* Date+Today.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107427002A08DB540077A295 /* Date+Today.swift */; };
 		107427052A08E0610077A295 /* TrackerReminderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107427042A08E0610077A295 /* TrackerReminderViewController.swift */; };
 		1074270B2A08EEE10077A295 /* DetailReminderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1074270A2A08EEE10077A295 /* DetailReminderViewController.swift */; };
+		1077770F2A2734BD00D7684F /* MyProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1077770E2A2734BD00D7684F /* MyProfileTableViewController.swift */; };
 		1090732D2A1DB5C700930C3A /* Wishlist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1090732C2A1DB5C700930C3A /* Wishlist.swift */; };
 		1097B5A92A10C93400E56B03 /* APIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1097B5A82A10C93400E56B03 /* APIConstants.swift */; };
 		1097B5AB2A10CA4A00E56B03 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1097B5AA2A10CA4A00E56B03 /* NetworkError.swift */; };
@@ -87,6 +89,7 @@
 		101B73AB2A26167100D3B609 /* PetopiaUserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetopiaUserDefaults.swift; sourceTree = "<group>"; };
 		101B73AF2A261F2700D3B609 /* ViewModeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModeTableViewCell.swift; sourceTree = "<group>"; };
 		101B73B02A261F2700D3B609 /* ViewModeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ViewModeTableViewCell.xib; sourceTree = "<group>"; };
+		102346DB2A275A6700844090 /* AboutAppViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutAppViewController.swift; sourceTree = "<group>"; };
 		102844EE2A02834B0012AA69 /* LocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
 		102844F02A0284670012AA69 /* LocationAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationAnnotation.swift; sourceTree = "<group>"; };
 		10441FA32A0B2DD400FE269E /* NewListingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewListingViewController.swift; sourceTree = "<group>"; };
@@ -124,6 +127,7 @@
 		107427002A08DB540077A295 /* Date+Today.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Today.swift"; sourceTree = "<group>"; };
 		107427042A08E0610077A295 /* TrackerReminderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerReminderViewController.swift; sourceTree = "<group>"; };
 		1074270A2A08EEE10077A295 /* DetailReminderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailReminderViewController.swift; sourceTree = "<group>"; };
+		1077770E2A2734BD00D7684F /* MyProfileTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileTableViewController.swift; sourceTree = "<group>"; };
 		1090732C2A1DB5C700930C3A /* Wishlist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wishlist.swift; sourceTree = "<group>"; };
 		1097B5A82A10C93400E56B03 /* APIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConstants.swift; sourceTree = "<group>"; };
 		1097B5AA2A10CA4A00E56B03 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
@@ -277,6 +281,7 @@
 				102844F02A0284670012AA69 /* LocationAnnotation.swift */,
 				107329352A249F7C00D4BD14 /* NewLocationDelegate.swift */,
 				10F43EEA29FA1C900065E8DD /* HelpTableViewController.swift */,
+				1077770E2A2734BD00D7684F /* MyProfileTableViewController.swift */,
 				1073292B2A24730F00D4BD14 /* LocationService.swift */,
 				1073292F2A24814A00D4BD14 /* NearbyPetShopsTableViewController.swift */,
 				107329312A248D1B00D4BD14 /* Place.swift */,
@@ -285,6 +290,7 @@
 				107329392A24A6C400D4BD14 /* ViewVetsViewController.swift */,
 				101B73AF2A261F2700D3B609 /* ViewModeTableViewCell.swift */,
 				101B73B02A261F2700D3B609 /* ViewModeTableViewCell.xib */,
+				102346DB2A275A6700844090 /* AboutAppViewController.swift */,
 			);
 			path = "Help and Services";
 			sourceTree = "<group>";
@@ -430,9 +436,11 @@
 				10441FAB2A0B31B000FE269E /* ImageMetaData+CoreDataProperties.swift in Sources */,
 				10AE026B29EB976300B82918 /* LoginViewController.swift in Sources */,
 				10AE026D29EB99E200B82918 /* RegisterViewController.swift in Sources */,
+				1077770F2A2734BD00D7684F /* MyProfileTableViewController.swift in Sources */,
 				10441FA42A0B2DD400FE269E /* NewListingViewController.swift in Sources */,
 				10441FA72A0B310900FE269E /* ImageModel.xcdatamodeld in Sources */,
 				10AE025429EB8F4B00B82918 /* AppDelegate.swift in Sources */,
+				102346DC2A275A6700844090 /* AboutAppViewController.swift in Sources */,
 				102844EF2A02834B0012AA69 /* LocationViewController.swift in Sources */,
 				10AE025E29EB8F4B00B82918 /* petopia.xcdatamodeld in Sources */,
 				10AE025629EB8F4B00B82918 /* SceneDelegate.swift in Sources */,

@@ -16,7 +16,6 @@ let SECTION_VETS = 3
 let SECTION_ABOUT = 4
 let SECTION_TNC = 5
 let SECTION_LIGHTDARK = 6
-let SECTION_LOGOUT = 7
 
 
 class HelpTableViewController: UITableViewController {
@@ -33,17 +32,16 @@ class HelpTableViewController: UITableViewController {
         tableView.reloadData()
         let appDelegate = UIApplication.shared.delegate as?AppDelegate
         databaseController = appDelegate?.databaseController
-        usersRef = Firestore.firestore().collection("users")
         
         tableView.register(UINib(nibName: "ViewModeTableViewCell", bundle: nil), forCellReuseIdentifier: "viewModeCell")
+        tableView.reloadData()
+        
     }
-    
 
     // MARK: - Table view data source
-
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 8
+        return 7
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -62,7 +60,6 @@ class HelpTableViewController: UITableViewController {
             let cell = tableView.dequeueReusableCell(withIdentifier: "profileCell", for: indexPath)
             var content = cell.defaultContentConfiguration()
             content.text = "My Profile"
-            content.secondaryText = currentUser?.email
             cell.contentConfiguration = content
             return cell
         }
@@ -96,26 +93,13 @@ class HelpTableViewController: UITableViewController {
             content.text = "Terms and Conditions"
             cell.contentConfiguration = content
             return cell
-        } else if indexPath.section == SECTION_LIGHTDARK{
+        } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "viewModeCell", for: indexPath) as! ViewModeTableViewCell
             cell.viewLabel.text = "Viewing Mode"
             return cell
         }
-        else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "logOutCell", for: indexPath)
-            var content = cell.defaultContentConfiguration()
-            content.text = "Log Out"
-            cell.contentConfiguration = content
-            return cell
-        }
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.section ==  SECTION_LOGOUT {
-            databaseController?.signOutAccount()
-            self.performSegue(withIdentifier: "unwindToLogin", sender: self)
-        }
-    }
     
 
     /*

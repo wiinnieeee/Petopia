@@ -10,6 +10,10 @@ import FirebaseFirestore
 import FirebaseAuth
 
 class TrackerReminderViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, DatabaseListener {
+    func onUserChange(change: DatabaseChange, user: User) {
+        // do nothing
+    }
+    
     func onAllWishlistChange(change: DatabaseChange, wishlist: [Int]) {
         // do nothing
     }
@@ -42,7 +46,6 @@ class TrackerReminderViewController: UIViewController, UITableViewDelegate, UITa
         super.viewDidLoad()
         self.reminderView.delegate = self
         self.reminderView.dataSource = self
-        self.navigationItem.largeTitleDisplayMode = .never
         selectButton.tintColor = .systemPink
         
         let appDelegate = UIApplication.shared.delegate as?AppDelegate

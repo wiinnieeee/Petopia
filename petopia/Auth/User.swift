@@ -14,5 +14,8 @@ class User: NSObject, Codable{
     var email: String?
     var wishlistID: [Int]?
     var wishlist: [Animal]?
+    
+    var phoneNumber: String?
+    var address: String?
 }
 

@@ -18,12 +18,14 @@ enum ListenerType {
     case all
     case reminders
     case wishlist
+    case users
 }
 
 protocol DatabaseListener: AnyObject {
     var listenerType: ListenerType {get set}   
     func onAllRemindersChange (change: DatabaseChange, reminders: [Reminder])
     func onAllWishlistChange (change: DatabaseChange, wishlist: [Int])
+    func onUserChange (change: DatabaseChange, user: User)
 
 }
 

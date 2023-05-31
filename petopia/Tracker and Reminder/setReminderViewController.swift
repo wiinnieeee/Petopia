@@ -20,8 +20,7 @@ class setReminderViewController: UIViewController {
     @IBOutlet weak var notesField: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
-        dateFormatter.dateFormat = "MMM dd, yyyy HH:MM"
-        dateFormatter.locale = Locale.current
+        dateFormatter.dateFormat = "MMM dd, yyyy HH:mm"
         navigationItem.largeTitleDisplayMode = .always
         
         navigationItem.title = dateFormatter.string(from: datePicked!)
