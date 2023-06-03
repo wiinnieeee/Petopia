@@ -1,47 +1,32 @@
 //
-//  ViewPetViewController.swift
+//  ViewWishlistViewController.swift
 //  petopia
 //
-//  Created by Winnie Ooi on 21/5/2023.
+//  Created by Winnie Ooi on 1/6/2023.
 //
 
 import UIKit
-import Firebase
+import FirebaseAuth
 import FirebaseFirestore
-import MessageUI
 import FirebaseStorage
+import MessageUI
 
-class ViewPetViewController: UIViewController, MFMailComposeViewControllerDelegate, MFMessageComposeViewControllerDelegate {
-    
-    @IBOutlet weak var typeBreedLabel: UILabel!
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var petImageView: UIImageView!
-    
-    @IBOutlet weak var ageLabel: UILabel!
-    @IBOutlet weak var genderLabel: UILabel!
-    
-    @IBOutlet weak var breedLabel: UILabel!
-    @IBOutlet weak var descriptionLabel: UILabel!
-    @IBOutlet weak var emailLabel: UILabel!
+class ViewWishlistViewController: UIViewController, MFMailComposeViewControllerDelegate, MFMessageComposeViewControllerDelegate {
+    var animal: WishlistAnimal?
     
     weak var databaseController: DatabaseProtocol?
     var db = Firestore.firestore()
-    var isFireBase: Bool = false
+    var isFirebase: Bool? = false
     
-    var animal: ListingAnimal?
+    @IBOutlet weak var petImage: UIImageView!
     
-    @IBAction func addWishlist(_ sender: Any) {
-        let newRow = WishlistAnimal(breed: (animal?.breed)!, age: (animal?.age)!, gender: (animal?.gender)!, name: (animal?.name)!, type: (animal?.type)!, description: animal?.desc ?? "", emailAddress: (animal?.emailAddress)!, phoneNumber: (animal?.phoneNumber)!, imageID: animal?.imageID, imageURL: animal?.imagePath, ownerID: animal?.ownerID)
-        databaseController?.addAnimaltoWishlist(newAnimal: newRow) {isDuplicate in
-            if isDuplicate {
-                let alertController = UIAlertController(title: "Duplicate Entry", message: "This animal is already in the wishlist.", preferredStyle: .alert)
-                alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                self.present(alertController, animated: true, completion: nil)
-            }
-        }
-    }
+    @IBOutlet weak var ageField: UILabel!
+    @IBOutlet weak var genderField: UILabel!
+    @IBOutlet weak var breedLabel: UILabel!
+    @IBOutlet weak var descField: UILabel!
     
-    @IBAction func contactButton(_ sender: Any) {
+    
+    @IBAction func contactAction(_ sender: Any) {
         let usersRef = db.collection("users")
         
         usersRef.getDocuments(){ (querySnapshot, error) in
@@ -50,23 +35,23 @@ class ViewPetViewController: UIViewController, MFMailComposeViewControllerDelega
             } else {
                 for document in querySnapshot!.documents {
                     if self.animal?.emailAddress == document.data()["email"] as? String {
-                        self.isFireBase = true
+                        self.isFirebase = true
                         break
                     }
                 }
             }
         }
         
-        if isFireBase {
+        if isFirebase! {
             // connect to chat controller
         } else {
             let message = " Email: \((animal?.emailAddress ?? "")!)\n Phone number: \((animal?.phoneNumber ?? "" )!)"
             let alert = UIAlertController(title: "Contact Owner", message: message, preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Email owner", style: .default, handler: {action in
-                self.showMailComposer()
+                self.presentMessageComposer()
             }))
             alert.addAction(UIAlertAction(title: "Text owner", style: .default, handler: {action in
-                self.showMessageComposer()
+                self.presentMessageComposer()
             }))
             alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel))
             
@@ -75,15 +60,21 @@ class ViewPetViewController: UIViewController, MFMailComposeViewControllerDelega
             
         }
     }
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        petImageView.layer.cornerRadius = 1
-        petImageView.clipsToBounds = true
+        let appDelegate = UIApplication.shared.delegate as? AppDelegate
+        databaseController = appDelegate?.databaseController
         
-        if animal?.imageID == nil {
-            let imageURL = animal?.imagePath!
+        navigationItem.title = animal?.name
+        ageField.text! = animal!.age
+        genderField.text! = animal!.gender
+        breedLabel.text! = animal!.breed
+        descField.text! = animal!.description
+        
+        if animal?.imageID == "" {
+            let imageURL = animal?.imageURL
             let requestURL = URL(string: imageURL!)
             if let requestURL {
                 Task {
@@ -95,7 +86,7 @@ class ViewPetViewController: UIViewController, MFMailComposeViewControllerDelega
                             throw NetworkError.invalidResponse
                         }
                         if let image = UIImage(data: data) {
-                            petImageView.image = image
+                            petImage.image = image
                         }
                         else {
                             print("Image invalid: " + imageURL!)
@@ -112,51 +103,39 @@ class ViewPetViewController: UIViewController, MFMailComposeViewControllerDelega
             }
         } else {
             let storage = Storage.storage().reference(forURL: "gs://petopiaassg.appspot.com/\(animal!.ownerID!)/\(animal!.imageID!)")
-               
-               storage.getData(maxSize: 15 * 1024 * 1024) { data, error in
-                   if error != nil {
-                       print(error?.localizedDescription ?? "errror")
-                   } else{
-                       let image = UIImage(data: data!)
-                       self.petImageView.image = image
-                       
-                       storage.downloadURL { url, error in
-                           if error != nil {
-                               print(error?.localizedDescription ?? "error")
-                           }else {
-                               print(url ?? "url")
 
-                           }
-                       }
-                   }
-               }
+            storage.getData(maxSize: 15 * 1024 * 1024) { data, error in
+                if error != nil {
+                    print(error?.localizedDescription ?? "error")
+                } else{
+                    let image = UIImage(data: data!)
+                    self.petImage.image = image
+                    
+                    storage.downloadURL { url, error in
+                        if error != nil {
+                            print(error?.localizedDescription ?? "error")
+                        } else {
+                            print(url ?? "url")
+                            
+                        }
+                    }
+                }
+            }
         }
-        
-        ageLabel.text = animal?.age!
-        breedLabel.text = animal?.breed!
-        genderLabel.text = animal?.gender!
-        descriptionLabel.text = animal?.desc
-        
-        descriptionLabel.numberOfLines = 0
-        
-        navigationItem.title = animal?.name!
-        
-        let appDelegate = UIApplication.shared.delegate as? AppDelegate
-        databaseController = appDelegate?.databaseController
     }
-    
-    func showMailComposer() {
+        
+    func presentMailComposer() {
         guard MFMailComposeViewController.canSendMail() else {
             return
         }
-        
+            
         let composer = MFMailComposeViewController()
         composer.mailComposeDelegate = self
         composer.setToRecipients(["\((animal?.emailAddress)!)"])
-        
+            
         present(composer, animated: true)
     }
-    
+            
     func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
         if let _ = error {
             controller.dismiss(animated: true)
@@ -178,20 +157,20 @@ class ViewPetViewController: UIViewController, MFMailComposeViewControllerDelega
         
         controller.dismiss(animated: true)
     }
-    
-    
-    func showMessageComposer() {
+            
+            
+    func presentMessageComposer() {
         guard MFMessageComposeViewController.canSendText() else {
             return
         }
-        
+            
         let composer = MFMessageComposeViewController()
         composer.recipients = [(animal?.phoneNumber)!]
         composer.messageComposeDelegate = self
-        
+            
         present(composer, animated: true)
     }
-    
+        
     func messageComposeViewController(_ controller: MFMessageComposeViewController, didFinishWith result: MessageComposeResult) {
         switch result {
         case .cancelled:
@@ -203,21 +182,18 @@ class ViewPetViewController: UIViewController, MFMailComposeViewControllerDelega
         @unknown default:
             print("Error")
         }
-        controller.dismiss(animated: true
-        )
+        controller.dismiss(animated: true)
     }
-    
-    
-    
-    
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
 }
+    
+
+    /*
+    // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destination.
+        // Pass the selected object to the new view controller.
+    }
+    */
+

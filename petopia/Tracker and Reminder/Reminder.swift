@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import FirebaseFirestoreSwift
 
 struct Reminder: Codable {
     var title: String

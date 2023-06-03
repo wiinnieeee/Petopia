@@ -23,11 +23,7 @@ struct Animal: Codable {
   var videos         : [Videos]?    = []
   var status         : String?      = nil
   var contact        : Contact?     = Contact()
-    
-    // Used to track image downloads:
-    var image: UIImage?
-    var imageIsDownloading: Bool = false
-    var imageShown = true
+   
 
   enum CodingKeys: String, CodingKey {
 

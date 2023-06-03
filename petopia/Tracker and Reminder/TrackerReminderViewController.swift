@@ -10,15 +10,22 @@ import FirebaseFirestore
 import FirebaseAuth
 
 class TrackerReminderViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, DatabaseListener {
+    func onUserListingChange(change: DatabaseChange, userListing: [ListingAnimal]) {
+        // do nothing
+    }
+    
+    func onAllListingChange(change: DatabaseChange, listing: [ListingAnimal]) {
+        // do nothing
+    }
+    
     func onUserChange(change: DatabaseChange, user: User) {
         // do nothing
     }
     
-    func onAllWishlistChange(change: DatabaseChange, wishlist: [Int]) {
+    func onAllWishlistChange(change: DatabaseChange, wishlist: [WishlistAnimal]) {
         // do nothing
     }
     
- 
     var listenerType = ListenerType.reminders
     @IBOutlet weak var calendarPicker: UIDatePicker!
     @IBOutlet weak var reminderView: UITableView!

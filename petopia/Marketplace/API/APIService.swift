@@ -71,35 +71,6 @@ class APIService {
         
         return results.animals
     }
-    
-    func searchbyID(token: String, animalID: Int) async throws -> Animal{
-        let stringID = String(animalID)
-        
-        guard let url = URL(string: "https://api.petfinder.com/v2/animals/\(stringID)") else {
-            throw NetworkError.invalidURL
-        }
-        
-        var urlRequest = URLRequest(url: url)
-        urlRequest.httpMethod = "GET"
-        urlRequest.addValue("Bearer " + token, forHTTPHeaderField: "Authorization")
-        urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        
-        let (data, httpResponse) = try await URLSession.shared.data(for: urlRequest)
-        
-        print(urlRequest)
-        
-        guard let httpResponse = httpResponse as? HTTPURLResponse, httpResponse.statusCode == 200 else {
-            throw NetworkError.invalidResponse
-        }
-        
-        let decoder = JSONDecoder()
-        decoder.keyDecodingStrategy = .convertFromSnakeCase
-        let results = try decoder.decode(Animal.self, from: data)
-        print(results.id)
-        
-        return results
-    }
-    
 }
 
 struct Token: Codable {

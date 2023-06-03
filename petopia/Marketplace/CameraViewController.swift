@@ -6,40 +6,51 @@
 //
 
 import UIKit
-import CoreData
+import Firebase
+import FirebaseStorage
 
 class CameraViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
-    var managedObjectContext: NSManagedObjectContext?
+    var userReference =  Firestore.firestore().collection("users")
+    var storageReference = Storage.storage().reference()
 
     @IBAction func savePhoto(_ sender: Any) {
         guard let image = imageView.image else {
-        displayMessage(title: "Error", message: "Cannot save until an image has been selected!")
-        return
+            displayMessage(title: "Error", message: "Cannot save until an image has been selected!")
+            return
         }
         
         let timestamp = UInt(Date().timeIntervalSince1970)
-        let filename = "\(timestamp).jpg"
+        _ = "\(timestamp).jpg"
         
         guard let data  = image.jpegData(compressionQuality: 0.8) else { displayMessage(title: "Error", message: "Image data could not be compressed")
             return
         }
-        
-        let pathsList = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
-        let documentDirectory = pathsList[0]
-        let imageFile = documentDirectory.appendingPathComponent(filename)
-        
-        do {
-        try data.write(to: imageFile)
-        let imageEntity = NSEntityDescription.insertNewObject(forEntityName: "ImageMetaData", into: managedObjectContext!) as! ImageMetaData
-        imageEntity.fileName = filename
-        try managedObjectContext?.save()
-        navigationController?.popViewController(animated: true)
-        } catch {
-        displayMessage(title: "Error", message: "\(error)")
+            
+        guard let userID = Auth.auth().currentUser?.uid else {
+            displayMessage(title: "Error", message: "No user logged in!")
+            return
         }
-                       
+ 
+        let imageRef = storageReference.child("\(userID)/\(timestamp)")
+        
+        let metadata = StorageMetadata()
+        metadata.contentType = "image/jpg"
+        
+        let uploadTask = imageRef.putData(data, metadata: metadata)
+        
+        uploadTask.observe(.success) {
+            snapshot in
+            self.userReference.document("\(userID)").collection("images").document("\(timestamp)").setData(["url" : "\(imageRef)"])
+        }
+        
+        uploadTask.observe(.failure) { snapshot in
+            self.displayMessage(title: "Error", message: "\(String(describing: snapshot.error))")
+        }
+        
+        navigationController?.popViewController(animated: true)
     }
+    
     @IBAction func takePhoto(_ sender: Any) {
         let controller = UIImagePickerController()
         controller.allowsEditing = false
@@ -71,10 +82,6 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-        let appdelegate = UIApplication.shared.delegate as! AppDelegate
-        managedObjectContext = appdelegate.persistentContainer?.viewContext
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {

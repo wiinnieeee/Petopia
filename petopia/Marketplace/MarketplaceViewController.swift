@@ -7,6 +7,8 @@
 
 import UIKit
 import FirebaseAuth
+import FirebaseFirestore
+import FirebaseStorage
 
 let DOG_SELECTION = 0
 let CAT_SELECTION = 1
@@ -14,19 +16,62 @@ let SMALL_FURY_SELECTION = 2
 let RABBIT_SELECTION = 3
 let BIRD_SELECTION = 4
 
-class MarketplaceViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UISearchBarDelegate {
+class MarketplaceViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UISearchBarDelegate, DatabaseListener {
+    func onUserListingChange(change: DatabaseChange, userListing: [ListingAnimal]) {
+        // do nothing
+    }
     
+    
+    var listenerType = ListenerType.listings
+    
+    func onAllRemindersChange(change: DatabaseChange, reminders: [Reminder]) {
+        // do nothing
+    }
+    
+    func onAllWishlistChange(change: DatabaseChange, wishlist: [WishlistAnimal]) {
+        // do nothing
+    }
+    
+    func onUserChange(change: DatabaseChange, user: User) {
+        // do nothing
+    }
+    
+    func onAllListingChange(change: DatabaseChange, listing: [ListingAnimal]) {
+        filteredPets = []
+        var selection = 0
+        for animal in listing {
+            if animal.type! == "dog"{
+                selection = 0
+            } else if animal.type! == "cat" {
+                selection = 1
+            } else if animal.type! == "small-fury" {
+                selection = 2
+            } else if animal.type! == "rabbit" {
+                selection = 3
+            } else {
+                selection = 4
+            }
+            if selection == navigationItem.searchController?.searchBar.selectedScopeButtonIndex {
+                filteredPets = [animal] + filteredPets
+            }
+        }
+        petsCollection.reloadData()
+    }
     
     // dog, cat, small-furry, rabbit, bird
     
     weak var databaseController: DatabaseProtocol?
     var authController: Auth?
     
-    @IBOutlet weak var searchBar: UISearchBar!
     var typeQuery: String = ""
-    var pets: [Animal] = []
-    var filteredPets: [Animal] = []
+    var pets: [ListingAnimal] = []
+    var filteredPets: [ListingAnimal] = []
+    var listingPets: [ListingAnimal] = []
     var imageURL: String = ""
+    var snapshotListener: ListenerRegistration?
+    var storageReference = Storage.storage()
+    var imageList = [UIImage]()
+    var imagePathList = [String]()
     
     let PET_CELL = "petsCell"
 
@@ -44,25 +89,44 @@ class MarketplaceViewController: UIViewController, UICollectionViewDelegate, UIC
         } else if selectedScope == BIRD_SELECTION {
             typeQuery = "bird"
         }
+        
+        let activityIndicator = UIActivityIndicatorView(style: .large)
+        activityIndicator.center = self.petsCollection.center
+        view.addSubview(activityIndicator)
+        activityIndicator.startAnimating()
+        
         Task {
             do {
                 let token = try await APIService.shared.getAccessToken()
                 let accToken = token.accessToken
                 
                 let animals = try await APIService.shared.search(token: accToken, query: typeQuery)
-                print(animals)
                 pets = []
-                filteredPets = []
                 
                 for pet in animals {
                     if (pet.photos!.count > 0) {
-                        pets.append(pet)
+                        let listing = ListingAnimal()
+                        listing.name = pet.name!
+                        listing.gender = pet.gender!
+                        listing.phoneNumber = pet.contact?.phone ?? ""
+                        listing.imagePath = pet.photos![0].full!
+                        listing.emailAddress = pet.contact?.email ?? ""
+                        listing.type = pet.type!
+                        listing.desc = pet.description ?? ""
+                        listing.breed = pet.breeds?.primary!
+                        listing.age = pet.age!
+                
+                        pets.append(listing)
                     }
                 }
-                filteredPets = pets
+                filteredPets += pets
+                listingPets = filteredPets
                 self.petsCollection.reloadData()
+                activityIndicator.stopAnimating()
             }
         }
+        databaseController?.addListener(listener: self)
+        petsCollection.reloadData()
     }
     
     override func viewDidLoad() {
@@ -86,7 +150,11 @@ class MarketplaceViewController: UIViewController, UICollectionViewDelegate, UIC
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = false
         
-        
+        let activityIndicator = UIActivityIndicatorView(style: .large)
+        activityIndicator.center = self.petsCollection.center
+        view.addSubview(activityIndicator)
+        activityIndicator.startAnimating()
+            
         Task {
             do {
                 let token = try await APIService.shared.getAccessToken()
@@ -98,35 +166,48 @@ class MarketplaceViewController: UIViewController, UICollectionViewDelegate, UIC
                 
                 let animals = try await APIService.shared.search(token: accToken, query: typeQuery)
                 pets = []
-                filteredPets = []
                 
                 for pet in animals {
                     if (pet.photos!.count > 0) {
-                        pets.append(pet)
+                        let listing = ListingAnimal()
+                        listing.name = pet.name!
+                        listing.gender = pet.gender!
+                        listing.phoneNumber = pet.contact?.phone ?? ""
+                        listing.imagePath = pet.photos![0].full!
+                        listing.emailAddress = pet.contact?.email ?? ""
+                        listing.type = pet.type!
+                        listing.desc = pet.description ?? ""
+                        listing.age = pet.age!
+                        listing.breed = pet.breeds?.primary!
+                        pets.append(listing)
                     }
                 }
-                filteredPets = pets
+                filteredPets += pets
+                listingPets = filteredPets
                 self.petsCollection.reloadData()
+                activityIndicator.stopAnimating()
             }
         }
         
-        
-        
         let layout = UICollectionViewCompositionalLayout(section: createTiledLayoutSection())
         petsCollection.setCollectionViewLayout(layout, animated: false)
+        
+        databaseController?.addListener(listener: self)
         petsCollection.reloadData()
         
     }
+    
+    
     //
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        filteredPets = []
+        listingPets = []
         if searchText == "" {
-            filteredPets = pets
+            listingPets = filteredPets
         }
-        for word in pets {
-            let isValid = (word.breeds?.primary?.lowercased())!.contains(searchText.lowercased())
+        for word in filteredPets {
+            let isValid = (word.breed!.lowercased()).contains(searchText.lowercased())
             if isValid {
-                filteredPets.append(word)
+                listingPets.append(word)
             }
         }
         self.petsCollection.reloadData()
@@ -141,17 +222,56 @@ class MarketplaceViewController: UIViewController, UICollectionViewDelegate, UIC
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        typeQuery = "dog"
+        let activityIndicator = UIActivityIndicatorView(style: .large)
+        activityIndicator.center = self.petsCollection.center
+        view.addSubview(activityIndicator)
+        activityIndicator.startAnimating()
+            
+        Task {
+            do {
+                let token = try await APIService.shared.getAccessToken()
+                let accToken = token.accessToken
+                
+                if typeQuery.count == 0 {
+                    typeQuery = "dog"
+                }
+                
+                let animals = try await APIService.shared.search(token: accToken, query: typeQuery)
+                pets = []
+                
+                for pet in animals {
+                    if (pet.photos!.count > 0) {
+                        let listing = ListingAnimal()
+                        listing.name = pet.name!
+                        listing.gender = pet.gender!
+                        listing.phoneNumber = pet.contact?.phone ?? ""
+                        listing.imagePath = pet.photos![0].full!
+                        listing.emailAddress = pet.contact?.email ?? ""
+                        listing.type = pet.type!
+                        listing.desc = pet.description ?? ""
+                        listing.age = pet.age!
+                        listing.breed = pet.breeds?.primary!
+                        pets.append(listing)
+                    }
+                }
+                filteredPets += pets
+                listingPets = filteredPets
+                
+                self.petsCollection.reloadData()
+                activityIndicator.stopAnimating()
+            }
+        }
+        databaseController?.addListener(listener: self)
+        petsCollection.reloadData()
     }
     
-    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        databaseController?.removeListener(listener: self)
+        petsCollection.reloadData()
+    }
+
     func createTiledLayoutSection() -> NSCollectionLayoutSection {
-        // Tiled layout.
-        //  * Group is three posters, side-by-side.
-        //  * Group is 1 x screen width, and height is 1/2 x screen width (poster height)
-        //  * Poster width is 1/3 x group width, with height as 1 x group width
-        //  * This makes item dimensions 2:3
-        //  * contentInsets puts a 1 pixel margin around each poster.
         let posterSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1/2), heightDimension: .fractionalHeight(1))
         let posterLayout = NSCollectionLayoutItem(layoutSize: posterSize)
         posterLayout.contentInsets = NSDirectionalEdgeInsets(top: 1, leading: 1, bottom: 1, trailing: 1)
@@ -160,7 +280,6 @@ class MarketplaceViewController: UIViewController, UICollectionViewDelegate, UIC
         let layoutGroup = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [posterLayout])
         
         let layoutSection = NSCollectionLayoutSection(group: layoutGroup)
-        //layoutSection.orthogonalScrollingBehavior = .continuous
         return layoutSection
     }
     
@@ -170,57 +289,75 @@ class MarketplaceViewController: UIViewController, UICollectionViewDelegate, UIC
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return filteredPets.count
+        return listingPets.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PET_CELL, for: indexPath) as! PetsCollectionViewCell? else {
             fatalError("Unable to dequeue")
         }
-        var pet = filteredPets[indexPath.row]
+        print(indexPath.row)
+        let pet = listingPets[indexPath.row]
         cell.nameLabel.text! = pet.name!
-        cell.breedLabel.text! = (pet.breeds?.primary)!
+        cell.breedLabel.text! = pet.breed!
         
         // Make sure the image is blank after cell reuse.
         cell.imageView?.image = nil
         
-        
-        if let image = pet.image {
-            cell.imageView.image = image
-        }
-        else if pet.imageIsDownloading == false, let imageURL = pet.photos![0].full {
-            let requestURL = URL(string: imageURL)
-            if let requestURL {
-                Task {
-                    print("Downloading image: " + imageURL)
-                    pet.imageIsDownloading = true
-                    do {
-                        let (data, response) = try await URLSession.shared.data(from: requestURL)
-                        guard let httpResponse = response as? HTTPURLResponse,
-                              httpResponse.statusCode == 200 else {
-                            pet.imageIsDownloading = false
-                            throw NetworkError.invalidResponse
+        if pet.imageID == nil {
+            if pet.imageIsDownloading == false, let imageURL = pet.imagePath {
+                let requestURL = URL(string: imageURL)
+                if let requestURL {
+                    Task {
+                        print("Downloading image: " + imageURL)
+                        pet.imageIsDownloading = true
+                        do {
+                            let (data, response) = try await URLSession.shared.data(from: requestURL)
+                            guard let httpResponse = response as? HTTPURLResponse,
+                                  httpResponse.statusCode == 200 else {
+                                pet.imageIsDownloading = false
+                                throw NetworkError.invalidResponse
+                            }
+                            
+                            if let image = UIImage(data: data) {
+                                print("Image downloaded: " + imageURL)
+                                cell.imageView.image = image
+                            }
+                            else {
+                                print("Image invalid: " + imageURL)
+                                pet.imageIsDownloading = false
+                            }
+                        }
+                        catch {
+                            print(error.localizedDescription)
                         }
                         
-                        if let image = UIImage(data: data) {
-                            print("Image downloaded: " + imageURL)
-                            pet.image = image
-                            cell.imageView.image = image
-                        }
-                        else {
-                            print("Image invalid: " + imageURL)
-                            pet.imageIsDownloading = false
-                        }
                     }
-                    catch {
-                        print(error.localizedDescription)
-                    }
-                    
+                }
+                else {
+                    print("Error: URL not valid: " + imageURL)
                 }
             }
-            else {
-                print("Error: URL not valid: " + imageURL)
-            }
+        } else {
+            let storage = Storage.storage().reference(forURL: "gs://petopiaassg.appspot.com/\(pet.ownerID!)/\(pet.imageID!)")
+               
+               storage.getData(maxSize: 15 * 1024 * 1024) { data, error in
+                   if error != nil {
+                       print(error?.localizedDescription ?? "errror")
+                   }else{
+                       let image = UIImage(data: data!)
+                       cell.imageView.image = image
+                       
+                       storage.downloadURL { url, error in
+                           if error != nil {
+                               print(error?.localizedDescription ?? "error")
+                           }else {
+                               print(url ?? "url")
+
+                           }
+                       }
+                   }
+               }
         }
         return cell
     }
@@ -239,18 +376,7 @@ class MarketplaceViewController: UIViewController, UICollectionViewDelegate, UIC
                 let destination = segue.destination as? ViewPetViewController
                 let petSelected = filteredPets[indexPath.row]
                 destination?.animal = petSelected
-                destination?.imageURL = petSelected.photos![0].full!
-                destination?.nameText = petSelected.name!
-                destination?.breedText = (petSelected.breeds?.primary)!
-                destination?.ageText = petSelected.age!
-                destination?.genderText = petSelected.gender!
-                destination?.vaccText = petSelected.status!
-                destination?.descText = petSelected.description ?? ""
-                destination?.emailText = (petSelected.contact?.email ?? "")!
-                
             }
         }
-        
-        
     }
 }

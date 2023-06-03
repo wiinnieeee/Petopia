@@ -1,16 +1,27 @@
 //
-//  WishListTableViewController.swift
+//  ViewListingTableViewController.swift
 //  petopia
 //
-//  Created by Winnie Ooi on 27/4/2023.
+//  Created by Winnie Ooi on 3/6/2023.
 //
 
 import UIKit
-import Firebase
+import FirebaseAuth
 import FirebaseFirestore
 
-class WishListTableViewController: UITableViewController, DatabaseListener {
-    func onUserListingChange(change: DatabaseChange, userListing: [ListingAnimal]) {
+class ViewListingTableViewController: UITableViewController, DatabaseListener {
+    
+    var listenerType = ListenerType.userlistings
+    
+    func onAllRemindersChange(change: DatabaseChange, reminders: [Reminder]) {
+        // do nothing
+    }
+    
+    func onAllWishlistChange(change: DatabaseChange, wishlist: [WishlistAnimal]) {
+        // do nothing
+    }
+    
+    func onUserChange(change: DatabaseChange, user: User) {
         // do nothing
     }
     
@@ -18,40 +29,28 @@ class WishListTableViewController: UITableViewController, DatabaseListener {
         // do nothing
     }
     
-    
-    func onUserChange(change: DatabaseChange, user: User) {
-        // do nothing
-    }
-    
-    func onAllRemindersChange(change: DatabaseChange, reminders: [Reminder]) {
-        // do nothing
-    }
-    
-    func onAllWishlistChange(change: DatabaseChange, wishlist: [WishlistAnimal]) {
-        savedList = wishlist
+    func onUserListingChange(change: DatabaseChange, userListing: [ListingAnimal]) {
+        listingList = userListing
         tableView.reloadData()
     }
     
-    //@IBOutlet weak var petImage: UIImageView!
-    
-    var listenerType = ListenerType.wishlist
-    var imageCircle = UIImageView(frame: CGRectMake(0, 0, 100, 100))
-    
-    var savedList = [WishlistAnimal]()
-    var database: Firestore?
-    var authController: Auth?
-    var usersRef: DocumentReference?
-    weak var databaseController: DatabaseProtocol?
-    
 
+    var listingList: [ListingAnimal] = []
+    var databaseController: DatabaseProtocol?
+    var db = Firestore.firestore()
+    
+    var currentUser: User?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
+        // Uncomment the following line to preserve selection between presentations
+        // self.clearsSelectionOnViewWillAppear = false
+
+        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+        // self.navigationItem.rightBarButtonItem = self.editButtonItem
         let appDelegate = UIApplication.shared.delegate as? AppDelegate
         databaseController = appDelegate?.databaseController
-        
-        database = Firestore.firestore()
-        authController = Auth.auth()
     }
     
     
@@ -64,7 +63,7 @@ class WishListTableViewController: UITableViewController, DatabaseListener {
         super.viewWillDisappear(animated)
         databaseController?.removeListener(listener: self)
     }
-    
+
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -74,26 +73,23 @@ class WishListTableViewController: UITableViewController, DatabaseListener {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return savedList.count
+        return listingList.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "wishlistCell", for: indexPath)
-        let pet = savedList[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: "listingCell", for: indexPath)
+        let listing = listingList[indexPath.row]
         var content = cell.defaultContentConfiguration()
-        content.text = pet.name
-        content.secondaryText = "\(pet.type) - \(pet.breed)"
+        
+        content.text = listing.name
+        content.secondaryText = listing.breed
         cell.contentConfiguration = content
+        // Configure the cell...
+
         return cell
     }
     
-    
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            databaseController?.removeAnimalfromWishlist(animal: savedList[indexPath.row])
-        }
-    }
 
     /*
     // Override to support conditional editing of the table view.
@@ -130,17 +126,14 @@ class WishListTableViewController: UITableViewController, DatabaseListener {
     }
     */
 
-    
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "wishlistSegue" {
+        if segue.identifier == "listingSegue" {
             if let indexPath = tableView.indexPathForSelectedRow {
-                let destination = segue.destination as? ViewWishlistViewController
-                let petSelected = savedList[indexPath.row]
+                let destination = segue.destination as? DetailListingViewController
+                let petSelected = listingList[indexPath.row]
                 destination?.animal = petSelected
             }
         }
     }
+
 }

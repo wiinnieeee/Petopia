@@ -11,6 +11,14 @@ import FirebaseFirestore
 
 
 class MyProfileTableViewController: UITableViewController, DatabaseListener {
+    func onUserListingChange(change: DatabaseChange, userListing: [ListingAnimal]) {
+        // do nothing
+    }
+    
+    func onAllListingChange(change: DatabaseChange, listing: [ListingAnimal]) {
+        // do nothing
+    }
+    
     
     let SECTION_USERNAME = 0
     let SECTION_EMAIL = 1
@@ -24,7 +32,7 @@ class MyProfileTableViewController: UITableViewController, DatabaseListener {
         // do nothing
     }
     
-    func onAllWishlistChange(change: DatabaseChange, wishlist: [Int]) {
+    func onAllWishlistChange(change: DatabaseChange, wishlist: [WishlistAnimal]) {
         // do nothing
     }
     

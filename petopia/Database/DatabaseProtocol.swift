@@ -7,6 +7,7 @@
 
 import Foundation
 import FirebaseAuth
+import UIKit
 
 enum DatabaseChange{
     case add
@@ -19,13 +20,17 @@ enum ListenerType {
     case reminders
     case wishlist
     case users
+    case listings
+    case userlistings
 }
 
 protocol DatabaseListener: AnyObject {
     var listenerType: ListenerType {get set}   
     func onAllRemindersChange (change: DatabaseChange, reminders: [Reminder])
-    func onAllWishlistChange (change: DatabaseChange, wishlist: [Int])
+    func onAllWishlistChange (change: DatabaseChange, wishlist: [WishlistAnimal])
     func onUserChange (change: DatabaseChange, user: User)
+    func onAllListingChange (change: DatabaseChange, listing: [ListingAnimal])
+    func onUserListingChange (change: DatabaseChange, userListing: [ListingAnimal])
 
 }
 
@@ -45,8 +50,10 @@ protocol DatabaseProtocol: AnyObject {
     
     var registerSuccessful: Bool {get set}
     
-    func addAnimaltoWishlist(newAnimal: Animal?)
-    func removeAnimalfromWishlist (animal: Animal?)
+    func addAnimaltoWishlist(newAnimal: WishlistAnimal?, completion: @escaping (Bool) -> Void)
+    func removeAnimalfromWishlist (animal: WishlistAnimal?)
     
-
+    func deleteImage (image: String)
+    
+    func addAnimaltoListing (newAnimal: ListingAnimal?)
 }
