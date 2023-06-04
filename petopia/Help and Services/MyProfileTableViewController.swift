@@ -11,6 +11,25 @@ import FirebaseFirestore
 
 
 class MyProfileTableViewController: UITableViewController, DatabaseListener {
+    
+    let SECTION_USERNAME = 0
+    let SECTION_EMAIL = 1
+    let SECTION_PHONENUMBER = 2
+    let SECTION_ADDRESS = 3
+    let SECTION_LOGOUT = 4
+    
+    var listenerType: ListenerType = ListenerType.users
+    func onPostCommentsChange(change: DatabaseChange, postComments: [Comments]) {
+        // do nothing
+    }
+    func onAllPostsChange(change: DatabaseChange, posts: [Posts]) {
+        // do nothing
+    }
+    
+    func onAllCommentsChange(change: DatabaseChange, comments: [Comments]) {
+        // do nothing
+    }
+    
     func onUserListingChange(change: DatabaseChange, userListing: [ListingAnimal]) {
         // do nothing
     }
@@ -18,15 +37,8 @@ class MyProfileTableViewController: UITableViewController, DatabaseListener {
     func onAllListingChange(change: DatabaseChange, listing: [ListingAnimal]) {
         // do nothing
     }
-    
-    
-    let SECTION_USERNAME = 0
-    let SECTION_EMAIL = 1
-    let SECTION_PHONENUMBER = 2
-    let SECTION_ADDRESS = 3
-    let SECTION_LOGOUT = 4
 
-    var listenerType: ListenerType = ListenerType.users
+    
     
     func onAllRemindersChange(change: DatabaseChange, reminders: [Reminder]) {
         // do nothing
@@ -58,9 +70,7 @@ class MyProfileTableViewController: UITableViewController, DatabaseListener {
         
         let appDelegate = UIApplication.shared.delegate as?AppDelegate
         databaseController = appDelegate?.databaseController
-
-        
-        tableView.reloadData()
+   
     }
     
     override func viewWillAppear(_ animated: Bool) {

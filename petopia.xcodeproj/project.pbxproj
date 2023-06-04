@@ -54,6 +54,14 @@
 		107427052A08E0610077A295 /* TrackerReminderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107427042A08E0610077A295 /* TrackerReminderViewController.swift */; };
 		1074270B2A08EEE10077A295 /* DetailReminderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1074270A2A08EEE10077A295 /* DetailReminderViewController.swift */; };
 		1077770F2A2734BD00D7684F /* MyProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1077770E2A2734BD00D7684F /* MyProfileTableViewController.swift */; };
+		108E2A122A2C38A600172804 /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 108E2A102A2C38A600172804 /* PostTableViewCell.swift */; };
+		108E2A132A2C38A600172804 /* PostTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 108E2A112A2C38A600172804 /* PostTableViewCell.xib */; };
+		108E2A152A2C3D5C00172804 /* Posts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 108E2A142A2C3D5C00172804 /* Posts.swift */; };
+		108E2A172A2C3DB000172804 /* Comments.swift in Sources */ = {isa = PBXBuildFile; fileRef = 108E2A162A2C3DB000172804 /* Comments.swift */; };
+		108E2A192A2C45AF00172804 /* NewPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 108E2A182A2C45AF00172804 /* NewPostViewController.swift */; };
+		108E2A1B2A2C8CCD00172804 /* CommentsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 108E2A1A2A2C8CCD00172804 /* CommentsTableViewController.swift */; };
+		108E2A222A2CBE4800172804 /* CommentsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 108E2A202A2CBE4800172804 /* CommentsTableViewCell.swift */; };
+		108E2A232A2CBE4800172804 /* CommentsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 108E2A212A2CBE4800172804 /* CommentsTableViewCell.xib */; };
 		109578652A2A139700EC4313 /* ListingAnimal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109578642A2A139700EC4313 /* ListingAnimal.swift */; };
 		1097B5A92A10C93400E56B03 /* APIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1097B5A82A10C93400E56B03 /* APIConstants.swift */; };
 		1097B5AB2A10CA4A00E56B03 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1097B5AA2A10CA4A00E56B03 /* NetworkError.swift */; };
@@ -134,6 +142,14 @@
 		107427042A08E0610077A295 /* TrackerReminderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerReminderViewController.swift; sourceTree = "<group>"; };
 		1074270A2A08EEE10077A295 /* DetailReminderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailReminderViewController.swift; sourceTree = "<group>"; };
 		1077770E2A2734BD00D7684F /* MyProfileTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileTableViewController.swift; sourceTree = "<group>"; };
+		108E2A102A2C38A600172804 /* PostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
+		108E2A112A2C38A600172804 /* PostTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostTableViewCell.xib; sourceTree = "<group>"; };
+		108E2A142A2C3D5C00172804 /* Posts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Posts.swift; sourceTree = "<group>"; };
+		108E2A162A2C3DB000172804 /* Comments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comments.swift; sourceTree = "<group>"; };
+		108E2A182A2C45AF00172804 /* NewPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPostViewController.swift; sourceTree = "<group>"; };
+		108E2A1A2A2C8CCD00172804 /* CommentsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsTableViewController.swift; sourceTree = "<group>"; };
+		108E2A202A2CBE4800172804 /* CommentsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsTableViewCell.swift; sourceTree = "<group>"; };
+		108E2A212A2CBE4800172804 /* CommentsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommentsTableViewCell.xib; sourceTree = "<group>"; };
 		109578642A2A139700EC4313 /* ListingAnimal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListingAnimal.swift; sourceTree = "<group>"; };
 		1097B5A82A10C93400E56B03 /* APIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConstants.swift; sourceTree = "<group>"; };
 		1097B5AA2A10CA4A00E56B03 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
@@ -286,6 +302,14 @@
 			isa = PBXGroup;
 			children = (
 				10F43EF629FA2C1C0065E8DD /* CommunityTableViewController.swift */,
+				108E2A102A2C38A600172804 /* PostTableViewCell.swift */,
+				108E2A112A2C38A600172804 /* PostTableViewCell.xib */,
+				108E2A142A2C3D5C00172804 /* Posts.swift */,
+				108E2A162A2C3DB000172804 /* Comments.swift */,
+				108E2A182A2C45AF00172804 /* NewPostViewController.swift */,
+				108E2A1A2A2C8CCD00172804 /* CommentsTableViewController.swift */,
+				108E2A202A2CBE4800172804 /* CommentsTableViewCell.swift */,
+				108E2A212A2CBE4800172804 /* CommentsTableViewCell.xib */,
 			);
 			path = Community;
 			sourceTree = "<group>";
@@ -430,8 +454,10 @@
 				10AE026329EB8F4C00B82918 /* LaunchScreen.storyboard in Resources */,
 				101B73B22A261F2700D3B609 /* ViewModeTableViewCell.xib in Resources */,
 				10CBC3C529F7A49600049813 /* GoogleService-Info.plist in Resources */,
+				108E2A132A2C38A600172804 /* PostTableViewCell.xib in Resources */,
 				10AE026029EB8F4C00B82918 /* Assets.xcassets in Resources */,
 				10AE025B29EB8F4B00B82918 /* Main.storyboard in Resources */,
+				108E2A232A2CBE4800172804 /* CommentsTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -449,11 +475,13 @@
 				1058CFA029F8F3E80069B5FA /* FirebaseController.swift in Sources */,
 				105C301D2A121C47004FD54A /* Photos.swift in Sources */,
 				105C301B2A121BD4004FD54A /* Environment.swift in Sources */,
+				108E2A222A2CBE4800172804 /* CommentsTableViewCell.swift in Sources */,
 				101B73AC2A26167100D3B609 /* PetopiaUserDefaults.swift in Sources */,
 				10F43EF129FA1D940065E8DD /* TabbarViewController.swift in Sources */,
 				10441FAD2A0B360E00FE269E /* CameraViewController.swift in Sources */,
 				10F01F362A073B9B00BE677F /* ChatMessage.swift in Sources */,
 				10441FAB2A0B31B000FE269E /* ImageMetaData+CoreDataProperties.swift in Sources */,
+				108E2A1B2A2C8CCD00172804 /* CommentsTableViewController.swift in Sources */,
 				10AE026B29EB976300B82918 /* LoginViewController.swift in Sources */,
 				10AE026D29EB99E200B82918 /* RegisterViewController.swift in Sources */,
 				1077770F2A2734BD00D7684F /* MyProfileTableViewController.swift in Sources */,
@@ -477,11 +505,13 @@
 				1097B5A92A10C93400E56B03 /* APIConstants.swift in Sources */,
 				10F43EEB29FA1C900065E8DD /* HelpTableViewController.swift in Sources */,
 				106B75E42A0A6EC400C6B704 /* setReminderViewController.swift in Sources */,
+				108E2A122A2C38A600172804 /* PostTableViewCell.swift in Sources */,
 				1097B5AD2A10CA8E00E56B03 /* APIService.swift in Sources */,
 				10F01F3A2A0757E900BE677F /* NewChatTableViewController.swift in Sources */,
 				107329342A24993C00D4BD14 /* ViewPetShopViewController.swift in Sources */,
 				10220FD92A28AA7F006F6B9B /* ViewWishlistViewController.swift in Sources */,
 				107426FD2A08D6BC0077A295 /* Reminder.swift in Sources */,
+				108E2A172A2C3DB000172804 /* Comments.swift in Sources */,
 				105C30212A121CAA004FD54A /* Address.swift in Sources */,
 				1058CF9C29F8F25C0069B5FA /* MulticastDelegate.swift in Sources */,
 				107329322A248D1B00D4BD14 /* Place.swift in Sources */,
@@ -492,12 +522,14 @@
 				10F01F342A073B8500BE677F /* Sender.swift in Sources */,
 				105C30132A121AF3004FD54A /* Breeds.swift in Sources */,
 				10F43EF729FA2C1C0065E8DD /* CommunityTableViewController.swift in Sources */,
+				108E2A152A2C3D5C00172804 /* Posts.swift in Sources */,
 				107427052A08E0610077A295 /* TrackerReminderViewController.swift in Sources */,
 				105C30152A121B46004FD54A /* Colors.swift in Sources */,
 				106B75E22A0A589F00C6B704 /* Channel.swift in Sources */,
 				105C300F2A121AA8004FD54A /* Response.swift in Sources */,
 				10F43EED29FA1CC40065E8DD /* ChatTableViewController.swift in Sources */,
 				107329302A24814A00D4BD14 /* NearbyPetShopsTableViewController.swift in Sources */,
+				108E2A192A2C45AF00172804 /* NewPostViewController.swift in Sources */,
 				1058CF9E29F8F2700069B5FA /* DatabaseProtocol.swift in Sources */,
 				10441FAF2A0B3C7D00FE269E /* ImageCollectionViewCell.swift in Sources */,
 				10ADA1992A19E86B0003A8CC /* ViewPetViewController.swift in Sources */,

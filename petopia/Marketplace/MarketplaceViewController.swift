@@ -17,12 +17,23 @@ let RABBIT_SELECTION = 3
 let BIRD_SELECTION = 4
 
 class MarketplaceViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UISearchBarDelegate, DatabaseListener {
-    func onUserListingChange(change: DatabaseChange, userListing: [ListingAnimal]) {
+    func onPostCommentsChange(change: DatabaseChange, postComments: [Comments]) {
+        // do nothing
+    }
+    func onAllPostsChange(change: DatabaseChange, posts: [Posts]) {
+        // do nothing
+    }
+    
+    func onAllCommentsChange(change: DatabaseChange, comments: [Comments]) {
         // do nothing
     }
     
     
     var listenerType = ListenerType.listings
+    
+    func onUserListingChange(change: DatabaseChange, userListing: [ListingAnimal]) {
+        // do nothing
+    }
     
     func onAllRemindersChange(change: DatabaseChange, reminders: [Reminder]) {
         // do nothing
@@ -37,6 +48,7 @@ class MarketplaceViewController: UIViewController, UICollectionViewDelegate, UIC
     }
     
     func onAllListingChange(change: DatabaseChange, listing: [ListingAnimal]) {
+        listingPets = []
         filteredPets = []
         var selection = 0
         for animal in listing {
@@ -72,6 +84,7 @@ class MarketplaceViewController: UIViewController, UICollectionViewDelegate, UIC
     var storageReference = Storage.storage()
     var imageList = [UIImage]()
     var imagePathList = [String]()
+    
     
     let PET_CELL = "petsCell"
 
@@ -143,7 +156,7 @@ class MarketplaceViewController: UIViewController, UICollectionViewDelegate, UIC
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.placeholder = "Search for pets"
         searchController.searchBar.showsCancelButton = true
-        searchController.searchBar.tintColor = .systemPink
+        searchController.searchBar.tintColor = UIColor(named: "general")
         searchController.searchBar.showsScopeBar = true
         searchController.searchBar.scopeButtonTitles = ["Dogs", "Cats", "Hamsters", "Rabbits", "Birds"]
         
@@ -340,27 +353,36 @@ class MarketplaceViewController: UIViewController, UICollectionViewDelegate, UIC
             }
         } else {
             let storage = Storage.storage().reference(forURL: "gs://petopiaassg.appspot.com/\(pet.ownerID!)/\(pet.imageID!)")
-               
-               storage.getData(maxSize: 15 * 1024 * 1024) { data, error in
-                   if error != nil {
-                       print(error?.localizedDescription ?? "errror")
-                   }else{
-                       let image = UIImage(data: data!)
-                       cell.imageView.image = image
-                       
-                       storage.downloadURL { url, error in
-                           if error != nil {
-                               print(error?.localizedDescription ?? "error")
-                           }else {
-                               print(url ?? "url")
-
-                           }
-                       }
-                   }
-               }
+            let filename = ("\(pet.imageID!).jpg")
+            
+            let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+            let documentsDirectory = paths[0]
+            let fileURL = documentsDirectory.appendingPathComponent(filename)
+            
+            let downloadTask = storage.write(toFile:fileURL)
+            downloadTask.observe(.success) { snapshot in
+                let image = self.loadImageData(filename: filename)
+                self.imageList.append(image!)
+                self.imagePathList.append(filename)
+                cell.imageView.image = image
+            }
+            
+            
+            downloadTask.observe(.failure){
+                snapshot in print("\(String(describing: snapshot.error))")
+            }
         }
         return cell
     }
+    
+    func loadImageData(filename: String) -> UIImage? {
+        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        let documentsDirectory = paths[0]
+        let imageURL = documentsDirectory.appendingPathComponent(filename)
+        let image = UIImage(contentsOfFile: imageURL.path)
+        return image
+    }
+    
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         performSegue(withIdentifier: "viewSegue", sender: self)

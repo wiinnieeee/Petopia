@@ -10,6 +10,19 @@ import Firebase
 import FirebaseFirestore
 
 class WishListTableViewController: UITableViewController, DatabaseListener {
+    func onPostCommentsChange(change: DatabaseChange, postComments: [Comments]) {
+        // do nothing
+    }
+    
+    
+    func onAllPostsChange(change: DatabaseChange, posts: [Posts]) {
+        // do nothing
+    }
+    
+    func onAllCommentsChange(change: DatabaseChange, comments: [Comments]) {
+        // do nothing
+    }
+    
     func onUserListingChange(change: DatabaseChange, userListing: [ListingAnimal]) {
         // do nothing
     }

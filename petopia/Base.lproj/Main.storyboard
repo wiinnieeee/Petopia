@@ -80,7 +80,7 @@
                                 <rect key="frame" x="152.66666666666666" y="575" width="88" height="35"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Login">
-                                    <color key="baseBackgroundColor" systemColor="systemPinkColor"/>
+                                    <color key="baseBackgroundColor" name="General"/>
                                 </buttonConfiguration>
                                 <connections>
                                     <action selector="loginAction:" destination="e0c-T5-pb1" eventType="touchUpInside" id="xmx-ob-pG7"/>
@@ -97,7 +97,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Register Now">
                                     <fontDescription key="titleFontDescription" type="system" pointSize="0.0"/>
-                                    <color key="baseForegroundColor" systemColor="systemPinkColor"/>
+                                    <color key="baseForegroundColor" name="General"/>
                                 </buttonConfiguration>
                                 <connections>
                                     <action selector="registerAction:" destination="e0c-T5-pb1" eventType="touchUpInside" id="ojm-nQ-rto"/>
@@ -233,7 +233,7 @@
                                 <rect key="frame" x="32" y="736" width="329" height="35"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Create an Account">
-                                    <color key="baseBackgroundColor" systemColor="systemPinkColor"/>
+                                    <color key="baseBackgroundColor" name="General"/>
                                 </buttonConfiguration>
                                 <connections>
                                     <action selector="createAccountButton:" destination="n4E-5x-vTT" eventType="touchUpInside" id="jBB-9N-frl"/>
@@ -427,13 +427,13 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Marketplace" largeTitleDisplayMode="always" id="FlY-YF-Yoy">
                         <barButtonItem key="leftBarButtonItem" title="Item" image="heart.fill" catalog="system" id="PBa-sn-knS">
-                            <color key="tintColor" systemColor="systemPinkColor"/>
+                            <color key="tintColor" name="General"/>
                             <connections>
                                 <segue destination="tfV-Tt-8YK" kind="show" id="13b-sL-0tc"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="JeI-8L-HfG">
-                            <color key="tintColor" systemColor="systemPinkColor"/>
+                            <color key="tintColor" name="General"/>
                             <connections>
                                 <segue destination="mEt-3L-08R" kind="show" identifier="addListingSegue" id="EJ5-Xj-7tY"/>
                             </connections>
@@ -546,17 +546,18 @@
         <!--Community-->
         <scene sceneID="w9e-n3-LZz">
             <objects>
-                <tableViewController id="VWi-n3-OZT" sceneMemberID="viewController">
+                <tableViewController id="VWi-n3-OZT" customClass="CommunityTableViewController" customModule="petopia" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="gRa-h5-ykp">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="tintColor" name="General"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="postCell" id="eUZ-r8-Tfc">
-                                <rect key="frame" x="0.0" y="50" width="393" height="43.666667938232422"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="postCell" rowHeight="200" id="eUZ-r8-Tfc" customClass="PostTableViewCell" customModule="petopia" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="50" width="393" height="200"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="eUZ-r8-Tfc" id="OLw-04-eEX">
-                                    <rect key="frame" x="0.0" y="0.0" width="393" height="43.666667938232422"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="393" height="200"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -566,11 +567,131 @@
                             <outlet property="delegate" destination="VWi-n3-OZT" id="qi7-ow-7NF"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Community" id="gJI-l3-5OW"/>
+                    <navigationItem key="navigationItem" title="Community" largeTitleDisplayMode="always" id="gJI-l3-5OW">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="kmA-aI-NEs">
+                            <color key="tintColor" name="General"/>
+                            <connections>
+                                <segue destination="k0Y-cy-dlX" kind="show" id="D9s-21-bHX"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <segue destination="hio-TD-WFc" kind="show" identifier="commentSegue" id="ygv-So-P6h"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zcZ-Me-Vwd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4420.6106870229005" y="1357.7464788732395"/>
+        </scene>
+        <!--Create New Post-->
+        <scene sceneID="rGd-Ka-NOM">
+            <objects>
+                <viewController id="k0Y-cy-dlX" customClass="NewPostViewController" customModule="petopia" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="geH-Zk-eFd">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yhB-ci-4tU">
+                                <rect key="frame" x="16" y="175" width="33" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hyG-eJ-I7y">
+                                <rect key="frame" x="16" y="204" width="361" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dK0-J4-m6X">
+                                <rect key="frame" x="16" y="292" width="361" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="Qnk-fY-dzE"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7m4-Tl-Bmw">
+                                <rect key="frame" x="16" y="542" width="361" height="35"/>
+                                <color key="tintColor" name="General"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Submit">
+                                    <color key="baseBackgroundColor" name="General"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="submitButton:" destination="k0Y-cy-dlX" eventType="touchUpInside" id="neh-Pp-WGC"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Content" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="te6-6T-fbX">
+                                <rect key="frame" x="16" y="263" width="76" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="JEk-kg-e5s"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="te6-6T-fbX" firstAttribute="leading" secondItem="JEk-kg-e5s" secondAttribute="leading" constant="16" id="3Ic-ru-eH3"/>
+                            <constraint firstItem="JEk-kg-e5s" firstAttribute="trailing" secondItem="dK0-J4-m6X" secondAttribute="trailing" constant="16" id="Ace-GK-x6i"/>
+                            <constraint firstItem="JEk-kg-e5s" firstAttribute="trailing" secondItem="hyG-eJ-I7y" secondAttribute="trailing" constant="16" id="Byd-N6-3tf"/>
+                            <constraint firstItem="7m4-Tl-Bmw" firstAttribute="top" secondItem="dK0-J4-m6X" secondAttribute="bottom" constant="50" id="EIl-1w-T06"/>
+                            <constraint firstItem="7m4-Tl-Bmw" firstAttribute="leading" secondItem="JEk-kg-e5s" secondAttribute="leading" constant="16" id="F95-jw-Qan"/>
+                            <constraint firstItem="JEk-kg-e5s" firstAttribute="trailing" secondItem="7m4-Tl-Bmw" secondAttribute="trailing" constant="16" id="ME2-bw-3hm"/>
+                            <constraint firstItem="hyG-eJ-I7y" firstAttribute="leading" secondItem="JEk-kg-e5s" secondAttribute="leading" constant="16" id="Txn-Cq-n4q"/>
+                            <constraint firstItem="yhB-ci-4tU" firstAttribute="leading" secondItem="JEk-kg-e5s" secondAttribute="leading" constant="16" id="Vvb-ZS-PxZ"/>
+                            <constraint firstItem="te6-6T-fbX" firstAttribute="top" secondItem="hyG-eJ-I7y" secondAttribute="bottom" constant="25" id="Xeu-x6-cJe"/>
+                            <constraint firstItem="dK0-J4-m6X" firstAttribute="top" secondItem="te6-6T-fbX" secondAttribute="bottom" constant="8" id="cdY-Gi-fhH"/>
+                            <constraint firstItem="dK0-J4-m6X" firstAttribute="leading" secondItem="JEk-kg-e5s" secondAttribute="leading" constant="16" id="el3-aB-6d4"/>
+                            <constraint firstItem="hyG-eJ-I7y" firstAttribute="top" secondItem="yhB-ci-4tU" secondAttribute="bottom" constant="8" id="jrd-4L-ui5"/>
+                            <constraint firstItem="JEk-kg-e5s" firstAttribute="trailing" secondItem="te6-6T-fbX" secondAttribute="trailing" constant="301" id="liM-2h-P5x"/>
+                            <constraint firstItem="yhB-ci-4tU" firstAttribute="top" secondItem="JEk-kg-e5s" secondAttribute="top" constant="20" id="nzW-lW-FB8"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Create New Post" id="7O1-4A-pWd"/>
+                    <connections>
+                        <outlet property="contentField" destination="dK0-J4-m6X" id="jqQ-dW-w5Y"/>
+                        <outlet property="titleField" destination="hyG-eJ-I7y" id="HId-fY-Yxx"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QmB-hJ-XxX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5208.3969465648852" y="1372.5352112676057"/>
+        </scene>
+        <!--Comments-->
+        <scene sceneID="jn2-VW-SbY">
+            <objects>
+                <tableViewController id="hio-TD-WFc" customClass="CommentsTableViewController" customModule="petopia" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="Jkl-7b-ULg">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="commentsCell" id="fFd-H6-RV0">
+                                <rect key="frame" x="0.0" y="50" width="393" height="43.666667938232422"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="fFd-H6-RV0" id="Kbj-uH-Ekx">
+                                    <rect key="frame" x="0.0" y="0.0" width="393" height="43.666667938232422"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="hio-TD-WFc" id="Rf2-m2-ZBK"/>
+                            <outlet property="delegate" destination="hio-TD-WFc" id="ef4-cO-zJ7"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Comments" id="Pq6-xz-VZb">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="3ic-Il-iAs">
+                            <color key="tintColor" name="General"/>
+                            <connections>
+                                <action selector="addComment:" destination="hio-TD-WFc" id="wV2-Xf-0vh"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8gp-eg-vpn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5991" y="1391"/>
         </scene>
         <!--Help and Services-->
         <scene sceneID="zLr-E8-Yyc">
@@ -1112,6 +1233,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
+                                    <color key="tintColor" name="General"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
@@ -1320,7 +1442,7 @@
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cID-F1-L7w">
                                                 <rect key="frame" x="20" y="523" width="140" height="35"/>
-                                                <color key="tintColor" systemColor="systemPinkColor"/>
+                                                <color key="tintColor" name="General"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="filled" title="Contact Owner">
                                                     <color key="baseBackgroundColor" systemColor="systemPinkColor"/>
@@ -1334,7 +1456,7 @@
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="138.33333333333337" id="jXD-xC-Q1I"/>
                                                 </constraints>
-                                                <color key="tintColor" systemColor="systemPinkColor"/>
+                                                <color key="tintColor" name="General"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="filled" title="Add to Wishlist">
                                                     <color key="baseBackgroundColor" systemColor="systemPinkColor"/>
@@ -1504,7 +1626,7 @@
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6hA-p5-mjo">
                                 <rect key="frame" x="20" y="648" width="353" height="35"/>
-                                <color key="tintColor" systemColor="systemPinkColor"/>
+                                <color key="tintColor" name="General"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Submit">
                                     <color key="baseBackgroundColor" systemColor="systemPinkColor"/>
@@ -1558,7 +1680,7 @@
                             </collectionView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BFQ-5R-7Wc">
                                 <rect key="frame" x="21" y="213" width="61" height="50"/>
-                                <color key="tintColor" systemColor="systemPinkColor"/>
+                                <color key="tintColor" name="General"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="plus.square.dashed" catalog="system" title="">
                                     <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="30" scale="large"/>
@@ -1647,7 +1769,7 @@
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z40-Vn-mYO">
                                 <rect key="frame" x="20" y="630" width="353" height="35"/>
-                                <color key="tintColor" systemColor="systemPinkColor"/>
+                                <color key="tintColor" name="General"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Select Photo">
                                     <color key="baseBackgroundColor" systemColor="systemPinkColor"/>
@@ -1794,10 +1916,10 @@
                                                     </label>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UOe-A2-Jfp">
                                                         <rect key="frame" x="126" y="524" width="140" height="35"/>
-                                                        <color key="tintColor" systemColor="systemPinkColor"/>
+                                                        <color key="tintColor" name="General"/>
                                                         <state key="normal" title="Button"/>
                                                         <buttonConfiguration key="configuration" style="filled" title="Contact Owner">
-                                                            <color key="baseBackgroundColor" systemColor="systemPinkColor"/>
+                                                            <color key="baseBackgroundColor" name="General"/>
                                                         </buttonConfiguration>
                                                         <connections>
                                                             <action selector="contactAction:" destination="eyW-Ao-zee" eventType="touchUpInside" id="B91-FO-Ejd"/>
@@ -1880,7 +2002,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" systemColor="systemPinkColor"/>
-                        <color key="selectedImageTintColor" systemColor="systemPinkColor"/>
+                        <color key="selectedImageTintColor" name="General"/>
                     </tabBar>
                     <connections>
                         <segue destination="MFv-Go-q71" kind="relationship" relationship="viewControllers" id="u1z-WK-1V9"/>
@@ -1944,6 +2066,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="LOe-OS-FyU">
                         <rect key="frame" x="0.0" y="59" width="393" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" name="General"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -1986,10 +2109,10 @@
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vgM-RW-Sc3">
                                 <rect key="frame" x="103" y="545" width="187" height="34.333333333333371"/>
-                                <color key="tintColor" systemColor="systemPinkColor"/>
+                                <color key="tintColor" name="General"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Select Date and Time">
-                                    <color key="baseBackgroundColor" systemColor="systemPinkColor"/>
+                                    <color key="baseBackgroundColor" name="General"/>
                                 </buttonConfiguration>
                                 <connections>
                                     <action selector="selectDate:" destination="cGe-pY-ryx" eventType="touchUpInside" id="v5o-Zy-vyJ"/>
@@ -1997,7 +2120,7 @@
                             </button>
                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" style="inline" translatesAutoresizingMaskIntoConstraints="NO" id="Vb5-Sg-VNQ">
                                 <rect key="frame" x="32" y="174.99999999999997" width="329" height="353.33333333333326"/>
-                                <color key="tintColor" systemColor="systemPinkColor"/>
+                                <color key="tintColor" name="General"/>
                             </datePicker>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Klx-dm-hxw">
                                 <rect key="frame" x="0.0" y="599.33333333333337" width="393" height="124.66666666666663"/>
@@ -2073,10 +2196,10 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JOE-o2-eSB">
                                 <rect key="frame" x="164" y="358" width="65" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="tintColor" systemColor="systemPinkColor"/>
+                                <color key="tintColor" name="General"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Done">
-                                    <color key="baseBackgroundColor" systemColor="systemPinkColor"/>
+                                    <color key="baseBackgroundColor" name="General"/>
                                 </buttonConfiguration>
                                 <connections>
                                     <action selector="doneButton:" destination="qHo-ya-5dS" eventType="touchUpInside" id="VK8-uZ-wDd"/>
@@ -2143,10 +2266,10 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tUj-Ef-r6H">
                                 <rect key="frame" x="32" y="369" width="329" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="tintColor" systemColor="systemPinkColor"/>
+                                <color key="tintColor" name="General"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Add to Reminder">
-                                    <color key="baseBackgroundColor" systemColor="systemPinkColor"/>
+                                    <color key="baseBackgroundColor" name="General"/>
                                 </buttonConfiguration>
                                 <connections>
                                     <action selector="addReminder:" destination="aAI-aS-7PY" eventType="touchUpInside" id="rBi-p3-s4h"/>
@@ -2304,6 +2427,9 @@
         <image name="pawprint.fill" catalog="system" width="128" height="112"/>
         <image name="plus.square.dashed" catalog="system" width="128" height="114"/>
         <image name="questionmark.circle.fill" catalog="system" width="128" height="123"/>
+        <namedColor name="General">
+            <color red="1" green="0.2160000205039978" blue="0.37299999594688416" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="avatarViewBackground">
             <color red="0.55699998140335083" green="0.55699998140335083" blue="0.57599997520446777" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

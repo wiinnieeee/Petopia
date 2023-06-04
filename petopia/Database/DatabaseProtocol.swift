@@ -22,6 +22,9 @@ enum ListenerType {
     case users
     case listings
     case userlistings
+    case posts
+    case comments
+    case postComments
 }
 
 protocol DatabaseListener: AnyObject {
@@ -31,7 +34,9 @@ protocol DatabaseListener: AnyObject {
     func onUserChange (change: DatabaseChange, user: User)
     func onAllListingChange (change: DatabaseChange, listing: [ListingAnimal])
     func onUserListingChange (change: DatabaseChange, userListing: [ListingAnimal])
-
+    func onAllPostsChange (change: DatabaseChange, posts: [Posts])
+    func onAllCommentsChange (change: DatabaseChange, comments: [Comments])
+    func onPostCommentsChange(change: DatabaseChange, postComments: [Comments] )
 }
 
 protocol DatabaseProtocol: AnyObject {
@@ -56,4 +61,7 @@ protocol DatabaseProtocol: AnyObject {
     func deleteImage (image: String)
     
     func addAnimaltoListing (newAnimal: ListingAnimal?)
+    
+    func addPost (newPost: Posts?)
+    func addComments(post: Posts?, newComment: Comments?)
 }

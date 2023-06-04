@@ -112,24 +112,22 @@ class ViewPetViewController: UIViewController, MFMailComposeViewControllerDelega
             }
         } else {
             let storage = Storage.storage().reference(forURL: "gs://petopiaassg.appspot.com/\(animal!.ownerID!)/\(animal!.imageID!)")
-               
-               storage.getData(maxSize: 15 * 1024 * 1024) { data, error in
-                   if error != nil {
-                       print(error?.localizedDescription ?? "errror")
-                   } else{
-                       let image = UIImage(data: data!)
-                       self.petImageView.image = image
-                       
-                       storage.downloadURL { url, error in
-                           if error != nil {
-                               print(error?.localizedDescription ?? "error")
-                           }else {
-                               print(url ?? "url")
-
-                           }
-                       }
-                   }
-               }
+            let filename = ("\(animal!.imageID!).jpg")
+            
+            let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+            let documentsDirectory = paths[0]
+            let fileURL = documentsDirectory.appendingPathComponent(filename)
+            
+            let downloadTask = storage.write(toFile:fileURL)
+            downloadTask.observe(.success) { snapshot in
+                let image = self.loadImageData(filename: filename)
+                self.petImageView.image = image
+            }
+            
+            
+            downloadTask.observe(.failure){
+                snapshot in print("\(String(describing: snapshot.error))")
+            }
         }
         
         ageLabel.text = animal?.age!
@@ -143,6 +141,14 @@ class ViewPetViewController: UIViewController, MFMailComposeViewControllerDelega
         
         let appDelegate = UIApplication.shared.delegate as? AppDelegate
         databaseController = appDelegate?.databaseController
+    }
+    
+    func loadImageData(filename: String) -> UIImage? {
+        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        let documentsDirectory = paths[0]
+        let imageURL = documentsDirectory.appendingPathComponent(filename)
+        let image = UIImage(contentsOfFile: imageURL.path)
+        return image
     }
     
     func showMailComposer() {

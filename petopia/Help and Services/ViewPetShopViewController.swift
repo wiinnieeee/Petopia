@@ -50,7 +50,8 @@ class ViewPetShopViewController: UIViewController, MKMapViewDelegate{
     
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
          let renderer = MKPolylineRenderer(overlay: overlay)
-         renderer.strokeColor = UIColor.systemPink
+        let extractedExpr = UIColor.systemPink
+        renderer.strokeColor = extractedExpr
          renderer.lineWidth = 5.0
          return renderer
     }

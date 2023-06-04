@@ -10,6 +10,20 @@ import Firebase
 import FirebaseStorage
 
 class NewListingViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, DatabaseListener {
+    
+    func onPostCommentsChange(change: DatabaseChange, postComments: [Comments]) {
+        // do nothing
+    }
+    
+    
+    func onAllPostsChange(change: DatabaseChange, posts: [Posts]) {
+        // do nothing
+    }
+    
+    func onAllCommentsChange(change: DatabaseChange, comments: [Comments]) {
+        // do nothing
+    }
+    
     func onUserListingChange(change: DatabaseChange, userListing: [ListingAnimal]) {
         // do nothing
     }
@@ -209,7 +223,6 @@ class NewListingViewController: UIViewController, UICollectionViewDelegate, UICo
                         let downloadTask = storageReference.reference(forURL: imageURL).write(toFile:fileURL)
                         downloadTask.observe(.success) { snapshot in
                             let image = self.loadImageData(filename: filename)
-                            
                             self.imageList.append(image!)
                             self.imagePathList.append(filename)
                             self.imageCollectionView.reloadSections([0])
