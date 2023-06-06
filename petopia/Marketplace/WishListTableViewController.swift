@@ -10,6 +10,11 @@ import Firebase
 import FirebaseFirestore
 
 class WishListTableViewController: UITableViewController, DatabaseListener {
+    
+    func onAllConversationsChange(change: DatabaseChange, conversations: [Conversation]) {
+        // do nothing
+    }
+    
     func onPostCommentsChange(change: DatabaseChange, postComments: [Comments]) {
         // do nothing
     }
@@ -48,7 +53,6 @@ class WishListTableViewController: UITableViewController, DatabaseListener {
     //@IBOutlet weak var petImage: UIImageView!
     
     var listenerType = ListenerType.wishlist
-    var imageCircle = UIImageView(frame: CGRectMake(0, 0, 100, 100))
     
     var savedList = [WishlistAnimal]()
     var database: Firestore?

@@ -10,6 +10,10 @@ import FirebaseAuth
 import FirebaseFirestore
 
 class ViewListingTableViewController: UITableViewController, DatabaseListener {
+    func onAllConversationsChange(change: DatabaseChange, conversations: [Conversation]) {
+        // do nothing
+    }
+    
     func onPostCommentsChange(change: DatabaseChange, postComments: [Comments]) {
         // do nothing
     }

@@ -25,6 +25,7 @@ enum ListenerType {
     case posts
     case comments
     case postComments
+    case conversations
 }
 
 protocol DatabaseListener: AnyObject {
@@ -37,6 +38,7 @@ protocol DatabaseListener: AnyObject {
     func onAllPostsChange (change: DatabaseChange, posts: [Posts])
     func onAllCommentsChange (change: DatabaseChange, comments: [Comments])
     func onPostCommentsChange(change: DatabaseChange, postComments: [Comments] )
+    func onAllConversationsChange (change: DatabaseChange, conversations: [Conversation])
 }
 
 protocol DatabaseProtocol: AnyObject {
@@ -64,4 +66,9 @@ protocol DatabaseProtocol: AnyObject {
     
     func addPost (newPost: Posts?)
     func addComments(post: Posts?, newComment: Comments?)
+    
+    func createNewConversation (pet: String?, ownName: String?, otherName: String?, otherUserID: String?, firstMessage: Message, completion: @escaping (Bool) -> Void)
+//    func getAllConversations (userID: String, completion: @escaping (Result<[Conversation], Error>) -> Void)
+//    func getAllMessagesForConversation (userID: String, completion: @escaping (Result<[Conversation], Error>) -> Void)
+    func sendMessage(otherUserID: String?, conversation:String?, name: String?, message: Message, completion: @escaping (Bool) -> Void)
 }

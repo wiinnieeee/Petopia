@@ -13,6 +13,11 @@ import FirebaseFirestoreSwift
 class CommentsTableViewController: UITableViewController, DatabaseListener {
     var listenerType = ListenerType.users
     
+    func onAllConversationsChange(change: DatabaseChange, conversations: [Conversation]) {
+        // do nothing
+    }
+    
+    
     func onAllRemindersChange(change: DatabaseChange, reminders: [Reminder]) {
         // do nothing
     }

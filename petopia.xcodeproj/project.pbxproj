@@ -17,9 +17,6 @@
 		102346DC2A275A6700844090 /* AboutAppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 102346DB2A275A6700844090 /* AboutAppViewController.swift */; };
 		102844F12A0284670012AA69 /* LocationAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 102844F02A0284670012AA69 /* LocationAnnotation.swift */; };
 		10441FA42A0B2DD400FE269E /* NewListingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10441FA32A0B2DD400FE269E /* NewListingViewController.swift */; };
-		10441FA72A0B310900FE269E /* ImageModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 10441FA52A0B310900FE269E /* ImageModel.xcdatamodeld */; };
-		10441FAA2A0B31B000FE269E /* ImageMetaData+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10441FA82A0B31B000FE269E /* ImageMetaData+CoreDataClass.swift */; };
-		10441FAB2A0B31B000FE269E /* ImageMetaData+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10441FA92A0B31B000FE269E /* ImageMetaData+CoreDataProperties.swift */; };
 		10441FAD2A0B360E00FE269E /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10441FAC2A0B360E00FE269E /* CameraViewController.swift */; };
 		10441FAF2A0B3C7D00FE269E /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10441FAE2A0B3C7D00FE269E /* ImageCollectionViewCell.swift */; };
 		10441FB12A0B3EE200FE269E /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10441FB02A0B3EE200FE269E /* CollectionViewController.swift */; };
@@ -31,16 +28,11 @@
 		105C300F2A121AA8004FD54A /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105C300E2A121AA8004FD54A /* Response.swift */; };
 		105C30112A121AD0004FD54A /* Animal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105C30102A121AD0004FD54A /* Animal.swift */; };
 		105C30132A121AF3004FD54A /* Breeds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105C30122A121AF3004FD54A /* Breeds.swift */; };
-		105C30152A121B46004FD54A /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105C30142A121B46004FD54A /* Colors.swift */; };
-		105C30172A121B71004FD54A /* Attributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105C30162A121B71004FD54A /* Attributes.swift */; };
-		105C301B2A121BD4004FD54A /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105C301A2A121BD4004FD54A /* Environment.swift */; };
 		105C301D2A121C47004FD54A /* Photos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105C301C2A121C47004FD54A /* Photos.swift */; };
 		105C301F2A121C6D004FD54A /* Videos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105C301E2A121C6D004FD54A /* Videos.swift */; };
-		105C30212A121CAA004FD54A /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105C30202A121CAA004FD54A /* Address.swift */; };
 		105C30232A121CC0004FD54A /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105C30222A121CC0004FD54A /* Contact.swift */; };
 		105C30252A1240B6004FD54A /* PetsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105C30242A1240B6004FD54A /* PetsCollectionViewCell.swift */; };
 		106259482A0790E2002E8090 /* CalendarKit in Frameworks */ = {isa = PBXBuildFile; productRef = 106259472A0790E2002E8090 /* CalendarKit */; };
-		106B75E22A0A589F00C6B704 /* Channel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106B75E12A0A589F00C6B704 /* Channel.swift */; };
 		106B75E42A0A6EC400C6B704 /* setReminderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106B75E32A0A6EC400C6B704 /* setReminderViewController.swift */; };
 		1073292C2A24730F00D4BD14 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1073292B2A24730F00D4BD14 /* LocationService.swift */; };
 		107329302A24814A00D4BD14 /* NearbyPetShopsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1073292F2A24814A00D4BD14 /* NearbyPetShopsTableViewController.swift */; };
@@ -63,6 +55,9 @@
 		108E2A222A2CBE4800172804 /* CommentsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 108E2A202A2CBE4800172804 /* CommentsTableViewCell.swift */; };
 		108E2A232A2CBE4800172804 /* CommentsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 108E2A212A2CBE4800172804 /* CommentsTableViewCell.xib */; };
 		109578652A2A139700EC4313 /* ListingAnimal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109578642A2A139700EC4313 /* ListingAnimal.swift */; };
+		109710792A2E0B2B00E3CB7C /* Conversation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109710782A2E0B2B00E3CB7C /* Conversation.swift */; };
+		1097107E2A2E1B4000E3CB7C /* ConversationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1097107C2A2E1B4000E3CB7C /* ConversationTableViewCell.swift */; };
+		1097107F2A2E1B4000E3CB7C /* ConversationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1097107D2A2E1B4000E3CB7C /* ConversationTableViewCell.xib */; };
 		1097B5A92A10C93400E56B03 /* APIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1097B5A82A10C93400E56B03 /* APIConstants.swift */; };
 		1097B5AB2A10CA4A00E56B03 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1097B5AA2A10CA4A00E56B03 /* NetworkError.swift */; };
 		1097B5AD2A10CA8E00E56B03 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1097B5AC2A10CA8E00E56B03 /* APIService.swift */; };
@@ -85,13 +80,15 @@
 		10CBC3C529F7A49600049813 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 10CBC3C429F7A49600049813 /* GoogleService-Info.plist */; };
 		10CE09952A2B529F00CB1FB6 /* ViewListingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CE09942A2B529F00CB1FB6 /* ViewListingTableViewController.swift */; };
 		10CE09992A2B5BB100CB1FB6 /* DetailListingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CE09982A2B5BB100CB1FB6 /* DetailListingViewController.swift */; };
-		10F01F2F2A07351000BE677F /* ConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F01F2E2A07351000BE677F /* ConversationViewController.swift */; };
+		10DB5A3A2A2DCF37008AE87C /* PhotoViewerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10DB5A392A2DCF37008AE87C /* PhotoViewerViewController.swift */; };
+		10DB5A3E2A2DD0F4008AE87C /* ConversationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10DB5A3D2A2DD0F4008AE87C /* ConversationTableViewController.swift */; };
+		10DB5A402A2DD25F008AE87C /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10DB5A3F2A2DD25E008AE87C /* ChatViewController.swift */; };
+		10DB5A422A2DD400008AE87C /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10DB5A412A2DD400008AE87C /* Message.swift */; };
+		10DB5A442A2DD46F008AE87C /* Sender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10DB5A432A2DD46F008AE87C /* Sender.swift */; };
+		10DB5A462A2DE7F8008AE87C /* SimpleUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10DB5A452A2DE7F8008AE87C /* SimpleUser.swift */; };
+		10DB5A482A2DEBD5008AE87C /* NewConversationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10DB5A472A2DEBD5008AE87C /* NewConversationTableViewController.swift */; };
 		10F01F322A073ADD00BE677F /* MessageKit in Frameworks */ = {isa = PBXBuildFile; productRef = 10F01F312A073ADD00BE677F /* MessageKit */; };
-		10F01F342A073B8500BE677F /* Sender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F01F332A073B8500BE677F /* Sender.swift */; };
-		10F01F362A073B9B00BE677F /* ChatMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F01F352A073B9B00BE677F /* ChatMessage.swift */; };
-		10F01F3A2A0757E900BE677F /* NewChatTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F01F392A0757E900BE677F /* NewChatTableViewController.swift */; };
 		10F43EEB29FA1C900065E8DD /* HelpTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F43EEA29FA1C900065E8DD /* HelpTableViewController.swift */; };
-		10F43EED29FA1CC40065E8DD /* ChatTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F43EEC29FA1CC40065E8DD /* ChatTableViewController.swift */; };
 		10F43EF129FA1D940065E8DD /* TabbarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F43EF029FA1D940065E8DD /* TabbarViewController.swift */; };
 		10F43EF329FA1F6C0065E8DD /* WishListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F43EF229FA1F6C0065E8DD /* WishListTableViewController.swift */; };
 		10F43EF729FA2C1C0065E8DD /* CommunityTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F43EF629FA2C1C0065E8DD /* CommunityTableViewController.swift */; };
@@ -106,9 +103,6 @@
 		102346DB2A275A6700844090 /* AboutAppViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutAppViewController.swift; sourceTree = "<group>"; };
 		102844F02A0284670012AA69 /* LocationAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationAnnotation.swift; sourceTree = "<group>"; };
 		10441FA32A0B2DD400FE269E /* NewListingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewListingViewController.swift; sourceTree = "<group>"; };
-		10441FA62A0B310900FE269E /* ImageModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ImageModel.xcdatamodel; sourceTree = "<group>"; };
-		10441FA82A0B31B000FE269E /* ImageMetaData+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ImageMetaData+CoreDataClass.swift"; sourceTree = "<group>"; };
-		10441FA92A0B31B000FE269E /* ImageMetaData+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ImageMetaData+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		10441FAC2A0B360E00FE269E /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		10441FAE2A0B3C7D00FE269E /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		10441FB02A0B3EE200FE269E /* CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
@@ -120,15 +114,10 @@
 		105C300E2A121AA8004FD54A /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
 		105C30102A121AD0004FD54A /* Animal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animal.swift; sourceTree = "<group>"; };
 		105C30122A121AF3004FD54A /* Breeds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Breeds.swift; sourceTree = "<group>"; };
-		105C30142A121B46004FD54A /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
-		105C30162A121B71004FD54A /* Attributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Attributes.swift; sourceTree = "<group>"; };
-		105C301A2A121BD4004FD54A /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		105C301C2A121C47004FD54A /* Photos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photos.swift; sourceTree = "<group>"; };
 		105C301E2A121C6D004FD54A /* Videos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Videos.swift; sourceTree = "<group>"; };
-		105C30202A121CAA004FD54A /* Address.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
 		105C30222A121CC0004FD54A /* Contact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
 		105C30242A1240B6004FD54A /* PetsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetsCollectionViewCell.swift; sourceTree = "<group>"; };
-		106B75E12A0A589F00C6B704 /* Channel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Channel.swift; sourceTree = "<group>"; };
 		106B75E32A0A6EC400C6B704 /* setReminderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = setReminderViewController.swift; sourceTree = "<group>"; };
 		1073292B2A24730F00D4BD14 /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
 		1073292F2A24814A00D4BD14 /* NearbyPetShopsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearbyPetShopsTableViewController.swift; sourceTree = "<group>"; };
@@ -151,6 +140,9 @@
 		108E2A202A2CBE4800172804 /* CommentsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsTableViewCell.swift; sourceTree = "<group>"; };
 		108E2A212A2CBE4800172804 /* CommentsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommentsTableViewCell.xib; sourceTree = "<group>"; };
 		109578642A2A139700EC4313 /* ListingAnimal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListingAnimal.swift; sourceTree = "<group>"; };
+		109710782A2E0B2B00E3CB7C /* Conversation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Conversation.swift; sourceTree = "<group>"; };
+		1097107C2A2E1B4000E3CB7C /* ConversationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationTableViewCell.swift; sourceTree = "<group>"; };
+		1097107D2A2E1B4000E3CB7C /* ConversationTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ConversationTableViewCell.xib; sourceTree = "<group>"; };
 		1097B5A82A10C93400E56B03 /* APIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConstants.swift; sourceTree = "<group>"; };
 		1097B5AA2A10CA4A00E56B03 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		1097B5AC2A10CA8E00E56B03 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
@@ -170,12 +162,14 @@
 		10CBC3C429F7A49600049813 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		10CE09942A2B529F00CB1FB6 /* ViewListingTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewListingTableViewController.swift; sourceTree = "<group>"; };
 		10CE09982A2B5BB100CB1FB6 /* DetailListingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailListingViewController.swift; sourceTree = "<group>"; };
-		10F01F2E2A07351000BE677F /* ConversationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationViewController.swift; sourceTree = "<group>"; };
-		10F01F332A073B8500BE677F /* Sender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sender.swift; sourceTree = "<group>"; };
-		10F01F352A073B9B00BE677F /* ChatMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessage.swift; sourceTree = "<group>"; };
-		10F01F392A0757E900BE677F /* NewChatTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewChatTableViewController.swift; sourceTree = "<group>"; };
+		10DB5A392A2DCF37008AE87C /* PhotoViewerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewerViewController.swift; sourceTree = "<group>"; };
+		10DB5A3D2A2DD0F4008AE87C /* ConversationTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationTableViewController.swift; sourceTree = "<group>"; };
+		10DB5A3F2A2DD25E008AE87C /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		10DB5A412A2DD400008AE87C /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		10DB5A432A2DD46F008AE87C /* Sender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sender.swift; sourceTree = "<group>"; };
+		10DB5A452A2DE7F8008AE87C /* SimpleUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleUser.swift; sourceTree = "<group>"; };
+		10DB5A472A2DEBD5008AE87C /* NewConversationTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewConversationTableViewController.swift; sourceTree = "<group>"; };
 		10F43EEA29FA1C900065E8DD /* HelpTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpTableViewController.swift; sourceTree = "<group>"; };
-		10F43EEC29FA1CC40065E8DD /* ChatTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTableViewController.swift; sourceTree = "<group>"; };
 		10F43EF029FA1D940065E8DD /* TabbarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarViewController.swift; sourceTree = "<group>"; };
 		10F43EF229FA1F6C0065E8DD /* WishListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishListTableViewController.swift; sourceTree = "<group>"; };
 		10F43EF629FA2C1C0065E8DD /* CommunityTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityTableViewController.swift; sourceTree = "<group>"; };
@@ -213,9 +207,6 @@
 			children = (
 				1058CF9B29F8F25C0069B5FA /* MulticastDelegate.swift */,
 				1058CF9D29F8F2700069B5FA /* DatabaseProtocol.swift */,
-				10441FA52A0B310900FE269E /* ImageModel.xcdatamodeld */,
-				10441FA82A0B31B000FE269E /* ImageMetaData+CoreDataClass.swift */,
-				10441FA92A0B31B000FE269E /* ImageMetaData+CoreDataProperties.swift */,
 			);
 			path = Database;
 			sourceTree = "<group>";
@@ -229,12 +220,8 @@
 				105C300E2A121AA8004FD54A /* Response.swift */,
 				105C30102A121AD0004FD54A /* Animal.swift */,
 				105C30122A121AF3004FD54A /* Breeds.swift */,
-				105C30142A121B46004FD54A /* Colors.swift */,
-				105C30162A121B71004FD54A /* Attributes.swift */,
-				105C301A2A121BD4004FD54A /* Environment.swift */,
 				105C301C2A121C47004FD54A /* Photos.swift */,
 				105C301E2A121C6D004FD54A /* Videos.swift */,
-				105C30202A121CAA004FD54A /* Address.swift */,
 				105C30222A121CC0004FD54A /* Contact.swift */,
 			);
 			path = API;
@@ -276,12 +263,16 @@
 		10983A492A03321D0067CFB1 /* Chats */ = {
 			isa = PBXGroup;
 			children = (
-				10F43EEC29FA1CC40065E8DD /* ChatTableViewController.swift */,
-				10F01F332A073B8500BE677F /* Sender.swift */,
-				106B75E12A0A589F00C6B704 /* Channel.swift */,
-				10F01F352A073B9B00BE677F /* ChatMessage.swift */,
-				10F01F2E2A07351000BE677F /* ConversationViewController.swift */,
-				10F01F392A0757E900BE677F /* NewChatTableViewController.swift */,
+				10DB5A392A2DCF37008AE87C /* PhotoViewerViewController.swift */,
+				10DB5A472A2DEBD5008AE87C /* NewConversationTableViewController.swift */,
+				10DB5A3D2A2DD0F4008AE87C /* ConversationTableViewController.swift */,
+				10DB5A3F2A2DD25E008AE87C /* ChatViewController.swift */,
+				10DB5A412A2DD400008AE87C /* Message.swift */,
+				109710782A2E0B2B00E3CB7C /* Conversation.swift */,
+				10DB5A432A2DD46F008AE87C /* Sender.swift */,
+				10DB5A452A2DE7F8008AE87C /* SimpleUser.swift */,
+				1097107C2A2E1B4000E3CB7C /* ConversationTableViewCell.swift */,
+				1097107D2A2E1B4000E3CB7C /* ConversationTableViewCell.xib */,
 			);
 			path = Chats;
 			sourceTree = "<group>";
@@ -455,6 +446,7 @@
 				101B73B22A261F2700D3B609 /* ViewModeTableViewCell.xib in Resources */,
 				10CBC3C529F7A49600049813 /* GoogleService-Info.plist in Resources */,
 				108E2A132A2C38A600172804 /* PostTableViewCell.xib in Resources */,
+				1097107F2A2E1B4000E3CB7C /* ConversationTableViewCell.xib in Resources */,
 				10AE026029EB8F4C00B82918 /* Assets.xcassets in Resources */,
 				10AE025B29EB8F4B00B82918 /* Main.storyboard in Resources */,
 				108E2A232A2CBE4800172804 /* CommentsTableViewCell.xib in Resources */,
@@ -474,60 +466,57 @@
 				1058CFA429F90AAB0069B5FA /* MarketplaceViewController.swift in Sources */,
 				1058CFA029F8F3E80069B5FA /* FirebaseController.swift in Sources */,
 				105C301D2A121C47004FD54A /* Photos.swift in Sources */,
-				105C301B2A121BD4004FD54A /* Environment.swift in Sources */,
 				108E2A222A2CBE4800172804 /* CommentsTableViewCell.swift in Sources */,
+				1097107E2A2E1B4000E3CB7C /* ConversationTableViewCell.swift in Sources */,
 				101B73AC2A26167100D3B609 /* PetopiaUserDefaults.swift in Sources */,
 				10F43EF129FA1D940065E8DD /* TabbarViewController.swift in Sources */,
+				10DB5A442A2DD46F008AE87C /* Sender.swift in Sources */,
 				10441FAD2A0B360E00FE269E /* CameraViewController.swift in Sources */,
-				10F01F362A073B9B00BE677F /* ChatMessage.swift in Sources */,
-				10441FAB2A0B31B000FE269E /* ImageMetaData+CoreDataProperties.swift in Sources */,
 				108E2A1B2A2C8CCD00172804 /* CommentsTableViewController.swift in Sources */,
 				10AE026B29EB976300B82918 /* LoginViewController.swift in Sources */,
 				10AE026D29EB99E200B82918 /* RegisterViewController.swift in Sources */,
 				1077770F2A2734BD00D7684F /* MyProfileTableViewController.swift in Sources */,
 				105B46ED2A287BD20098CBD9 /* WishlistAnimal.swift in Sources */,
 				10441FA42A0B2DD400FE269E /* NewListingViewController.swift in Sources */,
-				10441FA72A0B310900FE269E /* ImageModel.xcdatamodeld in Sources */,
 				10AE025429EB8F4B00B82918 /* AppDelegate.swift in Sources */,
+				109710792A2E0B2B00E3CB7C /* Conversation.swift in Sources */,
 				102346DC2A275A6700844090 /* AboutAppViewController.swift in Sources */,
 				10AE025E29EB8F4B00B82918 /* petopia.xcdatamodeld in Sources */,
 				10AE025629EB8F4B00B82918 /* SceneDelegate.swift in Sources */,
 				107329362A249F7C00D4BD14 /* NewLocationDelegate.swift in Sources */,
-				10441FAA2A0B31B000FE269E /* ImageMetaData+CoreDataClass.swift in Sources */,
 				1074270B2A08EEE10077A295 /* DetailReminderViewController.swift in Sources */,
 				10BBE2B62A133E8700AB62CA /* LeftAlignedCollectionViewFlowLayout.swift in Sources */,
 				109578652A2A139700EC4313 /* ListingAnimal.swift in Sources */,
-				105C30172A121B71004FD54A /* Attributes.swift in Sources */,
 				10F43EF329FA1F6C0065E8DD /* WishListTableViewController.swift in Sources */,
 				10220FE02A28CE2D006F6B9B /* Image.swift in Sources */,
+				10DB5A482A2DEBD5008AE87C /* NewConversationTableViewController.swift in Sources */,
 				105C30252A1240B6004FD54A /* PetsCollectionViewCell.swift in Sources */,
 				105C301F2A121C6D004FD54A /* Videos.swift in Sources */,
 				1097B5A92A10C93400E56B03 /* APIConstants.swift in Sources */,
 				10F43EEB29FA1C900065E8DD /* HelpTableViewController.swift in Sources */,
+				10DB5A3A2A2DCF37008AE87C /* PhotoViewerViewController.swift in Sources */,
 				106B75E42A0A6EC400C6B704 /* setReminderViewController.swift in Sources */,
 				108E2A122A2C38A600172804 /* PostTableViewCell.swift in Sources */,
+				10DB5A462A2DE7F8008AE87C /* SimpleUser.swift in Sources */,
 				1097B5AD2A10CA8E00E56B03 /* APIService.swift in Sources */,
-				10F01F3A2A0757E900BE677F /* NewChatTableViewController.swift in Sources */,
 				107329342A24993C00D4BD14 /* ViewPetShopViewController.swift in Sources */,
+				10DB5A422A2DD400008AE87C /* Message.swift in Sources */,
 				10220FD92A28AA7F006F6B9B /* ViewWishlistViewController.swift in Sources */,
+				10DB5A3E2A2DD0F4008AE87C /* ConversationTableViewController.swift in Sources */,
 				107426FD2A08D6BC0077A295 /* Reminder.swift in Sources */,
 				108E2A172A2C3DB000172804 /* Comments.swift in Sources */,
-				105C30212A121CAA004FD54A /* Address.swift in Sources */,
 				1058CF9C29F8F25C0069B5FA /* MulticastDelegate.swift in Sources */,
 				107329322A248D1B00D4BD14 /* Place.swift in Sources */,
+				10DB5A402A2DD25F008AE87C /* ChatViewController.swift in Sources */,
 				1073292C2A24730F00D4BD14 /* LocationService.swift in Sources */,
 				10CE09992A2B5BB100CB1FB6 /* DetailListingViewController.swift in Sources */,
 				10CE09952A2B529F00CB1FB6 /* ViewListingTableViewController.swift in Sources */,
 				1073293A2A24A6C400D4BD14 /* ViewVetsViewController.swift in Sources */,
-				10F01F342A073B8500BE677F /* Sender.swift in Sources */,
 				105C30132A121AF3004FD54A /* Breeds.swift in Sources */,
 				10F43EF729FA2C1C0065E8DD /* CommunityTableViewController.swift in Sources */,
 				108E2A152A2C3D5C00172804 /* Posts.swift in Sources */,
 				107427052A08E0610077A295 /* TrackerReminderViewController.swift in Sources */,
-				105C30152A121B46004FD54A /* Colors.swift in Sources */,
-				106B75E22A0A589F00C6B704 /* Channel.swift in Sources */,
 				105C300F2A121AA8004FD54A /* Response.swift in Sources */,
-				10F43EED29FA1CC40065E8DD /* ChatTableViewController.swift in Sources */,
 				107329302A24814A00D4BD14 /* NearbyPetShopsTableViewController.swift in Sources */,
 				108E2A192A2C45AF00172804 /* NewPostViewController.swift in Sources */,
 				1058CF9E29F8F2700069B5FA /* DatabaseProtocol.swift in Sources */,
@@ -537,7 +526,6 @@
 				109D46872A0C99E000E5BD27 /* User.swift in Sources */,
 				107427012A08DB540077A295 /* Date+Today.swift in Sources */,
 				102844F12A0284670012AA69 /* LocationAnnotation.swift in Sources */,
-				10F01F2F2A07351000BE677F /* ConversationViewController.swift in Sources */,
 				1097B5AB2A10CA4A00E56B03 /* NetworkError.swift in Sources */,
 				105C30232A121CC0004FD54A /* Contact.swift in Sources */,
 			);
@@ -840,16 +828,6 @@
 /* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
-		10441FA52A0B310900FE269E /* ImageModel.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				10441FA62A0B310900FE269E /* ImageModel.xcdatamodel */,
-			);
-			currentVersion = 10441FA62A0B310900FE269E /* ImageModel.xcdatamodel */;
-			path = ImageModel.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
 		10AE025C29EB8F4B00B82918 /* petopia.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (

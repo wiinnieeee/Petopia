@@ -10,6 +10,11 @@ import FirebaseFirestore
 import FirebaseAuth
 
 class TrackerReminderViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, DatabaseListener {
+    
+    func onAllConversationsChange(change: DatabaseChange, conversations: [Conversation]) {
+        // do nothing
+    }
+    
     func onPostCommentsChange(change: DatabaseChange, postComments: [Comments]) {
         // do nothing
     }

@@ -17,6 +17,10 @@ let RABBIT_SELECTION = 3
 let BIRD_SELECTION = 4
 
 class MarketplaceViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UISearchBarDelegate, DatabaseListener {
+    func onAllConversationsChange(change: DatabaseChange, conversations: [Conversation]) {
+        // do nothing
+    }
+    
     func onPostCommentsChange(change: DatabaseChange, postComments: [Comments]) {
         // do nothing
     }
@@ -27,7 +31,6 @@ class MarketplaceViewController: UIViewController, UICollectionViewDelegate, UIC
     func onAllCommentsChange(change: DatabaseChange, comments: [Comments]) {
         // do nothing
     }
-    
     
     var listenerType = ListenerType.listings
     

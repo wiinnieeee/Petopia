@@ -11,6 +11,10 @@ class NewPostViewController: UIViewController, DatabaseListener {
     var listenerType = ListenerType.users
     var currentUser: User = User()
     
+    func onAllConversationsChange(change: DatabaseChange, conversations: [Conversation]) {
+        // do nothing
+    }
+    
     func onPostCommentsChange(change: DatabaseChange, postComments: [Comments]) {
         // do nothing
     }

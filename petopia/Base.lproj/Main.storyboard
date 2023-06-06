@@ -356,7 +356,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView autoresizesSubviews="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="nzn-VS-D1L">
-                                <rect key="frame" x="16" y="123" width="361" height="644"/>
+                                <rect key="frame" x="16" y="175" width="361" height="592"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ZT0-Wn-dgX">
                                     <size key="itemSize" width="164" height="192"/>
@@ -450,98 +450,6 @@
                 <exit id="rAA-hs-RK5" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="4388.5496183206105" y="13.380281690140846"/>
-        </scene>
-        <!--Chats-->
-        <scene sceneID="wtS-kj-xEj">
-            <objects>
-                <tableViewController id="Q70-ru-Foa" customClass="ChatTableViewController" customModule="petopia" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="IhC-O6-S1C">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="channelCell" id="Ci1-cX-qDa">
-                                <rect key="frame" x="0.0" y="50" width="393" height="43.666667938232422"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Ci1-cX-qDa" id="wTn-uT-50r">
-                                    <rect key="frame" x="0.0" y="0.0" width="393" height="43.666667938232422"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="Q70-ru-Foa" id="ZWM-gW-VhP"/>
-                            <outlet property="delegate" destination="Q70-ru-Foa" id="pb3-ik-QMe"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="Chats" id="TFa-i5-g8g">
-                        <barButtonItem key="rightBarButtonItem" systemItem="compose" id="6QB-Kb-EPU">
-                            <color key="tintColor" systemColor="systemPinkColor"/>
-                            <connections>
-                                <action selector="tapCompose:" destination="Q70-ru-Foa" id="gJJ-Q5-JoD"/>
-                                <segue destination="yox-7z-72H" kind="show" id="fdC-ak-byh"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                    <connections>
-                        <segue destination="xZC-lE-dgw" kind="show" identifier="convoSegue" id="Ybu-Cj-zwY"/>
-                    </connections>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="pDI-4T-0QN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="4423.6641221374048" y="702.81690140845069"/>
-        </scene>
-        <!--Name-->
-        <scene sceneID="Ep0-7O-KHy">
-            <objects>
-                <viewController id="xZC-lE-dgw" customClass="ConversationViewController" customModule="petopia" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="zfB-W8-3wk">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="RiG-BR-aWb"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Name" id="zXo-Wc-ana"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="H8q-5s-Tlx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="5261" y="714"/>
-        </scene>
-        <!--New Conversation-->
-        <scene sceneID="Qhu-5g-Y03">
-            <objects>
-                <tableViewController id="yox-7z-72H" customClass="NewChatTableViewController" customModule="petopia" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="spa-2I-fIi">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="userCell" id="yJ7-r5-dTc">
-                                <rect key="frame" x="0.0" y="50" width="393" height="43.666667938232422"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="yJ7-r5-dTc" id="fet-wT-jqs">
-                                    <rect key="frame" x="0.0" y="0.0" width="393" height="43.666667938232422"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="yox-7z-72H" id="95L-IS-MzA"/>
-                            <outlet property="delegate" destination="yox-7z-72H" id="SJi-Nf-hQu"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="New Conversation" id="dcc-CQ-ODM">
-                        <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="Wws-Eh-HpK">
-                            <color key="tintColor" systemColor="systemPinkColor"/>
-                            <connections>
-                                <action selector="cancelAction:" destination="yox-7z-72H" id="Mvy-F5-UBv"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="5Gr-WJ-jeL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="6334" y="713"/>
         </scene>
         <!--Community-->
         <scene sceneID="w9e-n3-LZz">
@@ -1381,7 +1289,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZLs-MA-Zyz">
-                                        <rect key="frame" x="0.0" y="0.0" width="393" height="700"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="393" height="900"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Joi-Mr-fbF">
                                                 <rect key="frame" x="20" y="20" width="353" height="326"/>
@@ -1473,7 +1381,7 @@
                                             <constraint firstItem="a0e-76-MEn" firstAttribute="top" secondItem="Wr9-Xw-V0S" secondAttribute="bottom" constant="8" id="569-Ah-l5H"/>
                                             <constraint firstItem="Xto-tX-MtF" firstAttribute="centerY" secondItem="cID-F1-L7w" secondAttribute="centerY" id="85O-MO-1Mt"/>
                                             <constraint firstItem="cID-F1-L7w" firstAttribute="leading" secondItem="ZLs-MA-Zyz" secondAttribute="leading" constant="20" id="9bx-Ub-Bz6"/>
-                                            <constraint firstAttribute="height" constant="700" id="E9m-dn-aBb"/>
+                                            <constraint firstAttribute="height" constant="900" id="E9m-dn-aBb"/>
                                             <constraint firstItem="Joi-Mr-fbF" firstAttribute="leading" secondItem="ZLs-MA-Zyz" secondAttribute="leading" constant="20" id="GN3-cO-DOU"/>
                                             <constraint firstItem="ZkL-O8-qBN" firstAttribute="top" secondItem="c0y-6A-P0a" secondAttribute="bottom" constant="8" id="HTn-x0-dB0"/>
                                             <constraint firstItem="Wr9-Xw-V0S" firstAttribute="leading" secondItem="a0e-76-MEn" secondAttribute="leading" id="ISp-PJ-QUf"/>
@@ -1522,9 +1430,12 @@
                     <connections>
                         <outlet property="ageLabel" destination="9jp-6E-1IX" id="wxl-vg-YtH"/>
                         <outlet property="breedLabel" destination="Kms-hR-Fqy" id="p7Z-UB-fYA"/>
+                        <outlet property="contactOutlet" destination="cID-F1-L7w" id="WSo-EX-6WY"/>
                         <outlet property="descriptionLabel" destination="ZkL-O8-qBN" id="iCw-wE-JiH"/>
                         <outlet property="genderLabel" destination="a0e-76-MEn" id="ZXQ-Eb-qPB"/>
                         <outlet property="petImageView" destination="Joi-Mr-fbF" id="4Xx-XX-TJW"/>
+                        <outlet property="wishlistOutlet" destination="Xto-tX-MtF" id="84a-Z2-Ckg"/>
+                        <segue destination="hAi-xE-cKX" kind="show" identifier="chatSegue" id="Kf5-9Q-Ng3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="o9B-OK-dFF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -2028,12 +1939,72 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="Q70-ru-Foa" kind="relationship" relationship="rootViewController" id="6QW-ZS-xHz"/>
+                        <segue destination="hAi-xE-cKX" kind="relationship" relationship="rootViewController" id="jL3-6a-h6U"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uys-WT-F8Z" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3496.9465648854962" y="702.81690140845069"/>
+        </scene>
+        <!--Chats-->
+        <scene sceneID="uaV-dE-VAJ">
+            <objects>
+                <tableViewController id="hAi-xE-cKX" customClass="ConversationTableViewController" customModule="petopia" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="Rd7-QO-IKx">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="convoCell" id="dZ5-Dd-zj0">
+                                <rect key="frame" x="0.0" y="50" width="393" height="43.666667938232422"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="dZ5-Dd-zj0" id="otT-Lw-fR4">
+                                    <rect key="frame" x="0.0" y="0.0" width="393" height="43.666667938232422"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="hAi-xE-cKX" id="cvc-Dc-c1N"/>
+                            <outlet property="delegate" destination="hAi-xE-cKX" id="pHr-QU-hbe"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Chats" largeTitleDisplayMode="always" id="kdJ-34-wT3"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="02t-6U-ip7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4411" y="714"/>
+        </scene>
+        <!--Contacts-->
+        <scene sceneID="99p-da-eo1">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hfv-8D-PrN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tableViewController id="T4i-cW-IxS" customClass="NewConversationTableViewController" customModule="petopia" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="abh-ya-2m3">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="newConvoCell" id="kpo-A4-2lq">
+                                <rect key="frame" x="0.0" y="50" width="393" height="43.666667938232422"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="kpo-A4-2lq" id="d4O-bE-OF3">
+                                    <rect key="frame" x="0.0" y="0.0" width="393" height="43.666667938232422"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="T4i-cW-IxS" id="p9b-AB-ilR"/>
+                            <outlet property="delegate" destination="T4i-cW-IxS" id="eW2-0e-bSn"/>
+                        </connections>
+                    </tableView>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Contacts" largeTitleDisplayMode="always" id="YXm-Rq-nOM"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                </tableViewController>
+            </objects>
+            <point key="canvasLocation" x="5306" y="713"/>
         </scene>
         <!--Marketplace-->
         <scene sceneID="34C-O6-9xb">
@@ -2119,7 +2090,7 @@
                                 </connections>
                             </button>
                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" style="inline" translatesAutoresizingMaskIntoConstraints="NO" id="Vb5-Sg-VNQ">
-                                <rect key="frame" x="32" y="174.99999999999997" width="329" height="353.33333333333326"/>
+                                <rect key="frame" x="32" y="174.99999999999997" width="329" height="379.33333333333326"/>
                                 <color key="tintColor" name="General"/>
                             </datePicker>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Klx-dm-hxw">
@@ -2416,6 +2387,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="Kf5-9Q-Ng3"/>
         <segue reference="BpY-Mp-sLu"/>
     </inferredMetricsTieBreakers>
     <resources>

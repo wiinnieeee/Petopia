@@ -10,6 +10,7 @@ import Firebase
 import FirebaseFirestoreSwift
 
 class FirebaseController: NSObject, DatabaseProtocol {
+    
     var listeners = MulticastDelegate<DatabaseListener>()
     
     var authController: Auth
@@ -34,6 +35,15 @@ class FirebaseController: NSObject, DatabaseProtocol {
     var commentsRef: CollectionReference?
     var commentsList: [Comments]
     
+    var userConversationRef: CollectionReference?
+    var recipientConversationRef: CollectionReference?
+    
+    var conversationRef: CollectionReference?
+    var messagesRef: CollectionReference?
+    
+    var conversationList: [Conversation]
+    var messagesList: [Message]
+    
     var registerSuccessful: Bool = false
     
     override init(){
@@ -47,6 +57,8 @@ class FirebaseController: NSObject, DatabaseProtocol {
         listingList = [ListingAnimal]()
         postsList = [Posts]()
         commentsList = [Comments]()
+        conversationList = [Conversation]()
+        messagesList = [Message]()
         
         usersRef = database.collection("users")
         listingRef = database.collection("listings")
@@ -62,6 +74,7 @@ class FirebaseController: NSObject, DatabaseProtocol {
             self.setupListingListener()
             self.setupUserListener()
             self.setupPostListener()
+            self.setupConversationsListener()
         }
     }
     
@@ -95,6 +108,9 @@ class FirebaseController: NSObject, DatabaseProtocol {
         if listener.listenerType == .postComments || listener.listenerType == ListenerType.all {
             listener.onPostCommentsChange(change: .update, postComments: (currentPost?.comments)!)
         }
+        if listener.listenerType == ListenerType.conversations || listener.listenerType == ListenerType.all {
+            listener.onAllConversationsChange(change: .update, conversations: conversationList)
+        }
     }
     
     func removeListener(listener: DatabaseListener) {
@@ -111,6 +127,7 @@ class FirebaseController: NSObject, DatabaseProtocol {
             self.addUser(emailAdd: email, name: name, phoneNumber: phoneNumber, streetAdd: streetAdd, postCode: postCode, suburb: suburb, country: country)
             isSuccessful = true
             UserDefaults.standard.set(email, forKey: "email")
+            UserDefaults.standard.set(name, forKey: "username")
             remindersRef = database.collection("users").document("\((authController.currentUser?.uid)!)").collection("reminders")
             wishlistRef = database.collection("users").document("\((authController.currentUser?.uid)!)").collection("wishlist")
             self.setupRemindersListener()
@@ -118,6 +135,7 @@ class FirebaseController: NSObject, DatabaseProtocol {
             self.setupListingListener()
             self.setupUserListener()
             self.setupPostListener()
+            self.setupConversationsListener()
             
         } catch {
             print ("User creation failed with error: \(String(describing: error))")
@@ -141,6 +159,7 @@ class FirebaseController: NSObject, DatabaseProtocol {
             self.setupListingListener()
             self.setupUserListener()
             self.setupPostListener()
+            self.setupConversationsListener()
             
         }
         catch {
@@ -157,6 +176,7 @@ class FirebaseController: NSObject, DatabaseProtocol {
             listingList = []
             postsList = []
             commentsList = []
+            conversationList =  []
             try authController.signOut()
         }
         catch {
@@ -305,7 +325,7 @@ class FirebaseController: NSObject, DatabaseProtocol {
         let content = newPost?.content
         let date = newPost?.date
         let userName = newPost?.name
-        
+       
         let data = ["title": title!, "content": content!, "date": date!, "name": userName!] as [String : Any]
         
         var post = Posts(name: userName, date: date, title: title, content: content)
@@ -628,6 +648,216 @@ class FirebaseController: NSObject, DatabaseProtocol {
                 }
             }
         }
+    }
+    
+// MARK: - Sending Messages / Conversations
+    
+    /// creates a new conversation with target user id and the first message sent
+    func createNewConversation (pet: String?, ownName: String?, otherName: String?, otherUserID: String?, firstMessage: Message, completion: @escaping (Bool) -> Void){
+        guard let currentID = Auth.auth().currentUser?.uid else {
+            completion(false)
+            return
+        }
+        
+        let latestDate = firstMessage.sentDate
+        let dateString = ChatViewController.dateFormatter.string(from: latestDate)
+        var message = ""
+        
+        switch firstMessage.kind {
+        case .text(let messageText):
+            message = messageText
+        case .attributedText(_):
+            break
+        case .photo(_):
+            break
+        case .video(_):
+            break
+        case .location(_):
+            break
+        case .emoji(_):
+            break
+        case .audio(_):
+            break
+        case .contact(_):
+            break
+        case .linkPreview(_):
+            break
+        case .custom(_):
+            break
+        }
+        
+        userConversationRef = database.collection("users").document(currentID).collection("conversations")
+        recipientConversationRef = database.collection("users").document(otherUserID!).collection("conversations")
+        let userData = ["otherUserID": otherUserID!, "latestIsRead": false, "latestDate": dateString, "latestMessage": message, "name": otherName!, "pet": pet!] as [String : Any]
+        let recipientData = ["otherUserID": currentID, "latestIsRead": false, "latestDate": dateString, "latestMessage": message, "name": ownName!, "pet": pet!] as [String : Any]
+        
+        var userNewConvo = Conversation(otherUserID: otherUserID, latestIsRead: false, latestDate: dateString, latestMessage: message, name: otherName, pet : pet!)
+        var recipientNewConvo = Conversation(otherUserID: currentID, latestIsRead: false, latestDate: dateString, latestMessage: message, name: ownName!, pet : pet!)
+        
+        if let userConvoRef =  userConversationRef?.addDocument(data: userData){
+            //get the document ID and store it within the team instance.
+            userNewConvo.id = userConvoRef.documentID
+            recipientConversationRef?.document("\(userConvoRef.documentID)").setData(recipientData)
+            recipientNewConvo.id = userConvoRef.documentID
+            self.finishCreatingConversation(pet: pet!, name: otherName! ,conversationID: userConvoRef.documentID, firstMessage: firstMessage, completion: completion)
+            completion(true)
+        }
+    }
+    
+    func finishCreatingConversation (pet: String?, name: String, conversationID: String, firstMessage: Message, completion: @escaping (Bool) -> Void) {
+        conversationRef = database.collection("conversations")
+        conversationRef?.document("\(conversationID)").setData(["id": conversationID, "animal": pet!])
+        let convoRef = conversationRef?.document("\(conversationID)")
+        messagesRef = convoRef?.collection("messages")
+        
+        let latestDate = firstMessage.sentDate
+        let dateString = ChatViewController.dateFormatter.string(from: latestDate)
+        var message = ""
+        
+        switch firstMessage.kind {
+        case .text(let messageText):
+            message = messageText
+        case .attributedText(_):
+            break
+        case .photo(_):
+            break
+        case .video(_):
+            break
+        case .location(_):
+            break
+        case .emoji(_):
+            break
+        case .audio(_):
+            break
+        case .contact(_):
+            break
+        case .linkPreview(_):
+            break
+        case .custom(_):
+            break
+        }
+        
+        let data = ["name": name, "id": firstMessage.messageId, "type": firstMessage.kind.messageKindString, "content": message, "date": dateString, "sender_id": (Auth.auth().currentUser?.uid)!, "isRead": false ] as [String : Any]
+        
+        if let _ = messagesRef?.addDocument(data: data) {
+            completion(true)
+        } else {
+            completion(false)
+        }
+    }
+    
+    func setupConversationsListener(){
+        conversationRef = database.collection("users").document("\((Auth.auth().currentUser?.uid)!)").collection("conversations")
+        conversationRef?.addSnapshotListener(){
+            (querySnapshot, error) in
+            
+            guard let querySnapshot = querySnapshot else {
+                print ("Failed to fetch documents with error: \(String(describing: error))")
+                return
+            }
+            
+            self.parseConversationsSnapshot(snapshot: querySnapshot)
+        }
+    }
+    
+    func parseConversationsSnapshot(snapshot: QuerySnapshot) {
+        snapshot.documentChanges.forEach {
+            (change) in
+            
+            // paying attention to changes only
+            // easily handle different behaviour based on type of change such as adding, modifying, deleting
+            // when first time the snapshot called during each app launc, treat all existing records as being added
+            var parsedConversations: Conversation?
+            
+            do {
+                // done using Codable - do catch statement
+                parsedConversations = try change.document.data(as: Conversation.self)
+            } catch {
+                print ("Unable to decode conversations.")
+                return
+            }
+            
+            // make sure parsedHero isn't nil
+            guard let convo = parsedConversations else {
+                print ("Document doesn't exist")
+                return
+            }
+            
+            // if change type is added, insert array at appropiate place
+            if change.type == .added {
+                conversationList.insert(convo, at: Int(change.newIndex))
+            } else if change.type == .modified {
+                conversationList [Int (change.oldIndex)] = convo
+            } else if change.type == .removed {
+                conversationList.remove(at: Int(change.oldIndex))
+            }
+            
+            listeners.invoke { (listener) in
+                if listener.listenerType == ListenerType.conversations || listener.listenerType == ListenerType.all {
+                    listener.onAllConversationsChange(change: .update, conversations: conversationList)
+                }
+            }
+        }
+
+    }
+     
+    /// Send message with a message for a conversation
+    func sendMessage(otherUserID: String?, conversation: String?, name: String?, message: Message, completion: @escaping (Bool) -> Void) {
+        //  add new message to messages
+        messagesRef = database.collection("conversations").document("\(conversation!)").collection("messages")
+        
+        let latestDate = message.sentDate
+        let dateString = ChatViewController.dateFormatter.string(from: latestDate)
+        var newMessage = ""
+        
+        
+        switch message.kind {
+        case .text(let messageText):
+            newMessage = messageText
+        case .attributedText(_):
+            break
+        case .photo(_):
+            break
+        case .video(_):
+            break
+        case .location(_):
+            break
+        case .emoji(_):
+            break
+        case .audio(_):
+            break
+        case .contact(_):
+            break
+        case .linkPreview(_):
+            break
+        case .custom(_):
+            break
+        }
+        
+        let data = ["name": name!, "id": message.messageId, "type": message.kind.messageKindString, "content": newMessage, "date": dateString, "sender_id": (Auth.auth().currentUser?.uid)!, "isRead": false ] as [String : Any]
+        
+        if let _ = messagesRef?.addDocument(data: data) {
+            
+            guard let currentID = Auth.auth().currentUser?.uid else {
+                completion(false)
+                return
+            }
+            
+            userConversationRef = database.collection("users").document("\(currentID)").collection("conversations")
+            recipientConversationRef = database.collection("users").document("\(otherUserID!)").collection("conversations")
+      
+            let data = ["latestMessage": newMessage, "latestDate": dateString, "isRead": false] as [String : Any]
+            userConversationRef?.document("\(conversation!)").updateData(data)
+            recipientConversationRef?.document("\(conversation!)").updateData(data)
+            
+            completion(true)
+        } else {
+            completion(false)
+        }
+        
+        // update sender latest message
+        
+        // update recipient latest message
     }
     
     

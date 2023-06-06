@@ -19,6 +19,10 @@ class MyProfileTableViewController: UITableViewController, DatabaseListener {
     let SECTION_LOGOUT = 4
     
     var listenerType: ListenerType = ListenerType.users
+    func onAllConversationsChange(change: DatabaseChange, conversations: [Conversation]) {
+        // do nothing
+    }
+    
     func onPostCommentsChange(change: DatabaseChange, postComments: [Comments]) {
         // do nothing
     }

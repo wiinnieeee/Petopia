@@ -15,6 +15,6 @@ class User: NSObject, Codable{
     var listingList: [ListingAnimal] = []
     
     var phoneNumber: String?
-    var address: String?
+    var address: String? = nil
 }
 

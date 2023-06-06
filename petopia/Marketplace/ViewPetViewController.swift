@@ -13,6 +13,9 @@ import FirebaseStorage
 
 class ViewPetViewController: UIViewController, MFMailComposeViewControllerDelegate, MFMessageComposeViewControllerDelegate {
     
+    public var completion: ((User) -> (Void))?
+    var isPresent: Bool = false
+    
     @IBOutlet weak var typeBreedLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var petImageView: UIImageView!
@@ -26,54 +29,90 @@ class ViewPetViewController: UIViewController, MFMailComposeViewControllerDelega
     
     weak var databaseController: DatabaseProtocol?
     var db = Firestore.firestore()
-    var isFireBase: Bool = false
+    var isFireBase: Bool?  = false
+    var otherUser: User?
     
     var animal: ListingAnimal?
     
     @IBAction func addWishlist(_ sender: Any) {
         let newRow = WishlistAnimal(breed: (animal?.breed)!, age: (animal?.age)!, gender: (animal?.gender)!, name: (animal?.name)!, type: (animal?.type)!, description: animal?.desc ?? "", emailAddress: (animal?.emailAddress)!, phoneNumber: (animal?.phoneNumber)!, imageID: animal?.imageID, imageURL: animal?.imagePath, ownerID: animal?.ownerID)
         databaseController?.addAnimaltoWishlist(newAnimal: newRow) {isDuplicate in
-            if isDuplicate {
-                let alertController = UIAlertController(title: "Duplicate Entry", message: "This animal is already in the wishlist.", preferredStyle: .alert)
-                alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                self.present(alertController, animated: true, completion: nil)
-            }
+                if isDuplicate {
+                    let alertController = UIAlertController(title: "Duplicate Entry", message: "This animal is already in the wishlist.", preferredStyle: .alert)
+                    alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                    self.present(alertController, animated: true, completion: nil)
+                }
         }
     }
     
     @IBAction func contactButton(_ sender: Any) {
         let usersRef = db.collection("users")
-        
-        usersRef.getDocuments(){ (querySnapshot, error) in
+
+        usersRef.getDocuments { [weak self] (querySnapshot, error) in
             if let error = error {
                 print("Error getting documents: \(error)")
             } else {
+                var isInFireBase = false
+                let user2 = User()
                 for document in querySnapshot!.documents {
-                    if self.animal?.emailAddress == document.data()["email"] as? String {
-                        self.isFireBase = true
+                    print(document.data()["emailAdd"]!)
+                    if self?.animal?.emailAddress == document.data()["emailAdd"] as? String {
+                        isInFireBase = true
+                        user2.id = document.documentID
+                        user2.name = document.data()["name"] as? String
+                        user2.phoneNumber = document.data()["phoneNumber"] as? String
+                        user2.email = document.data()["emailAdd"] as? String
                         break
+                    }
+                }
+                DispatchQueue.main.async { [self] in // Update the property on the main thread
+                    self?.isFireBase = isInFireBase
+
+                    if self?.isFireBase == true {
+                        // Connect to chat controller
+                        self?.otherUser = user2
+                        if !(self!.isPresent) {
+                            self?.createNewConversation(result: (self?.otherUser)!)
+                        }
+                        else {
+                                let message = "You have already had a conversation with this user!"
+                                let alert = UIAlertController(title: "Conversation Created", message: message, preferredStyle: .alert)
+                                alert.addAction(UIAlertAction(title: "Go to Chat", style: .default, handler: { action in
+                                self?.performSegue(withIdentifier: "chatSegue", sender: nil)
+                                        }))
+                                alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel))
+                                self?.present(alert, animated: true)
+                        }
+                        
+                    } else {
+                        let message = "Email: \((self?.animal?.emailAddress ?? "")!)\nPhone number: \((self?.animal?.phoneNumber ?? "" )!)"
+                        let alert = UIAlertController(title: "Contact Owner", message: message, preferredStyle: .alert)
+                        alert.addAction(UIAlertAction(title: "Email owner", style: .default, handler: { action in
+                            self?.showMailComposer()
+                        }))
+                        alert.addAction(UIAlertAction(title: "Text owner", style: .default, handler: { action in
+                            self?.showMessageComposer()
+                        }))
+                        alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel))
+                        
+                        self?.present(alert, animated: true)
                     }
                 }
             }
         }
-        
-        if isFireBase {
-            // connect to chat controller
-        } else {
-            let message = " Email: \((animal?.emailAddress ?? "")!)\n Phone number: \((animal?.phoneNumber ?? "" )!)"
-            let alert = UIAlertController(title: "Contact Owner", message: message, preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Email owner", style: .default, handler: {action in
-                self.showMailComposer()
-            }))
-            alert.addAction(UIAlertAction(title: "Text owner", style: .default, handler: {action in
-                self.showMessageComposer()
-            }))
-            alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel))
-            
-            
-            present(alert, animated: true)
-            
+    }
+    
+    func createNewConversation (result: User) {
+        guard let name = result.name, let _ = result.email, let _ = result.id else {
+            return
         }
+        let vc = ChatViewController()
+        vc.title = "\(name) - \((animal?.name)!)"
+        vc.animal = animal
+        vc.otherUser = result
+        vc.isNewConversation = true
+        vc.navigationItem.largeTitleDisplayMode = .never
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     override func viewDidLoad() {
@@ -141,7 +180,36 @@ class ViewPetViewController: UIViewController, MFMailComposeViewControllerDelega
         
         let appDelegate = UIApplication.shared.delegate as? AppDelegate
         databaseController = appDelegate?.databaseController
+        
+        let conversationsRef = db.collection("conversations")
+        
+        conversationsRef.getDocuments { [self]
+            (querySnapshot, error) in
+            if let error = error {
+                print("Error getting documents: \(error)")
+            } else {
+                var isPresentDoc = false
+                for document in querySnapshot!.documents {
+                    if self.animal?.name! == document.data()["animal"] as? String {
+                        isPresentDoc = true
+                        break
+                    }
+                }
+                DispatchQueue.main.async { [self] in // Update the property on the main thread
+                    self.isPresent = isPresentDoc
+                    print(self.isPresent)
+                }
+            }
+        }
+        
+        if animal?.emailAddress == Auth.auth().currentUser?.email! {
+            contactOutlet.isHidden = true
+            wishlistOutlet.isHidden = true
+        }
     }
+    
+    @IBOutlet weak var contactOutlet: UIButton!
+    @IBOutlet weak var wishlistOutlet: UIButton!
     
     func loadImageData(filename: String) -> UIImage? {
         let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)

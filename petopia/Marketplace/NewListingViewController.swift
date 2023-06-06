@@ -11,6 +11,12 @@ import FirebaseStorage
 
 class NewListingViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, DatabaseListener {
     
+    
+    func onAllConversationsChange(change: DatabaseChange, conversations: [Conversation]) {
+        // do nothing
+    }
+    
+    
     func onPostCommentsChange(change: DatabaseChange, postComments: [Comments]) {
         // do nothing
     }
