@@ -11,13 +11,11 @@ struct Contact: Codable {
 
   var email   : String?  = nil
   var phone   : String?  = nil
-  var address : Address? = Address()
 
   enum CodingKeys: String, CodingKey {
 
     case email   = "email"
     case phone   = "phone"
-    case address = "address"
   
   }
 
@@ -26,7 +24,6 @@ struct Contact: Codable {
 
     email   = try values.decodeIfPresent(String.self  , forKey: .email   )
     phone   = try values.decodeIfPresent(String.self  , forKey: .phone   )
-    address = try values.decodeIfPresent(Address.self , forKey: .address )
  
   }
 

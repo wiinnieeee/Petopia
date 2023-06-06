@@ -79,7 +79,8 @@
 		10CBC3C529F7A49600049813 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 10CBC3C429F7A49600049813 /* GoogleService-Info.plist */; };
 		10CE09952A2B529F00CB1FB6 /* ViewListingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CE09942A2B529F00CB1FB6 /* ViewListingTableViewController.swift */; };
 		10CE09992A2B5BB100CB1FB6 /* DetailListingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CE09982A2B5BB100CB1FB6 /* DetailListingViewController.swift */; };
-		10DB5A3A2A2DCF37008AE87C /* PhotoViewerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10DB5A392A2DCF37008AE87C /* PhotoViewerViewController.swift */; };
+		10CE97B92A2F1D3400C216F7 /* ConversationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CE97B82A2F1D3400C216F7 /* ConversationTableViewController.swift */; };
+		10CE97BB2A2F1D7500C216F7 /* Conversations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CE97BA2A2F1D7500C216F7 /* Conversations.swift */; };
 		10DB5A402A2DD25F008AE87C /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10DB5A3F2A2DD25E008AE87C /* ChatViewController.swift */; };
 		10DB5A422A2DD400008AE87C /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10DB5A412A2DD400008AE87C /* Message.swift */; };
 		10DB5A442A2DD46F008AE87C /* Sender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10DB5A432A2DD46F008AE87C /* Sender.swift */; };
@@ -158,7 +159,8 @@
 		10CBC3C429F7A49600049813 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		10CE09942A2B529F00CB1FB6 /* ViewListingTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewListingTableViewController.swift; sourceTree = "<group>"; };
 		10CE09982A2B5BB100CB1FB6 /* DetailListingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailListingViewController.swift; sourceTree = "<group>"; };
-		10DB5A392A2DCF37008AE87C /* PhotoViewerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewerViewController.swift; sourceTree = "<group>"; };
+		10CE97B82A2F1D3400C216F7 /* ConversationTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationTableViewController.swift; sourceTree = "<group>"; };
+		10CE97BA2A2F1D7500C216F7 /* Conversations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Conversations.swift; sourceTree = "<group>"; };
 		10DB5A3F2A2DD25E008AE87C /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		10DB5A412A2DD400008AE87C /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		10DB5A432A2DD46F008AE87C /* Sender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sender.swift; sourceTree = "<group>"; };
@@ -257,13 +259,14 @@
 		10983A492A03321D0067CFB1 /* Chats */ = {
 			isa = PBXGroup;
 			children = (
-				10DB5A392A2DCF37008AE87C /* PhotoViewerViewController.swift */,
 				10DB5A3F2A2DD25E008AE87C /* ChatViewController.swift */,
+				10CE97BA2A2F1D7500C216F7 /* Conversations.swift */,
 				10DB5A412A2DD400008AE87C /* Message.swift */,
 				10DB5A432A2DD46F008AE87C /* Sender.swift */,
 				10DB5A452A2DE7F8008AE87C /* SimpleUser.swift */,
 				1097107C2A2E1B4000E3CB7C /* ConversationTableViewCell.swift */,
 				1097107D2A2E1B4000E3CB7C /* ConversationTableViewCell.xib */,
+				10CE97B82A2F1D3400C216F7 /* ConversationTableViewController.swift */,
 			);
 			path = Chats;
 			sourceTree = "<group>";
@@ -473,6 +476,7 @@
 				102346DC2A275A6700844090 /* AboutAppViewController.swift in Sources */,
 				10AE025E29EB8F4B00B82918 /* petopia.xcdatamodeld in Sources */,
 				10AE025629EB8F4B00B82918 /* SceneDelegate.swift in Sources */,
+				10CE97BB2A2F1D7500C216F7 /* Conversations.swift in Sources */,
 				107329362A249F7C00D4BD14 /* NewLocationDelegate.swift in Sources */,
 				1074270B2A08EEE10077A295 /* DetailReminderViewController.swift in Sources */,
 				10BBE2B62A133E8700AB62CA /* LeftAlignedCollectionViewFlowLayout.swift in Sources */,
@@ -483,7 +487,6 @@
 				105C301F2A121C6D004FD54A /* Videos.swift in Sources */,
 				1097B5A92A10C93400E56B03 /* APIConstants.swift in Sources */,
 				10F43EEB29FA1C900065E8DD /* HelpTableViewController.swift in Sources */,
-				10DB5A3A2A2DCF37008AE87C /* PhotoViewerViewController.swift in Sources */,
 				106B75E42A0A6EC400C6B704 /* setReminderViewController.swift in Sources */,
 				108E2A122A2C38A600172804 /* PostTableViewCell.swift in Sources */,
 				10DB5A462A2DE7F8008AE87C /* SimpleUser.swift in Sources */,
@@ -492,6 +495,7 @@
 				10DB5A422A2DD400008AE87C /* Message.swift in Sources */,
 				10220FD92A28AA7F006F6B9B /* ViewWishlistViewController.swift in Sources */,
 				107426FD2A08D6BC0077A295 /* Reminder.swift in Sources */,
+				10CE97B92A2F1D3400C216F7 /* ConversationTableViewController.swift in Sources */,
 				108E2A172A2C3DB000172804 /* Comments.swift in Sources */,
 				1058CF9C29F8F25C0069B5FA /* MulticastDelegate.swift in Sources */,
 				107329322A248D1B00D4BD14 /* Place.swift in Sources */,
