@@ -55,7 +55,6 @@
 		108E2A222A2CBE4800172804 /* CommentsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 108E2A202A2CBE4800172804 /* CommentsTableViewCell.swift */; };
 		108E2A232A2CBE4800172804 /* CommentsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 108E2A212A2CBE4800172804 /* CommentsTableViewCell.xib */; };
 		109578652A2A139700EC4313 /* ListingAnimal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109578642A2A139700EC4313 /* ListingAnimal.swift */; };
-		109710792A2E0B2B00E3CB7C /* Conversation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109710782A2E0B2B00E3CB7C /* Conversation.swift */; };
 		1097107E2A2E1B4000E3CB7C /* ConversationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1097107C2A2E1B4000E3CB7C /* ConversationTableViewCell.swift */; };
 		1097107F2A2E1B4000E3CB7C /* ConversationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1097107D2A2E1B4000E3CB7C /* ConversationTableViewCell.xib */; };
 		1097B5A92A10C93400E56B03 /* APIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1097B5A82A10C93400E56B03 /* APIConstants.swift */; };
@@ -81,12 +80,10 @@
 		10CE09952A2B529F00CB1FB6 /* ViewListingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CE09942A2B529F00CB1FB6 /* ViewListingTableViewController.swift */; };
 		10CE09992A2B5BB100CB1FB6 /* DetailListingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CE09982A2B5BB100CB1FB6 /* DetailListingViewController.swift */; };
 		10DB5A3A2A2DCF37008AE87C /* PhotoViewerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10DB5A392A2DCF37008AE87C /* PhotoViewerViewController.swift */; };
-		10DB5A3E2A2DD0F4008AE87C /* ConversationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10DB5A3D2A2DD0F4008AE87C /* ConversationTableViewController.swift */; };
 		10DB5A402A2DD25F008AE87C /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10DB5A3F2A2DD25E008AE87C /* ChatViewController.swift */; };
 		10DB5A422A2DD400008AE87C /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10DB5A412A2DD400008AE87C /* Message.swift */; };
 		10DB5A442A2DD46F008AE87C /* Sender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10DB5A432A2DD46F008AE87C /* Sender.swift */; };
 		10DB5A462A2DE7F8008AE87C /* SimpleUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10DB5A452A2DE7F8008AE87C /* SimpleUser.swift */; };
-		10DB5A482A2DEBD5008AE87C /* NewConversationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10DB5A472A2DEBD5008AE87C /* NewConversationTableViewController.swift */; };
 		10F01F322A073ADD00BE677F /* MessageKit in Frameworks */ = {isa = PBXBuildFile; productRef = 10F01F312A073ADD00BE677F /* MessageKit */; };
 		10F43EEB29FA1C900065E8DD /* HelpTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F43EEA29FA1C900065E8DD /* HelpTableViewController.swift */; };
 		10F43EF129FA1D940065E8DD /* TabbarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F43EF029FA1D940065E8DD /* TabbarViewController.swift */; };
@@ -140,7 +137,6 @@
 		108E2A202A2CBE4800172804 /* CommentsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsTableViewCell.swift; sourceTree = "<group>"; };
 		108E2A212A2CBE4800172804 /* CommentsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommentsTableViewCell.xib; sourceTree = "<group>"; };
 		109578642A2A139700EC4313 /* ListingAnimal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListingAnimal.swift; sourceTree = "<group>"; };
-		109710782A2E0B2B00E3CB7C /* Conversation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Conversation.swift; sourceTree = "<group>"; };
 		1097107C2A2E1B4000E3CB7C /* ConversationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationTableViewCell.swift; sourceTree = "<group>"; };
 		1097107D2A2E1B4000E3CB7C /* ConversationTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ConversationTableViewCell.xib; sourceTree = "<group>"; };
 		1097B5A82A10C93400E56B03 /* APIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConstants.swift; sourceTree = "<group>"; };
@@ -163,12 +159,10 @@
 		10CE09942A2B529F00CB1FB6 /* ViewListingTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewListingTableViewController.swift; sourceTree = "<group>"; };
 		10CE09982A2B5BB100CB1FB6 /* DetailListingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailListingViewController.swift; sourceTree = "<group>"; };
 		10DB5A392A2DCF37008AE87C /* PhotoViewerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewerViewController.swift; sourceTree = "<group>"; };
-		10DB5A3D2A2DD0F4008AE87C /* ConversationTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationTableViewController.swift; sourceTree = "<group>"; };
 		10DB5A3F2A2DD25E008AE87C /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		10DB5A412A2DD400008AE87C /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		10DB5A432A2DD46F008AE87C /* Sender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sender.swift; sourceTree = "<group>"; };
 		10DB5A452A2DE7F8008AE87C /* SimpleUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleUser.swift; sourceTree = "<group>"; };
-		10DB5A472A2DEBD5008AE87C /* NewConversationTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewConversationTableViewController.swift; sourceTree = "<group>"; };
 		10F43EEA29FA1C900065E8DD /* HelpTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpTableViewController.swift; sourceTree = "<group>"; };
 		10F43EF029FA1D940065E8DD /* TabbarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarViewController.swift; sourceTree = "<group>"; };
 		10F43EF229FA1F6C0065E8DD /* WishListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishListTableViewController.swift; sourceTree = "<group>"; };
@@ -264,11 +258,8 @@
 			isa = PBXGroup;
 			children = (
 				10DB5A392A2DCF37008AE87C /* PhotoViewerViewController.swift */,
-				10DB5A472A2DEBD5008AE87C /* NewConversationTableViewController.swift */,
-				10DB5A3D2A2DD0F4008AE87C /* ConversationTableViewController.swift */,
 				10DB5A3F2A2DD25E008AE87C /* ChatViewController.swift */,
 				10DB5A412A2DD400008AE87C /* Message.swift */,
-				109710782A2E0B2B00E3CB7C /* Conversation.swift */,
 				10DB5A432A2DD46F008AE87C /* Sender.swift */,
 				10DB5A452A2DE7F8008AE87C /* SimpleUser.swift */,
 				1097107C2A2E1B4000E3CB7C /* ConversationTableViewCell.swift */,
@@ -479,7 +470,6 @@
 				105B46ED2A287BD20098CBD9 /* WishlistAnimal.swift in Sources */,
 				10441FA42A0B2DD400FE269E /* NewListingViewController.swift in Sources */,
 				10AE025429EB8F4B00B82918 /* AppDelegate.swift in Sources */,
-				109710792A2E0B2B00E3CB7C /* Conversation.swift in Sources */,
 				102346DC2A275A6700844090 /* AboutAppViewController.swift in Sources */,
 				10AE025E29EB8F4B00B82918 /* petopia.xcdatamodeld in Sources */,
 				10AE025629EB8F4B00B82918 /* SceneDelegate.swift in Sources */,
@@ -489,7 +479,6 @@
 				109578652A2A139700EC4313 /* ListingAnimal.swift in Sources */,
 				10F43EF329FA1F6C0065E8DD /* WishListTableViewController.swift in Sources */,
 				10220FE02A28CE2D006F6B9B /* Image.swift in Sources */,
-				10DB5A482A2DEBD5008AE87C /* NewConversationTableViewController.swift in Sources */,
 				105C30252A1240B6004FD54A /* PetsCollectionViewCell.swift in Sources */,
 				105C301F2A121C6D004FD54A /* Videos.swift in Sources */,
 				1097B5A92A10C93400E56B03 /* APIConstants.swift in Sources */,
@@ -502,7 +491,6 @@
 				107329342A24993C00D4BD14 /* ViewPetShopViewController.swift in Sources */,
 				10DB5A422A2DD400008AE87C /* Message.swift in Sources */,
 				10220FD92A28AA7F006F6B9B /* ViewWishlistViewController.swift in Sources */,
-				10DB5A3E2A2DD0F4008AE87C /* ConversationTableViewController.swift in Sources */,
 				107426FD2A08D6BC0077A295 /* Reminder.swift in Sources */,
 				108E2A172A2C3DB000172804 /* Comments.swift in Sources */,
 				1058CF9C29F8F25C0069B5FA /* MulticastDelegate.swift in Sources */,
