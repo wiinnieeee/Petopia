@@ -1,6 +1,8 @@
 //
 //  Message.swift
 //  petopia
+//  Message created during each conversation
+//  Reference: https://youtube.com/playlist?list=PL5PR3UyfTWvdlk-Qi-dPtJmjTj-2YIMMf
 //
 //  Created by Winnie Ooi on 5/6/2023.
 //
@@ -17,6 +19,7 @@ struct Message: MessageType {
     var name: String?
 }
 
+// Initialise the types of Message Kind to return different values
 extension MessageKind {
     var messageKindString: String {
         switch self {

@@ -8,6 +8,7 @@
 import UIKit
 import Foundation
 
+// Initialiser to construct the user using the details below
 class User: NSObject, Codable{
     var id: String?
     var name: String?

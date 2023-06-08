@@ -1,6 +1,7 @@
 //
 //  NewPostViewController.swift
 //  petopia
+//  View Controller to create a new post
 //
 //  Created by Winnie Ooi on 4/6/2023.
 //
@@ -8,8 +9,8 @@
 import UIKit
 
 class NewPostViewController: UIViewController, DatabaseListener {
+    // MARK: Listener Declaration
     var listenerType = ListenerType.users
-    var currentUser: User = User()
     
     func onAllConversationsChange(change: DatabaseChange, conversations: [Conversation]) {
         // do nothing
@@ -47,12 +48,11 @@ class NewPostViewController: UIViewController, DatabaseListener {
         // do nothing
     }
     
-
     weak var databaseController: DatabaseProtocol?
+    var currentUser: User = User()
     
     @IBOutlet weak var contentField: UITextField!
     @IBOutlet weak var titleField: UITextField!
-    
     
     @IBAction func submitButton(_ sender: Any) {
         guard let title = titleField.text, let content = contentField.text else {
@@ -65,14 +65,13 @@ class NewPostViewController: UIViewController, DatabaseListener {
         newPost.name = currentUser.name!
         newPost.content = content
         
+        // Add post entry to the database
         databaseController?.addPost(newPost: newPost)
         navigationController?.popViewController(animated: true)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
         let appDelegate = UIApplication.shared.delegate as?AppDelegate
         databaseController = appDelegate?.databaseController
     }
@@ -86,17 +85,4 @@ class NewPostViewController: UIViewController, DatabaseListener {
         super.viewWillDisappear(animated)
         databaseController?.removeListener(listener: self)
     }
-
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

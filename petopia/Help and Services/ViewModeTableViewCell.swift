@@ -8,23 +8,13 @@
 import UIKit
 
 class ViewModeTableViewCell: UITableViewCell {
-    
     @IBOutlet weak var viewLabel: UILabel!
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
     
-    
+    /// Select the mode of view based on selection on segmented control
+    // Reference: https://www.youtube.com/watch?v=XghYQWWQIss
     @IBAction func selectMode(_ sender: UISegmentedControl) {
+        // Default would be following the device
         PetopiaUserDefaults.shared.theme = Theme(rawValue: sender.selectedSegmentIndex) ?? .device
         self.window?.overrideUserInterfaceStyle = PetopiaUserDefaults.shared.theme.getUserInterfaceStyle()
     }
-    
 }

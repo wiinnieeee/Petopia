@@ -9,6 +9,7 @@ import Foundation
 import UIKit
 import FirebaseFirestoreSwift
 
+// Comments object
 struct Comments: Codable {
     @DocumentID var id: String?
     var name: String?

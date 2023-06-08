@@ -1,6 +1,8 @@
 //
 //  NearbyVetsTableViewController.swift
 //  petopia
+//  Similar to nearby Pet Shops, find the nearby vets in a table view
+//  Reference: https://www.youtube.com/watch?v=YCmZayf7Zi4
 //
 //  Created by Winnie Ooi on 29/5/2023.
 //
@@ -15,11 +17,13 @@ class NearbyVetsTableViewController: UITableViewController {
     var userLoc: CLLocation?
     var newPlace: Place?
     
+    // Loads user current location once the view is loaded
     override func viewDidLoad() {
         super.viewDidLoad()
         getUserLocation()
     }
     
+    /// Obtains the user current location
     func getUserLocation() {
         LocationService.shared.locationUpdated = {
             location in
@@ -28,24 +32,30 @@ class NearbyVetsTableViewController: UITableViewController {
         }
     }
     
+    /// Fetching the nearby vets to the current location of the user
     func fetchPlaces (location: CLLocationCoordinate2D) {
         let searchSpan = MKCoordinateSpan(latitudeDelta: 0.5, longitudeDelta: 0.5)
         let searchRegion = MKCoordinateRegion(center: location, span: searchSpan)
         
+        // Conditions of the search request
         let searchRequest = MKLocalSearch.Request()
         searchRequest.region = searchRegion
         searchRequest.resultTypes = .pointOfInterest
         searchRequest.naturalLanguageQuery = "Vet"
         
+        // Search according to the search request conditions
         let search = MKLocalSearch(request: searchRequest)
         
+        // Start the search
         search.start { response, error in
+            // mapItems is the array containing nearby pet shops obtained
             guard let mapItems = response?.mapItems else {
                 return
             }
             DispatchQueue.main.async {
                 [weak self] in
                 for items in mapItems {
+                    // create a new place object and append in the list of places
                     var newPlace = Place()
                     newPlace.name = items.name
                     newPlace.phoneNumber = items.phoneNumber
@@ -56,6 +66,7 @@ class NearbyVetsTableViewController: UITableViewController {
                     self?.places.append(newPlace)
                     
                 }
+                // Sort the places by the distance from the user
                 self?.places.sort(by: {$0.distanceFromUser! < $1.distanceFromUser!})
                 self?.tableView.reloadData()
             }
@@ -65,16 +76,14 @@ class NearbyVetsTableViewController: UITableViewController {
     // MARK: - Table view data source
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return places.count
     }
     
-    
+    // Populate the rows in the section
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "vetsCell", for: indexPath)
         let nearbyShops = places[indexPath.row]
@@ -84,45 +93,9 @@ class NearbyVetsTableViewController: UITableViewController {
         cell.contentConfiguration = content
         return cell
     }
-    /*
-     // Override to support conditional editing of the table view.
-     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-     // Return false if you do not want the specified item to be editable.
-     return true
-     }
-     */
-    
-    /*
-     // Override to support editing the table view.
-     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-     if editingStyle == .delete {
-     // Delete the row from the data source
-     tableView.deleteRows(at: [indexPath], with: .fade)
-     } else if editingStyle == .insert {
-     // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-     }
-     }
-     */
-    
-    /*
-     // Override to support rearranging the table view.
-     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-     
-     }
-     */
-    
-    /*
-     // Override to support conditional rearranging of the table view.
-     override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-     // Return false if you do not want the item to be re-orderable.
-     return true
-     }
-     */
-    
-    
+  
     // MARK: - Navigation
-    
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    // Pass the selected row to the next view controller to display details
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "viewVets" {
             if let indexPath = tableView.indexPathForSelectedRow {
@@ -131,8 +104,6 @@ class NearbyVetsTableViewController: UITableViewController {
                 destination?.selectedPlace = placeSelected
                 destination?.userLoc = userLoc
             }
-            
-            
         }
     }
 }

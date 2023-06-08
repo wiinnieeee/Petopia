@@ -1,6 +1,7 @@
 //
 //  WishlistAnimal.swift
 //  petopia
+//  Attributes of animals in the wishlist
 //
 //  Created by Winnie Ooi on 1/6/2023.
 //

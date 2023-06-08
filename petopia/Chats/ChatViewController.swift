@@ -1,6 +1,8 @@
 //
 //  ChatViewController.swift
 //  petopia
+//  Display the chat interface for the user
+//  Reference: https://youtube.com/playlist?list=PL5PR3UyfTWvdlk-Qi-dPtJmjTj-2YIMMf
 //
 //  Created by Winnie Ooi on 5/6/2023.
 //
@@ -13,6 +15,7 @@ import FirebaseFirestoreSwift
 import InputBarAccessoryView
 
 class ChatViewController: MessagesViewController, DatabaseListener{
+    // MARK: Listener Declaration
     var listenerType = ListenerType.users
     
     func onAllRemindersChange(change: DatabaseChange, reminders: [Reminder]) {
@@ -21,10 +24,6 @@ class ChatViewController: MessagesViewController, DatabaseListener{
     
     func onAllWishlistChange(change: DatabaseChange, wishlist: [WishlistAnimal]) {
         // do nothing
-    }
-    
-    func onUserChange(change: DatabaseChange, user: User) {
-        currentUser = user
     }
     
     func onAllListingChange(change: DatabaseChange, listing: [ListingAnimal]) {
@@ -51,12 +50,29 @@ class ChatViewController: MessagesViewController, DatabaseListener{
         // do nothing
     }
     
+    func onUserChange(change: DatabaseChange, user: User) {
+        currentUser = user
+    }
+    
+    var animal: ListingAnimal?
     var currentUser: User?
     var otherUserID: String?
     weak var databaseController: DatabaseProtocol?
     var database = Firestore.firestore()
-    var animal: ListingAnimal?
     
+    var conversation: Conversation?
+    var isNewConversation = false
+    var otherUser: User?
+    var conversationID: String?
+    
+    var messages = [Message]()
+    var messagesRef: CollectionReference?
+    var databaseListener: ListenerRegistration?
+    
+    // Initialise a dummy value for the selfSender
+    var selfSender = Sender(senderId: (Auth.auth().currentUser?.uid)!, displayName: "Me", photoURL: "")
+    
+    /// Method to format the date
     public static var dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateStyle = .medium
@@ -65,30 +81,21 @@ class ChatViewController: MessagesViewController, DatabaseListener{
         return formatter
     }()
     
-    var conversation: Conversation?
-    var isNewConversation = false
-    var otherUser: User?
-    
-    var messages = [Message]()
-    var selfSender = Sender(senderId: (Auth.auth().currentUser?.uid)!, displayName: "Me", photoURL: "")
-    
-    var messagesRef: CollectionReference?
-    var databaseListener: ListenerRegistration?
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         let appDelegate = UIApplication.shared.delegate as? AppDelegate
         databaseController = appDelegate?.databaseController
         
+        // Initialise the delegate and data source
         messagesCollectionView.messagesDataSource = self
         messagesCollectionView.messagesLayoutDelegate = self
         messagesCollectionView.messagesDisplayDelegate = self
         messageInputBar.delegate = self
         
         if conversation != nil {
-        let database = Firestore.firestore()
-        messagesRef = database.collection("conversations").document("\((conversation?.id)!)").collection("messages")
+            let database = Firestore.firestore()
+            messagesRef = database.collection("conversations").document("\((conversation?.id)!)").collection("messages")
         }
     }
     
@@ -96,7 +103,25 @@ class ChatViewController: MessagesViewController, DatabaseListener{
         super.viewWillAppear(animated)
         databaseController?.addListener(listener: self)
         messageInputBar.inputTextView.becomeFirstResponder()
+        if conversation != nil {
+            setupChatListener()
+        }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        databaseController?.removeListener(listener: self)
+        databaseListener?.remove()
+    }
+    
+    /// Listen for the messages in the conversation when the conversation is setup
+    func setupChatListener() {
+        let database = Firestore.firestore()
+        if conversation != nil {
+            conversationID = conversation?.id
+        }
         
+        messagesRef = database.collection("conversations").document("\((conversationID)!)").collection("messages")
         databaseListener = messagesRef?.order(by: "date").addSnapshotListener() { (querySnapshot, error) in
             
             if let error = error {
@@ -108,51 +133,30 @@ class ChatViewController: MessagesViewController, DatabaseListener{
                 change in
                 
                 if change.type == .added {
-                let snapshot = change.document
-                let id = snapshot.documentID
+                    let snapshot = change.document
+                    let id = snapshot.documentID
                     _ = snapshot["id"] as? String
-                let senderId = snapshot["sender_id"]  as? String
-                let senderName = snapshot["name"] as? String
-                let messageText = snapshot["content"] as? String
-                let date = snapshot["date"]  as? String
+                    let senderId = snapshot["sender_id"]  as? String
+                    let senderName = snapshot["name"] as? String
+                    let messageText = snapshot["content"] as? String
+                    let date = snapshot["date"]  as? String
                     _ = snapshot["is_read"] as? String
                     _ = snapshot["type"] as? String
-                
                     
-                let sender = Sender(senderId: senderId!, displayName: senderName ??
-                                    "" , photoURL: "")
-                let message = Message(sender: sender, messageId: id, sentDate: Self.dateFormatter.date(from: date!)!, kind: .text(messageText!))
+                    let sender = Sender(senderId: senderId!, displayName: senderName ?? "" , photoURL: "")
+                    let message = Message(sender: sender, messageId: id, sentDate: Self.dateFormatter.date(from: date!)!, kind: .text(messageText!))
                     
-                self.messages.append(message)
-                self.messagesCollectionView.insertSections([self.messages.count-1])
-                    
-                    DispatchQueue.main.async {
-                        self.messagesCollectionView.reloadDataAndKeepOffset()
-                    }
+                    self.messages.append(message)
+                    self.messagesCollectionView.insertSections([self.messages.count-1])
                 }
             }
         }
     }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        databaseController?.removeListener(listener: self)
-        databaseListener?.remove()
-    }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 }
 
+// Initialise the input bar
 extension ChatViewController: InputBarAccessoryViewDelegate {
+    /// Method to decide what to do when the send button is pressed
     func inputBar(_ inputBar: InputBarAccessoryView, didPressSendButtonWith text: String) {
         guard !text.replacingOccurrences(of: " ", with: "").isEmpty, let messageID = createMessageID() else {
             return
@@ -160,26 +164,27 @@ extension ChatViewController: InputBarAccessoryViewDelegate {
         
         let message = Message(sender: selfSender, messageId: messageID, sentDate: Date(), kind: .text(text))
         
-        // Send Message
+        // Create a new conversation if the conversation doesn't exist
         if isNewConversation {
-            databaseController?.createNewConversation(pet: animal?.name!, ownName: currentUser?.name, otherName: otherUser?.name, otherUserID: otherUser?.id, firstMessage: message, completion: { [weak self] success in
+            let conversationNewID = databaseController?.createNewConversation(pet: animal?.name!, ownName: currentUser?.name, otherName: otherUser?.name, otherUserID: otherUser?.id, firstMessage: message, completion: { [weak self] success in
                 if success {
                     print ("message sent")
                     self?.isNewConversation = false
-                    
-                    DispatchQueue.main.async {
-                        self!.messagesCollectionView.reloadDataAndKeepOffset()
-                    }
-                     
                 } else {
                     print("failed to sent")
                 }
             })
-            //messagesCollectionView.reloadDataAndKeepOffset()
+            // Setup chat listener to load the first message sent
+            DispatchQueue.main.async {
+                self.messagesCollectionView.reloadDataAndKeepOffset()
+                self.conversationID = conversationNewID
+                self.setupChatListener()
+            }
         }
+        // Else if the conversation exists
+        // Append the message to the conversation
         else {
-            // append to existing conversation data
-            databaseController?.sendMessage(otherUserID: otherUserID, conversation: conversation?.id, name: self.title!, message: message, completion: {
+            databaseController?.sendMessage(otherUserID: otherUserID, conversation: conversationID, name: self.title!, message: message, completion: {
                 [weak self] success in
                 if success {
                     print ("message sent for conversation")
@@ -189,11 +194,12 @@ extension ChatViewController: InputBarAccessoryViewDelegate {
                 }
             })
         }
+        // Clear the input bar after the message is sent
         inputBar.inputTextView.text = ""
     }
     
+    /// Method used to create a unique message ID using the userID of the other user, the current userID and current timestamp
     func createMessageID () -> String? {
-        // date, otherUserID, senderID
         let dateString = Self.dateFormatter.string(from: Date())
         if otherUserID == nil {
             otherUserID = otherUser?.id
@@ -204,6 +210,7 @@ extension ChatViewController: InputBarAccessoryViewDelegate {
     }
 }
 
+// Initialise the protocol stubs of the delegate
 extension ChatViewController: MessagesDataSource, MessagesLayoutDelegate, MessagesDisplayDelegate {
     var currentSender: MessageKit.SenderType {
         return selfSender

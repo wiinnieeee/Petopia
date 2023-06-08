@@ -1,6 +1,7 @@
 //
 //  Breeds.swift
 //  petopia
+//  Breeds of the pet from the API
 //
 //  Created by Winnie Ooi on 15/5/2023.
 //
@@ -24,6 +25,7 @@ struct Breeds: Codable {
   
   }
 
+    // Values to decode
   init(from decoder: Decoder) throws {
     let values = try decoder.container(keyedBy: CodingKeys.self)
 

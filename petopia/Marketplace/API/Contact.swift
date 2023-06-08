@@ -1,6 +1,7 @@
 //
 //  Contact.swift
 //  petopia
+//  Contact details of the owner of the pet from the API
 //
 //  Created by Winnie Ooi on 15/5/2023.
 //

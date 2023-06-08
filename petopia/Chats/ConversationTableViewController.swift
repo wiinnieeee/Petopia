@@ -1,6 +1,8 @@
 //
 //  ConversationTableViewController.swift
 //  petopia
+//  Reference: https://youtube.com/playlist?list=PL5PR3UyfTWvdlk-Qi-dPtJmjTj-2YIMMf
+//  Display all the current conversations of the current user with different users with different pets
 //
 //  Created by Winnie Ooi on 5/6/2023.
 //
@@ -10,6 +12,10 @@ import FirebaseFirestoreSwift
 import FirebaseAuth
 
 class ConversationTableViewController: UITableViewController, DatabaseListener {
+    
+    // MARK: Listener Declaration
+    var listenerType = ListenerType.conversations
+    
     func onAllRemindersChange(change: DatabaseChange, reminders: [Reminder]) {
         // do nothing
     }
@@ -48,15 +54,15 @@ class ConversationTableViewController: UITableViewController, DatabaseListener {
     }
     
     var conversationsList = [Conversation]()
-    var listenerType = ListenerType.conversations
     weak var databaseController: DatabaseProtocol?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         let appDelegate = UIApplication.shared.delegate as? AppDelegate
         databaseController = appDelegate?.databaseController
         
+        // Register the custom conversation cell
         tableView.register(UINib(nibName: "ConversationTableViewCell", bundle: nil), forCellReuseIdentifier: "convoCell")
     }
     
@@ -69,34 +75,28 @@ class ConversationTableViewController: UITableViewController, DatabaseListener {
         super.viewWillDisappear(animated)
         databaseController?.removeListener(listener: self)
     }
-
+    
     // MARK: - Table view data source
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return conversationsList.count
     }
-
-
+    
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "convoCell", for: indexPath) as! ConversationTableViewCell
         let conversation = conversationsList[indexPath.row]
         cell.userNameLabel.text = "\((conversation.name)!) - \((conversation.pet)!)"
         cell.userMessageLabel.text = conversation.latestMessage
         cell.accessoryType = .disclosureIndicator
-
-        // Configure the cell...
-
         return cell
     }
     
-    
+    // Pass the conversation details and the other user ID to the Chat View Controller when the conversaton is selected
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        // do nothing
         tableView.deselectRow(at: indexPath, animated: true)
         let selectedConvo = conversationsList[indexPath.row]
         
@@ -109,39 +109,4 @@ class ConversationTableViewController: UITableViewController, DatabaseListener {
         vc.navigationItem.largeTitleDisplayMode = .never
         navigationController?.pushViewController(vc, animated: true)
     }
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
 }

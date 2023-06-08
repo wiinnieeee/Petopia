@@ -1,6 +1,7 @@
 //
 //  ListingAnimal.swift
 //  petopia
+//  Details required to be known to create a listing for the pet
 //
 //  Created by Winnie Ooi on 2/6/2023.
 //
@@ -25,7 +26,6 @@ class ListingAnimal: NSObject, Codable {
     var imageIsDownloading: Bool? = false
     var imageShown: Bool? = false
 
-    
     enum CodingKeys: String, CodingKey {
             case id
             case breed

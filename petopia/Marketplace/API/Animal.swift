@@ -1,6 +1,7 @@
 //
 //  Animal.swift
 //  petopia
+//  Animals obtained from the API
 //
 //  Created by Winnie Ooi on 15/5/2023.
 //
@@ -20,7 +21,6 @@ struct Animal: Codable {
   var name           : String?      = nil
   var description    : String?      = nil
   var photos         : [Photos]?    = []
-  var videos         : [Videos]?    = []
   var status         : String?      = nil
   var contact        : Contact?     = Contact()
    
@@ -37,11 +37,11 @@ struct Animal: Codable {
     case name           = "name"
     case description    = "description"
     case photos         = "photos"
-    case videos         = "videos"
     case status         = "status"
     case contact        = "contact"
   }
 
+    // Values to decode
   init(from decoder: Decoder) throws {
     let values = try decoder.container(keyedBy: CodingKeys.self)
 
@@ -55,7 +55,6 @@ struct Animal: Codable {
     name           = try values.decodeIfPresent(String.self      , forKey: .name           )
     description    = try values.decodeIfPresent(String.self      , forKey: .description    )
     photos         = try values.decodeIfPresent([Photos].self    , forKey: .photos         )
-    videos         = try values.decodeIfPresent([Videos].self    , forKey: .videos         )
     status         = try values.decodeIfPresent(String.self      , forKey: .status         )
     contact        = try values.decodeIfPresent(Contact.self     , forKey: .contact        )
  

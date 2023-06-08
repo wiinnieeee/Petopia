@@ -100,7 +100,6 @@
                                     <color key="baseForegroundColor" name="General"/>
                                 </buttonConfiguration>
                                 <connections>
-                                    <action selector="registerAction:" destination="e0c-T5-pb1" eventType="touchUpInside" id="ojm-nQ-rto"/>
                                     <segue destination="n4E-5x-vTT" kind="show" id="IdF-kr-nb4"/>
                                 </connections>
                             </button>
@@ -1825,22 +1824,9 @@
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UOe-A2-Jfp">
-                                                        <rect key="frame" x="126" y="524" width="140" height="35"/>
-                                                        <color key="tintColor" name="General"/>
-                                                        <state key="normal" title="Button"/>
-                                                        <buttonConfiguration key="configuration" style="filled" title="Contact Owner">
-                                                            <color key="baseBackgroundColor" name="General"/>
-                                                        </buttonConfiguration>
-                                                        <connections>
-                                                            <action selector="contactAction:" destination="eyW-Ao-zee" eventType="touchUpInside" id="B91-FO-Ejd"/>
-                                                            <action selector="contactButton:" destination="iji-9o-vPx" eventType="touchUpInside" id="bck-Em-uSF"/>
-                                                        </connections>
-                                                    </button>
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
-                                                    <constraint firstItem="UOe-A2-Jfp" firstAttribute="leading" secondItem="KHg-0q-H2o" secondAttribute="leading" constant="126" id="0RK-kA-3Sc"/>
                                                     <constraint firstItem="xwV-J0-YxP" firstAttribute="top" secondItem="49L-xo-vkT" secondAttribute="bottom" constant="8" id="3zZ-nM-Pzv"/>
                                                     <constraint firstItem="oNr-Qh-Vf5" firstAttribute="leading" secondItem="KHg-0q-H2o" secondAttribute="leading" constant="20" id="A66-pF-wHo"/>
                                                     <constraint firstItem="GiS-fi-pXh" firstAttribute="leading" secondItem="KHg-0q-H2o" secondAttribute="leading" constant="20" id="BWv-OF-uES"/>
@@ -1850,7 +1836,6 @@
                                                     <constraint firstItem="gkN-ih-YDk" firstAttribute="leading" secondItem="Qh3-dZ-TKp" secondAttribute="leading" id="Ei7-Av-Z55"/>
                                                     <constraint firstAttribute="trailing" secondItem="GiS-fi-pXh" secondAttribute="trailing" constant="20" id="QyK-wX-dRu"/>
                                                     <constraint firstItem="Il6-lV-e9O" firstAttribute="top" secondItem="KHg-0q-H2o" secondAttribute="top" constant="20" id="T5C-Cb-efS"/>
-                                                    <constraint firstItem="UOe-A2-Jfp" firstAttribute="top" secondItem="GiS-fi-pXh" secondAttribute="bottom" constant="41" id="XQP-s1-Jhr"/>
                                                     <constraint firstAttribute="height" constant="700" id="YwA-Iu-JkD"/>
                                                     <constraint firstItem="fTb-J7-7ue" firstAttribute="top" secondItem="oNr-Qh-Vf5" secondAttribute="bottom" constant="20" id="azS-Nm-EOb"/>
                                                     <constraint firstItem="oNr-Qh-Vf5" firstAttribute="top" secondItem="CQ0-jC-xmD" secondAttribute="bottom" constant="8" id="cWA-zR-0GQ"/>
@@ -1912,7 +1897,7 @@
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="bgJ-om-EE9">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="tintColor" systemColor="systemPinkColor"/>
+                        <color key="tintColor" name="General"/>
                         <color key="selectedImageTintColor" name="General"/>
                     </tabBar>
                     <connections>
@@ -1936,6 +1921,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="O6G-C8-YFP">
                         <rect key="frame" x="0.0" y="59" width="393" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" name="General"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -1984,7 +1970,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="JVd-8h-QPf">
                         <rect key="frame" x="0.0" y="59" width="393" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="tintColor" systemColor="systemPinkColor"/>
+                        <color key="tintColor" name="General"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -2028,7 +2014,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="518-nh-QFN">
                         <rect key="frame" x="0.0" y="59" width="393" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="tintColor" systemColor="systemPinkColor"/>
+                        <color key="tintColor" name="General"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -2179,7 +2165,7 @@
         <!--Set Reminder View Controller-->
         <scene sceneID="KrT-ZH-tTc">
             <objects>
-                <viewController id="aAI-aS-7PY" customClass="setReminderViewController" customModule="petopia" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="aAI-aS-7PY" customClass="SetReminderViewController" customModule="petopia" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="nNv-5m-Qg9">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2258,7 +2244,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="74G-vy-l8P">
                         <rect key="frame" x="0.0" y="59" width="393" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="tintColor" systemColor="systemPinkColor"/>
+                        <color key="tintColor" name="General"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -2356,8 +2342,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Kf5-9Q-Ng3"/>
-        <segue reference="BpY-Mp-sLu"/>
+        <segue reference="jL3-6a-h6U"/>
+        <segue reference="hIC-Xj-Kqs"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Icon" width="1000" height="1000"/>

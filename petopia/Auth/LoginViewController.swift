@@ -1,6 +1,9 @@
 //
 //  LoginViewController.swift
 //  petopia
+//  View controller for user to login
+//  Reference for unwind Segue: https://medium.com/@ldeme/unwind-segues-in-swift-5-e392134c65fd
+//
 //
 //  Created by Winnie Ooi on 16/4/2023.
 //
@@ -11,19 +14,18 @@ import FirebaseAuth
 class LoginViewController: UIViewController {
     
     weak var databaseController: DatabaseProtocol?
-    
     var authController: Auth?
+    
+    // Listen to the authentication stage
     var authStateListener: AuthStateDidChangeListenerHandle?
 
     @IBOutlet weak var password: UITextField!
     @IBOutlet weak var emailAdd: UITextField!
     
+    /// Segue for user to unwind to this view after registration or logout successfully
     @IBAction func unwind( _ seg: UIStoryboardSegue) {
     }
     
-    @IBAction func registerAction(_ sender: Any) {
-        // do nothing
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,9 +34,9 @@ class LoginViewController: UIViewController {
         
         // access authController
         authController = Auth.auth()
-        // Do any additional setup after loading the view.
     }
     
+    /// Action for user to perform login if account is valid
     @IBAction func loginAction(_ sender: Any) {
         if self.validAccount() {
             Task {
@@ -49,6 +51,7 @@ class LoginViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        // Check if the user is already logged, if yes, then directly jump to main page
         authStateListener = authController?.addStateDidChangeListener{
             auth, user in
             if user != nil {
@@ -65,6 +68,7 @@ class LoginViewController: UIViewController {
         }
     }
     
+    /// Check if the account is a valid account
     func validAccount () -> Bool {
         var errorMessage: String = ""
 
@@ -80,21 +84,11 @@ class LoginViewController: UIViewController {
         }
     }
     
+    /// Initialiser for alert controller to display a message
     func displayMessage(title: String, message: String) {
             let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
             alertController.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: nil))
             self.present(alertController, animated: true, completion: nil)
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

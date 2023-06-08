@@ -2,6 +2,7 @@
 //  MyProfileTableViewController.swift
 //  petopia
 //
+//  Profile details of the user logged in
 //  Created by Winnie Ooi on 31/5/2023.
 //
 
@@ -9,23 +10,23 @@ import UIKit
 import FirebaseAuth
 import FirebaseFirestore
 
-
 class MyProfileTableViewController: UITableViewController, DatabaseListener {
     
+    // Different sections of the table view controller
     let SECTION_USERNAME = 0
     let SECTION_EMAIL = 1
     let SECTION_PHONENUMBER = 2
     let SECTION_ADDRESS = 3
     let SECTION_LOGOUT = 4
     
+    // MARK: Listener Declaration
+    // Declare the listener type to listen to the current user
     var listenerType: ListenerType = ListenerType.users
+    
     func onAllConversationsChange(change: DatabaseChange, conversations: [Conversation]) {
         // do nothing
     }
     
-    func onPostCommentsChange(change: DatabaseChange, postComments: [Comments]) {
-        // do nothing
-    }
     func onAllPostsChange(change: DatabaseChange, posts: [Posts]) {
         // do nothing
     }
@@ -41,8 +42,6 @@ class MyProfileTableViewController: UITableViewController, DatabaseListener {
     func onAllListingChange(change: DatabaseChange, listing: [ListingAnimal]) {
         // do nothing
     }
-
-    
     
     func onAllRemindersChange(change: DatabaseChange, reminders: [Reminder]) {
         // do nothing
@@ -52,11 +51,11 @@ class MyProfileTableViewController: UITableViewController, DatabaseListener {
         // do nothing
     }
     
+    // Update and obtain data of the current user
     func onUserChange(change: DatabaseChange, user: User) {
         currentUser = user
         tableView.reloadData()
     }
-    
     
     weak var databaseController: DatabaseProtocol?
     var db = Firestore.firestore()
@@ -64,17 +63,8 @@ class MyProfileTableViewController: UITableViewController, DatabaseListener {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-        
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
-        
         let appDelegate = UIApplication.shared.delegate as?AppDelegate
         databaseController = appDelegate?.databaseController
-   
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -86,21 +76,17 @@ class MyProfileTableViewController: UITableViewController, DatabaseListener {
         super.viewWillDisappear(animated)
         databaseController?.removeListener(listener: self)
     }
-
-
+    
     // MARK: - Table view data source
-
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 5
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return 1
     }
 
-  
+    // Populate the sections in the table view using the attributes of the user fetched
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == SECTION_USERNAME {
             let cell = tableView.dequeueReusableCell(withIdentifier: "userNameCell", for: indexPath)
@@ -129,57 +115,12 @@ class MyProfileTableViewController: UITableViewController, DatabaseListener {
         }
     }
     
+    // Sign out of the user when Log Out row is selected
+    // Will return to the Login View Controller page
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section ==  SECTION_LOGOUT {
             databaseController?.signOutAccount()
             self.performSegue(withIdentifier: "unwindToLogin", sender: self)
         }
     }
-   
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

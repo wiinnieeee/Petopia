@@ -8,7 +8,7 @@
 import Foundation
 import FirebaseFirestoreSwift
 
-
+// Post object
 struct Posts: Codable {
     @DocumentID var id: String?
     var name: String?

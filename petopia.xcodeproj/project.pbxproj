@@ -13,13 +13,11 @@
 		10220FD92A28AA7F006F6B9B /* ViewWishlistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10220FD82A28AA7F006F6B9B /* ViewWishlistViewController.swift */; };
 		10220FDC2A28B063006F6B9B /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 10220FDB2A28B063006F6B9B /* FirebaseStorage */; };
 		10220FDE2A28B0A7006F6B9B /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 10220FDD2A28B0A7006F6B9B /* FirebaseStorageCombine-Community */; };
-		10220FE02A28CE2D006F6B9B /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10220FDF2A28CE2D006F6B9B /* Image.swift */; };
 		102346DC2A275A6700844090 /* AboutAppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 102346DB2A275A6700844090 /* AboutAppViewController.swift */; };
 		102844F12A0284670012AA69 /* LocationAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 102844F02A0284670012AA69 /* LocationAnnotation.swift */; };
 		10441FA42A0B2DD400FE269E /* NewListingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10441FA32A0B2DD400FE269E /* NewListingViewController.swift */; };
 		10441FAD2A0B360E00FE269E /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10441FAC2A0B360E00FE269E /* CameraViewController.swift */; };
 		10441FAF2A0B3C7D00FE269E /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10441FAE2A0B3C7D00FE269E /* ImageCollectionViewCell.swift */; };
-		10441FB12A0B3EE200FE269E /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10441FB02A0B3EE200FE269E /* CollectionViewController.swift */; };
 		1058CF9C29F8F25C0069B5FA /* MulticastDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1058CF9B29F8F25C0069B5FA /* MulticastDelegate.swift */; };
 		1058CF9E29F8F2700069B5FA /* DatabaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1058CF9D29F8F2700069B5FA /* DatabaseProtocol.swift */; };
 		1058CFA029F8F3E80069B5FA /* FirebaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1058CF9F29F8F3E80069B5FA /* FirebaseController.swift */; };
@@ -29,11 +27,10 @@
 		105C30112A121AD0004FD54A /* Animal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105C30102A121AD0004FD54A /* Animal.swift */; };
 		105C30132A121AF3004FD54A /* Breeds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105C30122A121AF3004FD54A /* Breeds.swift */; };
 		105C301D2A121C47004FD54A /* Photos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105C301C2A121C47004FD54A /* Photos.swift */; };
-		105C301F2A121C6D004FD54A /* Videos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105C301E2A121C6D004FD54A /* Videos.swift */; };
 		105C30232A121CC0004FD54A /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105C30222A121CC0004FD54A /* Contact.swift */; };
 		105C30252A1240B6004FD54A /* PetsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105C30242A1240B6004FD54A /* PetsCollectionViewCell.swift */; };
 		106259482A0790E2002E8090 /* CalendarKit in Frameworks */ = {isa = PBXBuildFile; productRef = 106259472A0790E2002E8090 /* CalendarKit */; };
-		106B75E42A0A6EC400C6B704 /* setReminderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106B75E32A0A6EC400C6B704 /* setReminderViewController.swift */; };
+		106B75E42A0A6EC400C6B704 /* SetReminderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106B75E32A0A6EC400C6B704 /* SetReminderViewController.swift */; };
 		1073292C2A24730F00D4BD14 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1073292B2A24730F00D4BD14 /* LocationService.swift */; };
 		107329302A24814A00D4BD14 /* NearbyPetShopsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1073292F2A24814A00D4BD14 /* NearbyPetShopsTableViewController.swift */; };
 		107329322A248D1B00D4BD14 /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107329312A248D1B00D4BD14 /* Place.swift */; };
@@ -84,7 +81,6 @@
 		10DB5A402A2DD25F008AE87C /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10DB5A3F2A2DD25E008AE87C /* ChatViewController.swift */; };
 		10DB5A422A2DD400008AE87C /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10DB5A412A2DD400008AE87C /* Message.swift */; };
 		10DB5A442A2DD46F008AE87C /* Sender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10DB5A432A2DD46F008AE87C /* Sender.swift */; };
-		10DB5A462A2DE7F8008AE87C /* SimpleUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10DB5A452A2DE7F8008AE87C /* SimpleUser.swift */; };
 		10F01F322A073ADD00BE677F /* MessageKit in Frameworks */ = {isa = PBXBuildFile; productRef = 10F01F312A073ADD00BE677F /* MessageKit */; };
 		10F43EEB29FA1C900065E8DD /* HelpTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F43EEA29FA1C900065E8DD /* HelpTableViewController.swift */; };
 		10F43EF129FA1D940065E8DD /* TabbarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F43EF029FA1D940065E8DD /* TabbarViewController.swift */; };
@@ -97,13 +93,11 @@
 		101B73AF2A261F2700D3B609 /* ViewModeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModeTableViewCell.swift; sourceTree = "<group>"; };
 		101B73B02A261F2700D3B609 /* ViewModeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ViewModeTableViewCell.xib; sourceTree = "<group>"; };
 		10220FD82A28AA7F006F6B9B /* ViewWishlistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewWishlistViewController.swift; sourceTree = "<group>"; };
-		10220FDF2A28CE2D006F6B9B /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		102346DB2A275A6700844090 /* AboutAppViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutAppViewController.swift; sourceTree = "<group>"; };
 		102844F02A0284670012AA69 /* LocationAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationAnnotation.swift; sourceTree = "<group>"; };
 		10441FA32A0B2DD400FE269E /* NewListingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewListingViewController.swift; sourceTree = "<group>"; };
 		10441FAC2A0B360E00FE269E /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		10441FAE2A0B3C7D00FE269E /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
-		10441FB02A0B3EE200FE269E /* CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
 		1058CF9B29F8F25C0069B5FA /* MulticastDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MulticastDelegate.swift; sourceTree = "<group>"; };
 		1058CF9D29F8F2700069B5FA /* DatabaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseProtocol.swift; sourceTree = "<group>"; };
 		1058CF9F29F8F3E80069B5FA /* FirebaseController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseController.swift; sourceTree = "<group>"; };
@@ -113,10 +107,9 @@
 		105C30102A121AD0004FD54A /* Animal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animal.swift; sourceTree = "<group>"; };
 		105C30122A121AF3004FD54A /* Breeds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Breeds.swift; sourceTree = "<group>"; };
 		105C301C2A121C47004FD54A /* Photos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photos.swift; sourceTree = "<group>"; };
-		105C301E2A121C6D004FD54A /* Videos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Videos.swift; sourceTree = "<group>"; };
 		105C30222A121CC0004FD54A /* Contact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
 		105C30242A1240B6004FD54A /* PetsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetsCollectionViewCell.swift; sourceTree = "<group>"; };
-		106B75E32A0A6EC400C6B704 /* setReminderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = setReminderViewController.swift; sourceTree = "<group>"; };
+		106B75E32A0A6EC400C6B704 /* SetReminderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetReminderViewController.swift; sourceTree = "<group>"; };
 		1073292B2A24730F00D4BD14 /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
 		1073292F2A24814A00D4BD14 /* NearbyPetShopsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearbyPetShopsTableViewController.swift; sourceTree = "<group>"; };
 		107329312A248D1B00D4BD14 /* Place.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
@@ -164,7 +157,6 @@
 		10DB5A3F2A2DD25E008AE87C /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		10DB5A412A2DD400008AE87C /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		10DB5A432A2DD46F008AE87C /* Sender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sender.swift; sourceTree = "<group>"; };
-		10DB5A452A2DE7F8008AE87C /* SimpleUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleUser.swift; sourceTree = "<group>"; };
 		10F43EEA29FA1C900065E8DD /* HelpTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpTableViewController.swift; sourceTree = "<group>"; };
 		10F43EF029FA1D940065E8DD /* TabbarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarViewController.swift; sourceTree = "<group>"; };
 		10F43EF229FA1F6C0065E8DD /* WishListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishListTableViewController.swift; sourceTree = "<group>"; };
@@ -217,7 +209,6 @@
 				105C30102A121AD0004FD54A /* Animal.swift */,
 				105C30122A121AF3004FD54A /* Breeds.swift */,
 				105C301C2A121C47004FD54A /* Photos.swift */,
-				105C301E2A121C6D004FD54A /* Videos.swift */,
 				105C30222A121CC0004FD54A /* Contact.swift */,
 			);
 			path = API;
@@ -230,7 +221,7 @@
 				107427002A08DB540077A295 /* Date+Today.swift */,
 				107427042A08E0610077A295 /* TrackerReminderViewController.swift */,
 				1074270A2A08EEE10077A295 /* DetailReminderViewController.swift */,
-				106B75E32A0A6EC400C6B704 /* setReminderViewController.swift */,
+				106B75E32A0A6EC400C6B704 /* SetReminderViewController.swift */,
 			);
 			path = "Tracker and Reminder";
 			sourceTree = "<group>";
@@ -240,14 +231,12 @@
 			children = (
 				1097B5A72A10C91A00E56B03 /* API */,
 				1058CFA329F90AAB0069B5FA /* MarketplaceViewController.swift */,
-				10220FDF2A28CE2D006F6B9B /* Image.swift */,
 				10ADA1982A19E86B0003A8CC /* ViewPetViewController.swift */,
 				10F43EF229FA1F6C0065E8DD /* WishListTableViewController.swift */,
 				109578642A2A139700EC4313 /* ListingAnimal.swift */,
 				10441FA32A0B2DD400FE269E /* NewListingViewController.swift */,
 				10441FAC2A0B360E00FE269E /* CameraViewController.swift */,
 				10441FAE2A0B3C7D00FE269E /* ImageCollectionViewCell.swift */,
-				10441FB02A0B3EE200FE269E /* CollectionViewController.swift */,
 				105C30242A1240B6004FD54A /* PetsCollectionViewCell.swift */,
 				10BBE2B52A133E8700AB62CA /* LeftAlignedCollectionViewFlowLayout.swift */,
 				105B46EC2A287BD20098CBD9 /* WishlistAnimal.swift */,
@@ -263,7 +252,6 @@
 				10CE97BA2A2F1D7500C216F7 /* Conversations.swift */,
 				10DB5A412A2DD400008AE87C /* Message.swift */,
 				10DB5A432A2DD46F008AE87C /* Sender.swift */,
-				10DB5A452A2DE7F8008AE87C /* SimpleUser.swift */,
 				1097107C2A2E1B4000E3CB7C /* ConversationTableViewCell.swift */,
 				1097107D2A2E1B4000E3CB7C /* ConversationTableViewCell.xib */,
 				10CE97B82A2F1D3400C216F7 /* ConversationTableViewController.swift */,
@@ -454,7 +442,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				10441FB12A0B3EE200FE269E /* CollectionViewController.swift in Sources */,
 				107329382A24A67000D4BD14 /* NearbyVetsTableViewController.swift in Sources */,
 				105C30112A121AD0004FD54A /* Animal.swift in Sources */,
 				1058CFA429F90AAB0069B5FA /* MarketplaceViewController.swift in Sources */,
@@ -482,14 +469,11 @@
 				10BBE2B62A133E8700AB62CA /* LeftAlignedCollectionViewFlowLayout.swift in Sources */,
 				109578652A2A139700EC4313 /* ListingAnimal.swift in Sources */,
 				10F43EF329FA1F6C0065E8DD /* WishListTableViewController.swift in Sources */,
-				10220FE02A28CE2D006F6B9B /* Image.swift in Sources */,
 				105C30252A1240B6004FD54A /* PetsCollectionViewCell.swift in Sources */,
-				105C301F2A121C6D004FD54A /* Videos.swift in Sources */,
 				1097B5A92A10C93400E56B03 /* APIConstants.swift in Sources */,
 				10F43EEB29FA1C900065E8DD /* HelpTableViewController.swift in Sources */,
-				106B75E42A0A6EC400C6B704 /* setReminderViewController.swift in Sources */,
+				106B75E42A0A6EC400C6B704 /* SetReminderViewController.swift in Sources */,
 				108E2A122A2C38A600172804 /* PostTableViewCell.swift in Sources */,
-				10DB5A462A2DE7F8008AE87C /* SimpleUser.swift in Sources */,
 				1097B5AD2A10CA8E00E56B03 /* APIService.swift in Sources */,
 				107329342A24993C00D4BD14 /* ViewPetShopViewController.swift in Sources */,
 				10DB5A422A2DD400008AE87C /* Message.swift in Sources */,
