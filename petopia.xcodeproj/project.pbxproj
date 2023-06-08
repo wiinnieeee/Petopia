@@ -29,7 +29,6 @@
 		105C301D2A121C47004FD54A /* Photos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105C301C2A121C47004FD54A /* Photos.swift */; };
 		105C30232A121CC0004FD54A /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105C30222A121CC0004FD54A /* Contact.swift */; };
 		105C30252A1240B6004FD54A /* PetsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105C30242A1240B6004FD54A /* PetsCollectionViewCell.swift */; };
-		106259482A0790E2002E8090 /* CalendarKit in Frameworks */ = {isa = PBXBuildFile; productRef = 106259472A0790E2002E8090 /* CalendarKit */; };
 		106B75E42A0A6EC400C6B704 /* SetReminderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106B75E32A0A6EC400C6B704 /* SetReminderViewController.swift */; };
 		1073292C2A24730F00D4BD14 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1073292B2A24730F00D4BD14 /* LocationService.swift */; };
 		107329302A24814A00D4BD14 /* NearbyPetShopsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1073292F2A24814A00D4BD14 /* NearbyPetShopsTableViewController.swift */; };
@@ -57,7 +56,6 @@
 		1097B5A92A10C93400E56B03 /* APIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1097B5A82A10C93400E56B03 /* APIConstants.swift */; };
 		1097B5AB2A10CA4A00E56B03 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1097B5AA2A10CA4A00E56B03 /* NetworkError.swift */; };
 		1097B5AD2A10CA8E00E56B03 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1097B5AC2A10CA8E00E56B03 /* APIService.swift */; };
-		10983A512A0335560067CFB1 /* FloatingPanel in Frameworks */ = {isa = PBXBuildFile; productRef = 10983A502A0335560067CFB1 /* FloatingPanel */; };
 		109D46872A0C99E000E5BD27 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109D46862A0C99E000E5BD27 /* User.swift */; };
 		10ADA1992A19E86B0003A8CC /* ViewPetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10ADA1982A19E86B0003A8CC /* ViewPetViewController.swift */; };
 		10AE025429EB8F4B00B82918 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10AE025329EB8F4B00B82918 /* AppDelegate.swift */; };
@@ -168,9 +166,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				106259482A0790E2002E8090 /* CalendarKit in Frameworks */,
 				10CBC3C329F7A3AB00049813 /* FirebaseMessaging in Frameworks */,
-				10983A512A0335560067CFB1 /* FloatingPanel in Frameworks */,
 				10CBC3BD29F7A3AB00049813 /* FirebaseAuth in Frameworks */,
 				10F01F322A073ADD00BE677F /* MessageKit in Frameworks */,
 				10220FDC2A28B063006F6B9B /* FirebaseStorage in Frameworks */,
@@ -370,9 +366,7 @@
 				10CBC3BE29F7A3AB00049813 /* FirebaseFirestore */,
 				10CBC3C029F7A3AB00049813 /* FirebaseFirestoreSwift */,
 				10CBC3C229F7A3AB00049813 /* FirebaseMessaging */,
-				10983A502A0335560067CFB1 /* FloatingPanel */,
 				10F01F312A073ADD00BE677F /* MessageKit */,
-				106259472A0790E2002E8090 /* CalendarKit */,
 				10220FDB2A28B063006F6B9B /* FirebaseStorage */,
 				10220FDD2A28B0A7006F6B9B /* FirebaseStorageCombine-Community */,
 			);
@@ -406,9 +400,7 @@
 			mainGroup = 10AE024729EB8F4B00B82918;
 			packageReferences = (
 				10CBC3BB29F7A3AB00049813 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
-				10983A4F2A0335560067CFB1 /* XCRemoteSwiftPackageReference "FloatingPanel" */,
 				10F01F302A073ADD00BE677F /* XCRemoteSwiftPackageReference "MessageKit" */,
-				106259462A0790E2002E8090 /* XCRemoteSwiftPackageReference "CalendarKit" */,
 			);
 			productRefGroup = 10AE025129EB8F4B00B82918 /* Products */;
 			projectDirPath = "";
@@ -721,22 +713,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		106259462A0790E2002E8090 /* XCRemoteSwiftPackageReference "CalendarKit" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/richardtop/CalendarKit";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
-			};
-		};
-		10983A4F2A0335560067CFB1 /* XCRemoteSwiftPackageReference "FloatingPanel" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/scenee/FloatingPanel";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 2.0.0;
-			};
-		};
 		10CBC3BB29F7A3AB00049813 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
@@ -765,16 +741,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 10CBC3BB29F7A3AB00049813 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = "FirebaseStorageCombine-Community";
-		};
-		106259472A0790E2002E8090 /* CalendarKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 106259462A0790E2002E8090 /* XCRemoteSwiftPackageReference "CalendarKit" */;
-			productName = CalendarKit;
-		};
-		10983A502A0335560067CFB1 /* FloatingPanel */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 10983A4F2A0335560067CFB1 /* XCRemoteSwiftPackageReference "FloatingPanel" */;
-			productName = FloatingPanel;
 		};
 		10CBC3BC29F7A3AB00049813 /* FirebaseAuth */ = {
 			isa = XCSwiftPackageProductDependency;

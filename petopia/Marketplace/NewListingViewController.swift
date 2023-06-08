@@ -57,7 +57,6 @@ class NewListingViewController: UIViewController, UICollectionViewDelegate, UICo
     
     private let reuseIdentifier = "Cell"
     
-    
     // Label for the details
     @IBOutlet weak var typeField: UISegmentedControl!
     @IBOutlet weak var genderField: UISegmentedControl!

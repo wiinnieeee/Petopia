@@ -224,19 +224,22 @@ class MarketplaceViewController: UIViewController, UICollectionViewDelegate, UIC
                 // Load the data by making an instance of animal
                 // As long as there is photo existent for the animal, it would be appended to the pets
                 for pet in animals {
+                    let listing = ListingAnimal()
+                    listing.name = pet.name!
+                    listing.gender = pet.gender!
+                    listing.phoneNumber = pet.contact?.phone ?? ""
                     if (pet.photos!.count > 0) {
-                        let listing = ListingAnimal()
-                        listing.name = pet.name!
-                        listing.gender = pet.gender!
-                        listing.phoneNumber = pet.contact?.phone ?? ""
                         listing.imagePath = pet.photos![0].full!
-                        listing.emailAddress = pet.contact?.email ?? ""
-                        listing.type = pet.type!
-                        listing.desc = pet.description ?? ""
-                        listing.age = pet.age!
-                        listing.breed = pet.breeds?.primary!
-                        apiPets.append(listing)
                     }
+                    else {
+                        listing.imagePath = ""
+                    }
+                    listing.emailAddress = pet.contact?.email ?? ""
+                    listing.type = pet.type!
+                    listing.desc = pet.description ?? ""
+                    listing.age = pet.age!
+                    listing.breed = pet.breeds?.primary!
+                    apiPets.append(listing)
                 }
                 // add the pets to the filtered pets
                 preListingPets += apiPets
@@ -284,50 +287,55 @@ class MarketplaceViewController: UIViewController, UICollectionViewDelegate, UIC
         // Pet retrieved from Firestore would have an image ID when stored
         // During load, display a loading image as the retrieval from Firestore Storage would be slower
         if pet.imageID != nil {
-            cell.imageView.image = UIImage(named: "Image")
+            cell.imageView.image = UIImage(named: "Loading")
         }
         
         // If imageID is nil, meaning the retrieval of image is from the API
         // Download image from API
         if pet.imageID == nil {
             if pet.imageIsDownloading == false, let imageURL = pet.imagePath {
-                // obtain the imageURL and make it to a URL request
-                let requestURL = URL(string: imageURL)
-                if let requestURL {
-                    Task {
-                        print("Downloading image: " + imageURL)
-                        pet.imageIsDownloading = true
-                        do {
-                           // Obtain data from URL Request
-                            let (data, response) = try await URLSession.shared.data(from: requestURL)
-                            guard let httpResponse = response as? HTTPURLResponse,
-                                  httpResponse.statusCode == 200 else {
-                                pet.imageIsDownloading = false
-                                throw NetworkError.invalidResponse
+                // If there is no imageURL, load an image showing No Pet Preview
+                if imageURL == "" {
+                    cell.imageView.image = UIImage(named: "No Pet Preview")
+                } else {
+                    // obtain the imageURL and make it to a URL request
+                    let requestURL = URL(string: imageURL)
+                    if let requestURL {
+                        Task {
+                            print("Downloading image: " + imageURL)
+                            pet.imageIsDownloading = true
+                            do {
+                                // Obtain data from URL Request
+                                let (data, response) = try await URLSession.shared.data(from: requestURL)
+                                guard let httpResponse = response as? HTTPURLResponse,
+                                      httpResponse.statusCode == 200 else {
+                                    pet.imageIsDownloading = false
+                                    throw NetworkError.invalidResponse
+                                }
+                                // Obtain image and show in the imageView of the cell
+                                if let image = UIImage(data: data) {
+                                    cell.imageView.image = image
+                                    print("Image shown")
+                                }
+                                else {
+                                    print("Image invalid: " + imageURL)
+                                    pet.imageIsDownloading = false
+                                }
                             }
-                            // Obtain image and show in the imageView of the cell
-                            if let image = UIImage(data: data) {
-                                cell.imageView.image = image
-                                print("Image shown")
+                            catch {
+                                print(error.localizedDescription)
                             }
-                            else {
-                                print("Image invalid: " + imageURL)
-                                pet.imageIsDownloading = false
-                            }
-                        }
-                        catch {
-                            print(error.localizedDescription)
                         }
                     }
+                    else {
+                        print("Error: URL not valid: " + imageURL)
+                    }
                 }
-                else {
-                    print("Error: URL not valid: " + imageURL)
-                }
+                // If imageID is not nil
+                // Meaning it's stored in the Firebase storage
+                // Download the image from the Firebase storage
             }
-        // If imageID is not nil
-        // Meaning it's stored in the Firebase storage
-        // Download the image from the Firebase storage
-        } else {
+        }else {
             let storage = Storage.storage().reference(forURL: "gs://petopiaassg.appspot.com/\(pet.ownerID!)/\(pet.imageID!)")
             let filename = ("\(pet.imageID!).jpg")
             
@@ -383,3 +391,4 @@ class MarketplaceViewController: UIViewController, UICollectionViewDelegate, UIC
         }
     }
 }
+

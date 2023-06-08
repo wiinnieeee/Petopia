@@ -33,39 +33,45 @@ class ViewWishlistViewController: UIViewController {
         // Download image from the imagePath provided by the API
         // Similar to image retrieval in MarketplaceViewController
         if animal?.imageID == nil {
-            let imageURL = animal?.imageURL
-            // obtain the imageURL and make it to a URL request
-            let requestURL = URL(string: imageURL!)
-            if let requestURL {
-                Task {
-                    print("Downloading image: " + imageURL!)
-                    do {
-                        // Obtain data from URL Request
-                        let (data, response) = try await URLSession.shared.data(from: requestURL)
-                        guard let httpResponse = response as? HTTPURLResponse,
-                              httpResponse.statusCode == 200 else {
-                            throw NetworkError.invalidResponse
+            let imageURL = animal?.imageURL!
+            // If there is no imageURL, load an image showing No Pet Preview
+            if imageURL == "" {
+                petImage.image = UIImage(named: "No Pet Preview")
+            } else {
+                let imageURL = animal?.imageURL
+                // obtain the imageURL and make it to a URL request
+                let requestURL = URL(string: imageURL!)
+                if let requestURL {
+                    Task {
+                        print("Downloading image: " + imageURL!)
+                        do {
+                            // Obtain data from URL Request
+                            let (data, response) = try await URLSession.shared.data(from: requestURL)
+                            guard let httpResponse = response as? HTTPURLResponse,
+                                  httpResponse.statusCode == 200 else {
+                                throw NetworkError.invalidResponse
+                            }
+                            // Obtain image and show in the imageView
+                            if let image = UIImage(data: data) {
+                                petImage.image = image
+                            }
+                            else {
+                                print("Image invalid: " + imageURL!)
+                            }
                         }
-                        // Obtain image and show in the imageView
-                        if let image = UIImage(data: data) {
-                            petImage.image = image
+                        catch {
+                            print(error.localizedDescription)
                         }
-                        else {
-                            print("Image invalid: " + imageURL!)
-                        }
-                    }
-                    catch {
-                        print(error.localizedDescription)
                     }
                 }
+                else {
+                    print("Error: URL not valid: " + imageURL!)
+                }
+                // If imageID is not nil
+                // Meaning it's stored in the Firebase storage
+                // Download the image from the Firebase storage
             }
-            else {
-                print("Error: URL not valid: " + imageURL!)
-            }
-            // If imageID is not nil
-            // Meaning it's stored in the Firebase storage
-            // Download the image from the Firebase storage
-        } else {
+        }else {
             let storage = Storage.storage().reference(forURL: "gs://petopiaassg.appspot.com/\(animal!.ownerID!)/\(animal!.imageID!)")
             let filename = ("\(animal!.imageID!).jpg")
             

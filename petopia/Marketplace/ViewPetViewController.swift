@@ -107,11 +107,11 @@ class ViewPetViewController: UIViewController, MFMailComposeViewControllerDelega
                             alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel))
                             self?.present(alert, animated: true)
                         }
-                    // If the owner is not recorded in the database
-                    // which means it's from the API
-                    // Display action for the user to email or text the owner
-                    // Provide the details of email and phone number in the alert controller as well
-                    // Redirect to SMS and Email unable to show in simulator
+                        // If the owner is not recorded in the database
+                        // which means it's from the API
+                        // Display action for the user to email or text the owner
+                        // Provide the details of email and phone number in the alert controller as well
+                        // Redirect to SMS and Email unable to show in simulator
                     } else {
                         let message = "Email: \((self?.animal?.emailAddress ?? "")!)\nPhone number: \((self?.animal?.phoneNumber ?? "" )!)"
                         let alert = UIAlertController(title: "Contact Owner", message: message, preferredStyle: .alert)
@@ -153,38 +153,44 @@ class ViewPetViewController: UIViewController, MFMailComposeViewControllerDelega
         // Similar to image retrieval in MarketplaceViewController
         if animal?.imageID == nil {
             let imageURL = animal?.imagePath!
-            // obtain the imageURL and make it to a URL request
-            let requestURL = URL(string: imageURL!)
-            if let requestURL {
-                Task {
-                    print("Downloading image: " + imageURL!)
-                    do {
-                        // Obtain data from URL Request
-                        let (data, response) = try await URLSession.shared.data(from: requestURL)
-                        guard let httpResponse = response as? HTTPURLResponse,
-                              httpResponse.statusCode == 200 else {
-                            throw NetworkError.invalidResponse
+            // If there is no imageURL, load an image showing No Pet Preview
+            if imageURL == "" {
+                petImageView.image = UIImage(named: "No Pet Preview")
+            } else {
+                // obtain the imageURL and make it to a URL request
+                let requestURL = URL(string: imageURL!)
+                if let requestURL {
+                    Task {
+                        print("Downloading image: " + imageURL!)
+                        do {
+                            // Obtain data from URL Request
+                            let (data, response) = try await URLSession.shared.data(from: requestURL)
+                            guard let httpResponse = response as? HTTPURLResponse,
+                                  httpResponse.statusCode == 200 else {
+                                throw NetworkError.invalidResponse
+                            }
+                            // Obtain image and show in the imageView
+                            if let image = UIImage(data: data) {
+                                petImageView.image = image
+                            }
+                            else {
+                                print("Image invalid: " + imageURL!)
+                            }
                         }
-                        // Obtain image and show in the imageView
-                        if let image = UIImage(data: data) {
-                            petImageView.image = image
+                        catch {
+                            print(error.localizedDescription)
                         }
-                        else {
-                            print("Image invalid: " + imageURL!)
-                        }
-                    }
-                    catch {
-                        print(error.localizedDescription)
                     }
                 }
+                else {
+                    print("Error: URL not valid: " + imageURL!)
+                }
+                // If imageID is not nil
+                // Meaning it's stored in the Firebase storage
+                // Download the image from the Firebase storage
             }
-            else {
-                print("Error: URL not valid: " + imageURL!)
-            }
-        // If imageID is not nil
-        // Meaning it's stored in the Firebase storage
-        // Download the image from the Firebase storage
-        } else {
+        }
+        else {
             let storage = Storage.storage().reference(forURL: "gs://petopiaassg.appspot.com/\(animal!.ownerID!)/\(animal!.imageID!)")
             let filename = ("\(animal!.imageID!).jpg")
             
