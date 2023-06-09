@@ -1,5 +1,5 @@
 //
-//  LocationService.swift
+//  LocationServiceVets.swift
 //  petopia
 //  Ask for authorization to get user locations
 //  And manage the updating of locations accordingly
@@ -11,10 +11,10 @@
 import Foundation
 import CoreLocation
 
-class LocationService: NSObject, CLLocationManagerDelegate {
+class LocationServiceVets: NSObject, CLLocationManagerDelegate {
     
     // Static variable to call the methods in LocationService
-    static let shared = LocationService()
+    static let shared = LocationServiceVets()
     
     // Initialise and configure the Location Manager
     lazy var locationManager: CLLocationManager = {

@@ -32,7 +32,7 @@ class ViewWishlistViewController: UIViewController {
         // If imageID is nil, meaning the retrieval of image is from the API
         // Download image from the imagePath provided by the API
         // Similar to image retrieval in MarketplaceViewController
-        if animal?.imageID == nil {
+        if animal?.imageID == "" {
             let imageURL = animal?.imageURL!
             // If there is no imageURL, load an image showing No Pet Preview
             if imageURL == "" {

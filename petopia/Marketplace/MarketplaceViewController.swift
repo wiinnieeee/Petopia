@@ -149,10 +149,6 @@ class MarketplaceViewController: UIViewController, UICollectionViewDelegate, UIC
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = false
         
-        // Set up the layout of the collection view
-        let layout = UICollectionViewCompositionalLayout(section: createTiledLayoutSection())
-        petsCollection.setCollectionViewLayout(layout, animated: false)
-        
         // Listen to the listings from the Firestore
         databaseController?.addListener(listener: self)
         petsCollection.reloadData()
@@ -218,7 +214,6 @@ class MarketplaceViewController: UIViewController, UICollectionViewDelegate, UIC
                 
                 // Query from API using the access token
                 let animals = try await APIService.shared.search(token: accToken, query: typeQuery)
-                print(animals)
                 apiPets = []
                 
                 // Load the data by making an instance of animal
@@ -253,19 +248,6 @@ class MarketplaceViewController: UIViewController, UICollectionViewDelegate, UIC
                 activityIndicator.stopAnimating()
             }
         }
-    }
-    
-    /// Create the tiled layout for the collection view
-    func createTiledLayoutSection() -> NSCollectionLayoutSection {
-        let cellSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1/2), heightDimension: .fractionalHeight(1))
-        let posterLayout = NSCollectionLayoutItem(layoutSize: cellSize)
-        posterLayout.contentInsets = NSDirectionalEdgeInsets(top: 1, leading: 1, bottom: 1, trailing: 1)
-        
-        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalWidth(0.55))
-        let layoutGroup = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [posterLayout])
-        
-        let layoutSection = NSCollectionLayoutSection(group: layoutGroup)
-        return layoutSection
     }
     
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {

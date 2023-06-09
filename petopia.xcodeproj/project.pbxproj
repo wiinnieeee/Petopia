@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1018271B2A33022600CAAAC2 /* TnCViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1018271A2A33022600CAAAC2 /* TnCViewController.swift */; };
+		1018271D2A33065B00CAAAC2 /* LocationServiceVets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1018271C2A33065B00CAAAC2 /* LocationServiceVets.swift */; };
 		101B73AC2A26167100D3B609 /* PetopiaUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101B73AB2A26167100D3B609 /* PetopiaUserDefaults.swift */; };
 		101B73B12A261F2700D3B609 /* ViewModeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101B73AF2A261F2700D3B609 /* ViewModeTableViewCell.swift */; };
 		101B73B22A261F2700D3B609 /* ViewModeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 101B73B02A261F2700D3B609 /* ViewModeTableViewCell.xib */; };
@@ -30,7 +32,7 @@
 		105C30232A121CC0004FD54A /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105C30222A121CC0004FD54A /* Contact.swift */; };
 		105C30252A1240B6004FD54A /* PetsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105C30242A1240B6004FD54A /* PetsCollectionViewCell.swift */; };
 		106B75E42A0A6EC400C6B704 /* SetReminderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106B75E32A0A6EC400C6B704 /* SetReminderViewController.swift */; };
-		1073292C2A24730F00D4BD14 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1073292B2A24730F00D4BD14 /* LocationService.swift */; };
+		1073292C2A24730F00D4BD14 /* LocationServicePetShop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1073292B2A24730F00D4BD14 /* LocationServicePetShop.swift */; };
 		107329302A24814A00D4BD14 /* NearbyPetShopsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1073292F2A24814A00D4BD14 /* NearbyPetShopsTableViewController.swift */; };
 		107329322A248D1B00D4BD14 /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107329312A248D1B00D4BD14 /* Place.swift */; };
 		107329342A24993C00D4BD14 /* ViewPetShopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107329332A24993C00D4BD14 /* ViewPetShopViewController.swift */; };
@@ -87,6 +89,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1018271A2A33022600CAAAC2 /* TnCViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TnCViewController.swift; sourceTree = "<group>"; };
+		1018271C2A33065B00CAAAC2 /* LocationServiceVets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationServiceVets.swift; sourceTree = "<group>"; };
 		101B73AB2A26167100D3B609 /* PetopiaUserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetopiaUserDefaults.swift; sourceTree = "<group>"; };
 		101B73AF2A261F2700D3B609 /* ViewModeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModeTableViewCell.swift; sourceTree = "<group>"; };
 		101B73B02A261F2700D3B609 /* ViewModeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ViewModeTableViewCell.xib; sourceTree = "<group>"; };
@@ -108,7 +112,7 @@
 		105C30222A121CC0004FD54A /* Contact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
 		105C30242A1240B6004FD54A /* PetsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetsCollectionViewCell.swift; sourceTree = "<group>"; };
 		106B75E32A0A6EC400C6B704 /* SetReminderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetReminderViewController.swift; sourceTree = "<group>"; };
-		1073292B2A24730F00D4BD14 /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
+		1073292B2A24730F00D4BD14 /* LocationServicePetShop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationServicePetShop.swift; sourceTree = "<group>"; };
 		1073292F2A24814A00D4BD14 /* NearbyPetShopsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearbyPetShopsTableViewController.swift; sourceTree = "<group>"; };
 		107329312A248D1B00D4BD14 /* Place.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
 		107329332A24993C00D4BD14 /* ViewPetShopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewPetShopViewController.swift; sourceTree = "<group>"; };
@@ -290,7 +294,8 @@
 				107329352A249F7C00D4BD14 /* NewLocationDelegate.swift */,
 				10F43EEA29FA1C900065E8DD /* HelpTableViewController.swift */,
 				1077770E2A2734BD00D7684F /* MyProfileTableViewController.swift */,
-				1073292B2A24730F00D4BD14 /* LocationService.swift */,
+				1073292B2A24730F00D4BD14 /* LocationServicePetShop.swift */,
+				1018271C2A33065B00CAAAC2 /* LocationServiceVets.swift */,
 				1073292F2A24814A00D4BD14 /* NearbyPetShopsTableViewController.swift */,
 				107329312A248D1B00D4BD14 /* Place.swift */,
 				107329332A24993C00D4BD14 /* ViewPetShopViewController.swift */,
@@ -301,6 +306,7 @@
 				102346DB2A275A6700844090 /* AboutAppViewController.swift */,
 				10CE09942A2B529F00CB1FB6 /* ViewListingTableViewController.swift */,
 				10CE09982A2B5BB100CB1FB6 /* DetailListingViewController.swift */,
+				1018271A2A33022600CAAAC2 /* TnCViewController.swift */,
 			);
 			path = "Help and Services";
 			sourceTree = "<group>";
@@ -448,6 +454,7 @@
 				108E2A1B2A2C8CCD00172804 /* CommentsTableViewController.swift in Sources */,
 				10AE026B29EB976300B82918 /* LoginViewController.swift in Sources */,
 				10AE026D29EB99E200B82918 /* RegisterViewController.swift in Sources */,
+				1018271B2A33022600CAAAC2 /* TnCViewController.swift in Sources */,
 				1077770F2A2734BD00D7684F /* MyProfileTableViewController.swift in Sources */,
 				105B46ED2A287BD20098CBD9 /* WishlistAnimal.swift in Sources */,
 				10441FA42A0B2DD400FE269E /* NewListingViewController.swift in Sources */,
@@ -465,6 +472,7 @@
 				1097B5A92A10C93400E56B03 /* APIConstants.swift in Sources */,
 				10F43EEB29FA1C900065E8DD /* HelpTableViewController.swift in Sources */,
 				106B75E42A0A6EC400C6B704 /* SetReminderViewController.swift in Sources */,
+				1018271D2A33065B00CAAAC2 /* LocationServiceVets.swift in Sources */,
 				108E2A122A2C38A600172804 /* PostTableViewCell.swift in Sources */,
 				1097B5AD2A10CA8E00E56B03 /* APIService.swift in Sources */,
 				107329342A24993C00D4BD14 /* ViewPetShopViewController.swift in Sources */,
@@ -476,7 +484,7 @@
 				1058CF9C29F8F25C0069B5FA /* MulticastDelegate.swift in Sources */,
 				107329322A248D1B00D4BD14 /* Place.swift in Sources */,
 				10DB5A402A2DD25F008AE87C /* ChatViewController.swift in Sources */,
-				1073292C2A24730F00D4BD14 /* LocationService.swift in Sources */,
+				1073292C2A24730F00D4BD14 /* LocationServicePetShop.swift in Sources */,
 				10CE09992A2B5BB100CB1FB6 /* DetailListingViewController.swift in Sources */,
 				10CE09952A2B529F00CB1FB6 /* ViewListingTableViewController.swift in Sources */,
 				1073293A2A24A6C400D4BD14 /* ViewVetsViewController.swift in Sources */,

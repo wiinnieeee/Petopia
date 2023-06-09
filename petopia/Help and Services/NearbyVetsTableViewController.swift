@@ -23,9 +23,14 @@ class NearbyVetsTableViewController: UITableViewController {
         getUserLocation()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        getUserLocation()
+    }
+    
     /// Obtains the user current location
     func getUserLocation() {
-        LocationService.shared.locationUpdated = {
+        LocationServiceVets.shared.locationUpdated = {
             location in
             self.fetchPlaces(location: location)
             self.userLoc = CLLocation(latitude: location.latitude, longitude: location.longitude)

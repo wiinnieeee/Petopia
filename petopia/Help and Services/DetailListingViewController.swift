@@ -14,11 +14,12 @@ class DetailListingViewController: UIViewController {
     var animal: ListingAnimal?
     
     @IBOutlet weak var petImage: UIImageView!
-    @IBOutlet weak var breedLabel: UILabel!
-    @IBOutlet weak var descriptionLabel: UILabel!
-    @IBOutlet weak var ageLabel: UILabel!
-    @IBOutlet weak var genderLabel: UILabel!
 
+    @IBOutlet weak var ageLabel: UILabel!
+    @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var breedLabel: UILabel!
+    @IBOutlet weak var genderLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
