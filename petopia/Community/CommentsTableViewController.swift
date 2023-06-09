@@ -119,6 +119,8 @@ class CommentsTableViewController: UITableViewController, DatabaseListener {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "commentsCell", for: indexPath) as! CommentsTableViewCell
+        // Latest comment shown at the top
+        savedComment.sort(by: {$0.date! > $1.date!})
         let comment = savedComment[indexPath.row]
         cell.userLabel.text = comment.name
         cell.dateLabel.text = comment.date?.dayAndTimeText

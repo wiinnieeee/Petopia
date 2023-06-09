@@ -94,6 +94,7 @@ class CommunityTableViewController: UITableViewController, DatabaseListener {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "postCell", for: indexPath) as! PostTableViewCell
+        // Latest post shown at the top
         postList.sort(by: {$0.date! > $1.date!})
         let post = postList[indexPath.row]
         cell.userField.text = post.name!

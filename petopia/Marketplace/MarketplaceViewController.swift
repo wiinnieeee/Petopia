@@ -166,7 +166,7 @@ class MarketplaceViewController: UIViewController, UICollectionViewDelegate, UIC
                 listingPets.append(word)
             }
         }
-        self.petsCollection.reloadData()
+        petsCollection.reloadData()
     }
     
     /// Directory path for the cache

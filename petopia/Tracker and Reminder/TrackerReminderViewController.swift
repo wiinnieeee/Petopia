@@ -65,7 +65,12 @@ class TrackerReminderViewController: UIViewController, UITableViewDelegate, UITa
     
     /// Action to pass the date to the next view controller to create reminder
     @IBAction func selectDate(_ sender: Any) {
-        performSegue(withIdentifier: "createNewSegue", sender: self)
+        if calendarPicker.date < Date() {
+            displayMessage(title: "Error", message: "Please enter a valid date")
+        } else {
+            performSegue(withIdentifier: "createNewSegue", sender: self)
+        }
+        
     }
     
     override func viewDidLoad() {
@@ -131,6 +136,14 @@ class TrackerReminderViewController: UIViewController, UITableViewDelegate, UITa
         if editingStyle == .delete {
             databaseController?.deleteReminder(reminder: reminder[indexPath.row])
         }
+    }
+    
+    /// Initialiser to display message using view controller
+    func displayMessage(title: String, message: String){
+        let alertController = UIAlertController(title:title, message: message, preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "Dismiss", style:.default, handler: nil))
+        self.present(alertController, animated: true, completion: nil)
+        
     }
     
     // MARK: - Navigation

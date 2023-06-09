@@ -134,6 +134,8 @@ class NewListingViewController: UIViewController, UICollectionViewDelegate, UICo
         
         // Add animal to wishlist collection of user
         databaseController?.addAnimaltoListing(newAnimal: newListing)
+        imageList = []
+        imagePathList = []
         navigationController?.popViewController(animated: true)
     }
     
