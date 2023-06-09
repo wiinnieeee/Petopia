@@ -12,7 +12,7 @@ import FirebaseFirestore
 import FirebaseStorage
 import MessageUI
 
-class ViewWishlistViewController: UIViewController {
+class ViewWishlistViewController: UIViewController, MFMailComposeViewControllerDelegate, MFMessageComposeViewControllerDelegate {
     
     weak var databaseController: DatabaseProtocol?
     var db = Firestore.firestore()
@@ -25,6 +25,20 @@ class ViewWishlistViewController: UIViewController {
     @IBOutlet weak var breedLabel: UILabel!
     @IBOutlet weak var descField: UILabel!
     
+    
+    @IBAction func contactButton(_ sender: Any) {
+        let message = "Email: \((self.animal?.emailAddress ?? "")!)\nPhone number: \((self.animal?.phoneNumber ?? "" )!)"
+        let alert = UIAlertController(title: "Contact Owner", message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Email owner", style: .default, handler: { action in
+            self.showMailComposer()
+        }))
+        alert.addAction(UIAlertAction(title: "Text owner", style: .default, handler: { action in
+            self.showMessageComposer()
+        }))
+        alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel))
+        
+        self.present(alert, animated: true)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -117,6 +131,76 @@ class ViewWishlistViewController: UIViewController {
         let imageURL = documentsDirectory.appendingPathComponent(filename)
         let image = UIImage(contentsOfFile: imageURL.path)
         return image
+    }
+    
+    /// If email sending function is enables, present the mail composer
+    func showMailComposer() {
+        guard MFMailComposeViewController.canSendMail() else {
+            return
+        }
+        
+        // Set the delegate to this view controller
+        // The recipient configured would be the email address of the owner
+        let composer = MFMailComposeViewController()
+        composer.mailComposeDelegate = self
+        composer.setToRecipients(["\((animal?.emailAddress)!)"])
+        
+        present(composer, animated: true)
+    }
+    
+    /// Display the result of the Mail Compose Controller
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        if let _ = error {
+            controller.dismiss(animated: true)
+            return
+        }
+        
+        // Print results accordingly
+        switch result {
+        case .cancelled:
+            print ("Cancelled")
+        case .saved:
+            print ("Saved")
+        case .sent:
+            print ("Email sent")
+        case .failed:
+            print ("Failed to send")
+        @unknown default:
+            print("Error")
+        }
+        
+        controller.dismiss(animated: true)
+    }
+    
+    /// If message sending function is enables, present the mail composer
+    func showMessageComposer() {
+        guard MFMessageComposeViewController.canSendText() else {
+            return
+        }
+        
+        // Set the delegate to this view controller
+        // The recipient configured would be the phone number of the owner
+        let composer = MFMessageComposeViewController()
+        composer.recipients = [(animal?.phoneNumber)!]
+        composer.messageComposeDelegate = self
+        
+        present(composer, animated: true)
+    }
+    
+    /// Display the result of the Message Compose Controller
+    func messageComposeViewController(_ controller: MFMessageComposeViewController, didFinishWith result: MessageComposeResult) {
+        switch result {
+        case .cancelled:
+            print ("Cancelled case")
+        case .sent:
+            print ("Sent case")
+        case .failed:
+            print ("Failed case")
+        @unknown default:
+            print("Error")
+        }
+        controller.dismiss(animated: true
+        )
     }
 }
 

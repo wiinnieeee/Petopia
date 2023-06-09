@@ -33,6 +33,8 @@ class LocationServiceVets: NSObject, CLLocationManagerDelegate {
         self.requestPermissionToAccessLocation()
     }
     
+        
+    
     // Call methods based on the authorization status
     // If authorized, location would start to be updated
     func requestPermissionToAccessLocation() {
@@ -54,6 +56,7 @@ class LocationServiceVets: NSObject, CLLocationManagerDelegate {
     
     // Check if the authorization status is changed
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
+        print(manager.authorizationStatus.rawValue)
         switch manager.authorizationStatus {
             case  .authorizedAlways:
                 manager.startUpdatingLocation()
@@ -71,7 +74,10 @@ class LocationServiceVets: NSObject, CLLocationManagerDelegate {
         // locations.last is the most recent location update
         if let location = locations.last?.coordinate {
             locationManager.stopUpdatingLocation()
+
+            
             locationUpdated?(location)
+            
         }
     }
     

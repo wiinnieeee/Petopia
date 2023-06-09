@@ -64,7 +64,7 @@ class MarketplaceViewController: UIViewController, UICollectionViewDelegate, UIC
                 selection = 0
             } else if animal.type! == "cat" {
                 selection = 1
-            } else if animal.type! == "small-fury" {
+            } else if animal.type! == "small-furry" {
                 selection = 2
             } else if animal.type! == "rabbit" {
                 selection = 3

@@ -17,16 +17,15 @@ class NearbyPetShopsTableViewController: UITableViewController {
     var userLoc: CLLocation?
     var newPlace: Place?
     
-    // Loads user current location once the view is loaded
+    //Loads user current location once the view is loaded
     override func viewDidLoad() {
         super.viewDidLoad()
-        getUserLocation()
-    }
-    
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        getUserLocation()
+        if PetopiaUserDefaults.shared.getLocation() == nil {
+            getUserLocation()
+        } else {
+            self.userLoc = PetopiaUserDefaults.shared.getLocation()
+            fetchPlaces(location: self.userLoc!.coordinate)
+            }
     }
     
     /// Obtains the user current location
@@ -35,6 +34,8 @@ class NearbyPetShopsTableViewController: UITableViewController {
             location in
             self.fetchPlaces(location: location)
             self.userLoc = CLLocation(latitude: location.latitude, longitude: location.longitude)
+            // Store current location of user in user defaults
+            PetopiaUserDefaults.shared.setLocation(location: self.userLoc!)
         }
     }
     
